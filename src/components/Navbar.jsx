@@ -18,7 +18,7 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-8 items-center text-md">
             {/** Navigation Items with Dropdown */}
             <Dropdown label="Home" items={["Mission & Vision", "Department", "Leadership"]} />
-            <Dropdown label="About Us" items={["Mission & Vision", "Leadership", "History"]} />
+            <Link to="/about"><Dropdown label="About Us" items={["Mission & Vision", "Leadership", "History"]} /></Link>
             <Dropdown label="Satellite Missions" items={["Past Missions", "Ongoing Projects", "Upcoming Launches"]} />
             <Dropdown label="Research & Innovation" items={["Focus Areas", "Facilities", "Publications"]} />
             <Dropdown label="Divisions" items={["Engineering", "Systems", "Operations"]} />
