@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import HomeImage1 from '../assets/images/NigeriaSat_1.jpeg'
-import HomeImage2 from '../assets/images/Museum.jpg'
-import HomeImage3 from '../assets/images/GroundSegment.jpg'
-import HomeImage4 from '../assets/images/SpaceApplications.jpg'
 import CareImage from '../assets/images/NasrdaGate.webp'
 import NasrdaGate from '../assets/images/NasrdaGate.webp'
 import StartUp from '../assets/images/StartUP.jpg'
@@ -46,35 +42,7 @@ const Services = () => {
 const Contact = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section with Background Image */}
-      {/* <div className="relative bg-purple-600 text-white">
-        <div className="relative container mx-auto px-4 py-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">Contact Us Easily Online</h1>
-          <p className="text-xl text-center max-w-3xl mx-auto">
-          Learn more about our satellite-enabled services that improve daily life, enhance public health and safety, and strengthen community connections
-          </p>
-        </div>
-      </div> */}
-
       <Services />
-
-      {/* Image Gallery Section */}
-      {/* <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="relative h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img src={HomeImage1} alt="NASRDA Gate" className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" />
-          </div>
-          <div className="relative h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img src={HomeImage2} alt="Museum" className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" />
-          </div>
-          <div className="relative h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img src={HomeImage3} alt="Ground Segment" className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" />
-          </div>
-          <div className="relative h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img src={HomeImage4} alt="Space Applications" className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" />
-          </div>
-        </div>
-      </div> */}
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
