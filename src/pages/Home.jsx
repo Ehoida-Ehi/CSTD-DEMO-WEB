@@ -1,12 +1,34 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaPlay, FaPause, FaTimes, FaTrophy, FaSlidersH, FaThumbsUp, FaUsers } from "react-icons/fa";
+import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
+import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import { Flip, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import sadqUmarImg from '../assets/images/Eng-Sadq-Umar.jpg';
+
+import satelliteImg from '../assets/images/astronaaut-7550543_1280.png';
+import researchImg from '../assets/images/business-6614313_1280.webp';
+import spacemissionsImg from '../assets/images/datA.jpg';
+import financeImg from '../assets/images/financial-4560047_1280.webp';
+import ictImg from '../assets/images/cloud-3998880_1280.webp';
+import spacecraftImg from '../assets/images/machine-8012596_1280.jpg';
+import communicationImg from '../assets/images/tv-6824507_1280.webp';
+import adminImg from '../assets/images/work-8396635_1280.jpg';
+import groundsegmentImg from '../assets/images/ai-generated-8910182_1280.png';
+import directorateImg from '../assets/images/computer-3241350_1280.webp';
+
+import projectImg from '../assets/images/drone-2879538_1280.jpg';
+import environmentImg from '../assets/images/environment-7412967_1280.jpg';
+import partnershipImg from '../assets/images/pbusiness-7768170_1280.jpg';
+
+
 
 
 const Home = () => {
@@ -42,11 +64,11 @@ const Home = () => {
     "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-1.jpg",
     "https://innov8hub.ng/wp-content/uploads/2024/05/new-story-5.jpg",
     "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-2.jpg",
-    "https://cdn.pixabay.com/photo/2022/11/16/12/40/food-7595910_1280.jpg",
-    "https://cdn.pixabay.com/photo/2018/12/04/16/49/indian-food-3856050_1280.jpg",
-    " https://cdn.pixabay.com/photo/2023/01/17/07/59/mossel-dish-7724006_1280.jpg",
-    "https://cdn.pixabay.com/photo/2021/11/01/15/52/spring-roll-6760871_1280.jpg",
-    "https://cdn.pixabay.com/photo/2017/06/26/12/49/red-wine-2443699_1280.jpg",
+    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-1.jpg",
+    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-7.jpg",
+    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-3.jpg",
+    "https://innov8hub.ng/wp-content/uploads/2024/05/New-story-6.jpg",
+    "https://innov8hub.ng/wp-content/uploads/2024/05/New-story-6.jpg",
   ];
 
   const [open, setOpen] = useState(null);
@@ -62,14 +84,16 @@ const Home = () => {
   ];
 
   const departments = [
-    { title: "Satellite Systems", image: "https://cdn.pixabay.com/photo/2022/10/27/10/23/astronaaut-7550543_1280.png" },
-    { title: "Research and Innovation", image: "https://cdn.pixabay.com/photo/2021/09/10/22/17/business-6614313_1280.png" },
-    { title: "Space Missions & Data", image: "https://cdn.pixabay.com/photo/2024/01/26/08/06/ai-generated-8533600_1280.jpg" },
-    { title: "Accounting & Finance", image: "https://cdn.pixabay.com/photo/2019/10/18/19/51/financial-4560047_1280.jpg" },
-    { title: "ICT", image: "https://cdn.pixabay.com/photo/2019/02/15/17/09/cloud-3998880_1280.jpg" },
-    { title: "Spacecraft Structures & Mechanism", image: "https://cdn.pixabay.com/photo/2023/05/23/11/51/machine-8012596_1280.jpg" },
-    { title: "Communications", image: "https://cdn.pixabay.com/photo/2021/11/25/20/01/tv-6824507_1280.png" },
-    { title: "Administration", image: "https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg" },
+    { title: "Satellite Systems", image: satelliteImg },
+    { title: "Research and Innovation", image: researchImg },
+    { title: "Space Missions & Data", image: spacemissionsImg },
+    { title: "Accounting & Finance", image: financeImg },
+    { title: "ICT", image: ictImg },
+    { title: "Spacecraft Structures & Mechanism", image: spacecraftImg },
+    { title: "Communications", image: communicationImg },
+    { title: "Administration", image: adminImg },
+    { title: "Ground Segment", image: groundsegmentImg },
+    { title: "Directorate", image: directorateImg },
   ];
 
 
@@ -91,6 +115,43 @@ const Home = () => {
   ];
 
 
+  const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      message: '',
+    });
+  
+    const [errors, setErrors] = useState({});
+  
+    const validate = () => {
+      const newErrors = {};
+      if (!formData.name.trim()) newErrors.name = 'Name is required';
+      if (!formData.email.trim()) {
+        newErrors.email = 'Email is required';
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = 'Enter a valid email';
+      }
+      if (!formData.message.trim()) newErrors.message = 'Message is required';
+  
+      setErrors(newErrors);
+      return Object.keys(newErrors).length === 0;
+    };
+  
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: '' });
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (validate()) {
+        toast.success('Form submitted successfully!');
+        setFormData({ name: '', email: '', message: '' });
+        setErrors({});
+      }
+    }; 
+
+
 
 
 
@@ -102,7 +163,7 @@ const Home = () => {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          src="https://cdn.pixabay.com/video/2023/08/05/174708-852018337_large.mp4"
+          src="https://cdn.pixabay.com/video/2024/09/25/233240_tiny.mp4"
           type="video/mp4"
           muted
           loop
@@ -131,59 +192,8 @@ const Home = () => {
         </button>
       </div>
 
-
-      {/* Satellite Project Showcase Section */}
-      <div id="projects" className="bg-white py-16 px-4 text-white">
-        <h2 className="text-4xl font-bold text-center mb-12 text-green-700">
-          Our Key Initiatives
-        </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Project 1 */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2017/10/22/22/38/drone-2879538_1280.jpg"
-              alt="Our Projects"
-              className="rounded-lg shadow-md mb-4"
-            />
-            <h3 className="text-xl font-semibold text-black">Our Projects</h3>
-            <p className="text-sm mt-2 text-black">
-              Advancing satellite platforms, remote sensing, and mission operations.
-            </p>
-          </div>
-
-          {/* Project 2 */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2015/01/14/18/54/satellite-photo-599494_1280.jpg"
-              alt="Research on Sustainable Energy Systems"
-              className="rounded-lg shadow-md mb-4"
-            />
-            <h3 className="text-xl font-semibold text-black">Research on Sustainable Energy Systems</h3>
-            <p className="text-sm mt-2 text-black ">
-              Exploring renewable energy through satellite-enabled technologies.
-            </p>
-          </div>
-
-          {/* Project 3 */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2023/02/04/21/03/business-7768170_1280.jpg"
-              alt="Global Partnerships"
-              className="rounded-lg shadow-md mb-4"
-            />
-            <h3 className="text-xl font-semibold text-black">Global Partnerships</h3>
-            <p className="text-sm mt-2 text-black">
-              Collaborating with international agencies to expand innovation and impact.
-            </p>
-          </div>
-        </div>
-      </div>
-
-
-
-
       {/* About Us */}
-      <div id="about-us" className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 bg-white">
+      <div id="values" className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 bg-white">
         {/* Left Grid - Text Section */}
         <div>
           <h2 className="text-4xl font-bold text-green-700  text-center mb-4">ABOUT US</h2>
@@ -197,10 +207,10 @@ const Home = () => {
           <div className="grid grid-cols-2 gap-6 text-gray-800 font-semibold">
             <div className="flex items-start gap-3">
               <FaTrophy className="text-blue-600 text-3xl" />
-              <p>WE HAVE A<br />REPUTATION FOR<br />EXCELLENCE</p>
+              <p>COMMITTED TO<br />EXCELLENCE IN<br />SATELLITE TECHNOLOGY</p>
             </div>
             <div className="flex items-start gap-3">
-              <FaSlidersH className="text-blue-600 text-3xl" />
+              <FaHandshake className="text-blue-600 text-3xl" />
               <p>WE BUILD<br />PARTNERSHIPS</p>
             </div>
             <div className="flex items-start gap-3">
@@ -208,7 +218,7 @@ const Home = () => {
               <p>GUIDED BY<br />COMMITMENT</p>
             </div>
             <div className="flex items-start gap-3">
-              <FaUsers className="text-blue-600 text-3xl" />
+              <FaPeopleGroup className="text-blue-600 text-3xl" />
               <p>A TEAM OF<br />PROFESSIONALS</p>
             </div>
           </div>
@@ -245,6 +255,122 @@ const Home = () => {
           </button>
         </div>
       </div>
+
+
+
+      {/* leadership section */}
+      <div id="leadership" className="bg-white py-16 px-4">
+        <h1 className="text-4xl text-center text-green-700 font-bold mb-10">Our Leadership</h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* Left Grid */}
+          <div className="flex items-center justify-center">
+            <img
+               src={sadqUmarImg}
+              alt="CSTD CEO"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Right Grid */}
+          <div className="flex flex-col justify-center text-center px-8 md:px-16">
+            {/* Quotation Icon */}
+            <h1 className="text-lg font-bold text-black mb-4">Dr Sadiq Umar</h1>
+            {/* Description */}
+            <p className="text-lg text-black mb-6">
+              The director of CSTD
+            </p>
+            {/* Source */}
+            <p className="text-black font-bold text-lg">
+              Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest of the girl child in satellite systems.
+
+              Dr. Umar’s key focus is incentivising research activities that accelerate sustainable national development. Hence, the management and staff of CSTD emphasise the importance of research, innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* Our Departments section */}
+      <section id="departments" className="bg-white py-12 px-4 text-white">
+        <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Our Departments</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {departments.map((dept, index) => (
+            <div
+              key={index}
+              className="relative bg-white text-black rounded-lg shadow-2xl p-4 pt-20"
+            >
+              {/* Image Div */}
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-44 h-24 bg-blue-200 rounded-md overflow-hidden shadow-xl">
+                <img
+                  src={dept.image}
+                  alt={dept.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-center text-lg font-semibold mb-2">{dept.title}</h3>
+
+              {/* Explore Link */}
+              {/* <p className="text-center text-blue-600 font-medium cursor-pointer hover:underline">
+                Explore
+              </p> */}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Key iniciatives Section */}
+      <div id="key-initiatives" className="bg-white py-16 px-4 text-white">
+        <h2 className="text-4xl font-bold text-center mb-12 text-green-700">
+          Our Key Initiatives
+        </h2>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Project 1 */}
+          <div className="flex flex-col items-center text-center">
+            <img
+                 src={projectImg}
+              alt="Our Projects"
+              className="rounded-lg shadow-md mb-4"
+            />
+            <h3 className="text-xl font-semibold text-black">Our Projects</h3>
+            <p className="text-sm mt-2 text-black">
+              Advancing satellite platforms, remote sensing, and mission operations.
+            </p>
+          </div>
+
+          {/* Project 2 */}
+          <div className="flex flex-col items-center text-center">
+            <img
+                 src={environmentImg}
+              alt="Research on Sustainable Energy Systems"
+              className="rounded-lg shadow-md mb-4"
+            />
+            <h3 className="text-xl font-semibold text-black">Research on Sustainable Energy Systems</h3>
+            <p className="text-sm mt-2 text-black ">
+              Exploring renewable energy through satellite-enabled technologies.
+            </p>
+          </div>
+
+          {/* Project 3 */}
+          <div className="flex flex-col items-center text-center">
+            <img
+                 src={partnershipImg}
+              alt="Global Partnerships"
+              className="rounded-lg shadow-md mb-4"
+            />
+            <h3 className="text-xl font-semibold text-black">Global Partnerships</h3>
+            <p className="text-sm mt-2 text-black">
+              Collaborating with international agencies to expand innovation and impact.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
 
       {/* Gallery Section */}
       <div id="gallery" className="py-16 bg-white flex justify-center">
@@ -383,72 +509,7 @@ const Home = () => {
         </div>
       </div>
 
-
-      {/* Our Departments section */}
-      <section className="bg-white py-12 px-4 text-white">
-        <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Our Departments</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {departments.map((dept, index) => (
-            <div
-              key={index}
-              className="relative bg-white text-black rounded-lg shadow-2xl p-4 pt-20"
-            >
-              {/* Image Div */}
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-44 h-24 bg-blue-200 rounded-md overflow-hidden shadow-xl">
-                <img
-                  src={dept.image}
-                  alt={dept.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Title */}
-              <h3 className="text-center text-lg font-semibold mb-2">{dept.title}</h3>
-
-              {/* Explore Link */}
-              <p className="text-center text-blue-600 font-medium cursor-pointer hover:underline">
-                Explore
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* leadership section */}
-      <div id="leadership" className="bg-white py-16 px-4">
-        <h1 className="text-4xl text-center text-green-700 font-bold mb-10">Our Leadership</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Left Grid */}
-          <div className="flex items-center justify-center">
-            <img
-              src="https://central.nasrda.gov.ng/wp-content/uploads/2025/03/Eng-Sadq-Umar.jpg"
-              alt="CSTD CEO"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Right Grid */}
-          <div className="flex flex-col justify-center text-center px-8 md:px-16">
-            {/* Quotation Icon */}
-            <h1 className="text-lg font-bold text-black mb-4">Dr Sadiq Umar</h1>
-            {/* Description */}
-            <p className="text-lg text-black mb-6">
-              The director of CSTD
-            </p>
-            {/* Source */}
-            <p className="text-black font-bold text-lg">
-              Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest of the girl child in satellite systems.
-
-              Dr. Umar’s key focus is incentivising research activities that accelerate sustainable national development. Hence, the management and staff of CSTD emphasise the importance of research, innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div className="bg-white py-16 px-4 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div id="faq" className="bg-white py-16 px-4 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* FAQ Section */}
         <div>
           <h2 className="text-2xl font-bold text-center text-green-700 mb-6">FAQS</h2>
@@ -470,35 +531,64 @@ const Home = () => {
         </div>
 
         {/* Contact Form */}
-        <div>
-          <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">HAVE QUESTIONS?</h2>
-          <form className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                type="text"
-                placeholder="Name"
-                className="border border-gray-300 px-4 py-2 w-full rounded-md"
-              />
-              <input
-                type="email"
-                placeholder="email"
-                className="border border-gray-300 px-4 py-2 w-full rounded-md"
-              />
-            </div>
-            <textarea
-              placeholder="Enter Your Message"
-              className="border border-gray-300 px-4 py-2 w-full rounded-md h-32"
-            ></textarea>
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-bold"
-              >
-                SUBMIT
-              </button>
-            </div>
-          </form>
+       <div>
+      <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">HAVE QUESTIONS?</h2>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              className="border border-gray-300 px-4 py-2 w-full rounded-md"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
+          </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="border border-gray-300 px-4 py-2 w-full rounded-md"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+          </div>
         </div>
+        <div>
+          <textarea
+            name="message"
+            placeholder="Enter Your Message"
+            className="border border-gray-300 px-4 py-2 w-full rounded-md h-32"
+            value={formData.message}
+            onChange={handleChange}
+          ></textarea>
+          {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+        </div>
+        <div className="text-center">
+          <button
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-bold"
+          >
+            SUBMIT
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <ToastContainer
+        position="top-center"
+        transition={Flip}
+        autoClose={3000}
+        hideProgressBar={true}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
+        
       </div>
 
 
