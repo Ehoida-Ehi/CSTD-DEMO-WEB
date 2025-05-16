@@ -5,17 +5,21 @@ const History = () => {
     <div className="p-6 bg-gray-100 mt-2 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">History of CSTD</h2>
       <p className="text-gray-700 leading-relaxed">
-        Monero was launched in 2014, and its goal is simple: to allow transactions to take place privately and with anonymity. 
-        Even though it’s commonly thought that BTC can conceal a person’s identity, it’s often easy to trace payments back to 
-        their original source because blockchains are transparent. On the other hand, XMR is designed to obscure senders and 
-        recipients alike through the use of advanced cryptography.
+        The Centre for Satellite Technology Development (CSTD) is one of the key activity centers, better known as the heartbeat, of the National Space Research and Development Agency (NASRDA), established in line with Nigeria's National Space Policy and Programs. CSTD's primary mandate is to develop capabilities in designing, developing, and testing satellites and their subsystems for various missions, including Earth Observation, Communication, Global Navigation, and Radar Satellite systems. This is achieved through collaborations with specialized institutions, public and private organizations, and academic institutions.
+
       </p>
       <p className="text-gray-700 leading-relaxed mt-4">
-        The team behind Monero says privacy and security are their biggest priorities, with ease of use and efficiency coming second. 
-        It aims to provide protection to all users — irrespective of how technologically competent they are.
+        Since its establishment in 2001 (initially as the "Satellite Technology Project"), CSTD has successfully initiated and completed several satellite missions, including Eath Observation satellites (NigeriaSat-1, NigeriaSat-2, NigeriaSat-X) and Communication satellites (NigComSat-1,NigComSat-1R). These projects were realized through strategic collaborations with foreign experts.
+
+      </p>
+      <p className='text-gray-700 leading-relaxed'>
+          These satellites support various development programs, contributing to poverty alleviation, food security, national defense, law enforcement, urban planning, education, and overall socio-economic development. They provide services such as land-use mapping, disaster prediction, early warning systems, telecommuniction services, and navigation.
       </p>
       <p className="text-gray-700 leading-relaxed mt-4">
-        Overall, XMR aims to allow payments to be made quickly and inexpensively without fear of censorship.
+        With the global space economy projected to grow from £270 billion in 2019 to £490 billion by 2030, there are immense opportunities ahead. Satellites will continue to deliver critical services worldwide, especially in emerging economies facing challenges like urban-rural inequality,climate change effects, and health crises.
+      </p>
+      <p className="text-gray-700 leading-relaxed mt-4">
+        To address these challenges and capitalize on opportunities, CSTD has developed a Strategic and Implementation Plan (SIP) for 2022-2026. This plan aims to accelerate the achievement of CSTD's vision and mission,aligning with NASRDA's objective of attaining continental leadership inspace science and technology for Nigeria's socio-economic benefit.The SIP outlines objectives,implementation strategies, and priorities to guide CSTD's activities in the coming years.
       </p>
     </div>
   )
