@@ -19,7 +19,7 @@ import spacemissionsImg from '../assets/images/datA.jpg';
 import financeImg from '../assets/images/financial-4560047_1280.webp';
 import ictImg from '../assets/images/cloud-3998880_1280.webp';
 import spacecraftImg from '../assets/images/machine-8012596_1280.jpg';
-import communicationImg from '../assets/images/tv-6824507_1280.webp';
+import droneImg from '../assets/images/drone-4256093_1280.webp';
 import adminImg from '../assets/images/work-8396635_1280.jpg';
 import groundsegmentImg from '../assets/images/ai-generated-8910182_1280.png';
 import directorateImg from '../assets/images/computer-3241350_1280.webp';
@@ -28,8 +28,14 @@ import projectImg from '../assets/images/drone-2879538_1280.jpg';
 import environmentImg from '../assets/images/environment-7412967_1280.jpg';
 import partnershipImg from '../assets/images/pbusiness-7768170_1280.jpg';
 
-
-
+import newStory2 from "../assets/images/chukaa.jpg";
+import newStory3 from "../assets/images/meet.jpg";
+import newStory1 from "../assets/images/cstd group.jpg";
+import newStory4 from "../assets/images/karri.jpg";
+import newStory5 from "../assets/images/slidepix.jpg";
+import newStory6 from "../assets/images/New-story-6.jpg";
+import newStory7 from "../assets/images/New-Story-3.jpg";
+import newStory8 from "../assets/images/new-story-5.jpg";
 
 const Home = () => {
   const videoRef = useRef(null);
@@ -59,16 +65,14 @@ const Home = () => {
 
 
   const images = [
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-story-6.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/new-story-5.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-1.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/new-story-5.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-2.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-1.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-7.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-3.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-story-6.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-story-6.jpg",
+    newStory2,
+    newStory3,
+    newStory1,
+    newStory4,
+    newStory5,
+    newStory6,
+    newStory7,
+    newStory8,
   ];
 
   const [open, setOpen] = useState(null);
@@ -80,17 +84,21 @@ const Home = () => {
   const values = [
     { title: "EXCELLENCE", content: "We pursue the highest standards in all we do." },
     { title: "INNOVATION", content: "We foster creativity to solve real-world problems." },
-    { title: "COLLABORATION", content: "We work with others to achieve greater impact." },
+    { title: "TEAM WORK", content: "We work with others to achieve greater impact." },
+    { title: "PURPOSE", content: "Empowering the Future Through Knowledge and Research." },
+    { title: "INTEGRITY", content: "Guided by Principles, Accountability Transparency and Trustworthy." },
+    { title: "PROFESSIONALISM", content: "Standard, Precision and Poise. Committed to Quality, Driven by Ethics." },
+
   ];
 
   const departments = [
     { title: "Satellite Systems", image: satelliteImg },
-    { title: "Research and Innovation", image: researchImg },
-    { title: "Space Missions & Data", image: spacemissionsImg },
-    { title: "Accounting & Finance", image: financeImg },
+    { title: "Research, Development and Innovation", image: researchImg },
+    { title: "Satellite Missions & Data Communication", image: spacemissionsImg },
+    { title: "Finance and Account", image: financeImg },
     { title: "ICT", image: ictImg },
-    { title: "Spacecraft Structures & Mechanism", image: spacecraftImg },
-    { title: "Communications", image: communicationImg },
+    { title: "Spacecraft Structure & Mechanisms", image: spacecraftImg },
+    { title: "Spacecraft Aerodynamics and Control", image: droneImg },
     { title: "Administration", image: adminImg },
     { title: "Ground Segment", image: groundsegmentImg },
     { title: "Directorate", image: directorateImg },
@@ -99,57 +107,57 @@ const Home = () => {
 
   const faqs = [
     {
-      question: "WHY IS SPACE SCIENCE TECHNOLOGY ESSENTIAL TO NIGERIA?",
-      answer: "Space science supports national development in communication, security, agriculture, and climate monitoring.",
+      question: "WHAT IS THE MAIN FUNCTION OF CSTD WITHIN NASRDA?",
+      answer: "The Center for Satellite Technology Development (CSTD) is one of the strategic activity centers under the National Space Research and Development Agency (NASRDA). Its primary function is to design, develop, test, and integrate satellite systems and related technologies in Nigeria. CSTD also plays a leading role in building local capacity through technical training, satellite engineering research, and technology transfer programs, helping Nigeria move toward self-reliance in space technology.",
     },
     {
       question:
-        "HOW DOES SPACE SCIENCE TECHNOLOGY BENEFIT NIGERIA'S AGRICULTURAL SECTOR?",
-      answer: "It improves precision farming, soil monitoring, and crop yield forecasting using satellite data.",
+        "HAS CSTD SUCCESSFULLY BUILT OR CONTRIBUTED TO ANY SATELLITE PROJECTS?",
+      answer: " Yes. CSTD has contributed significantly to several of Nigeria’s satellite missions. Notably, it played a vital role in: NigeriaSat-2: A high-resolution Earth observation satellite. NigeriaSat-X: A technology demonstration satellite built by Nigerian engineers trained in the UK and at CSTD. TUBESAT-1: A nanosatellite built locally in collaboration with international partners.These projects showcase Nigeria’s growing technical capability in satellite design, integration, and systems testing.   ",
     },
     {
       question:
-        "WHAT ROLE DOES SPACE SCIENCE TECHNOLOGY PLAY IN NIGERIA'S ENVIRONMENTAL MANAGEMENT?",
-      answer: "It enables real-time monitoring of deforestation, pollution, and natural resource use.",
+        "WAS ONE OF NIGERIA'S SATELLITE REALLY “MISSING”?",
+      answer: "No, Nigeria has never lost a satellite in the literal sense of it being “missing” in space. The confusion often comes from media misinterpretations or public misconceptions about satellite operations.The specific case people often refer to involves NigeriaSat-1, launched in 2003. It completed its operational lifespan and was decommissioned in 2012—well beyond its expected 5-year service life. It was not “lost” but retired after successfully serving its purpose in Earth observation and disaster monitoring.Satellites operate in Low Earth Orbit (LEO), and after their functional life ends, they either remain as space debris in orbit or are deorbited depending on the mission design. The idea that a satellite went “missing” implies failure or disappearance, which did not happen with any satellite developed or managed by NASRDA or CSTD.",
     },
   ];
 
 
   const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      message: '',
-    });
-  
-    const [errors, setErrors] = useState({});
-  
-    const validate = () => {
-      const newErrors = {};
-      if (!formData.name.trim()) newErrors.name = 'Name is required';
-      if (!formData.email.trim()) {
-        newErrors.email = 'Email is required';
-      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = 'Enter a valid email';
-      }
-      if (!formData.message.trim()) newErrors.message = 'Message is required';
-  
-      setErrors(newErrors);
-      return Object.keys(newErrors).length === 0;
-    };
-  
-    const handleChange = (e) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-      setErrors({ ...errors, [e.target.name]: '' });
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if (validate()) {
-        toast.success('Form submitted successfully!');
-        setFormData({ name: '', email: '', message: '' });
-        setErrors({});
-      }
-    }; 
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Enter a valid email';
+    }
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: '' });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validate()) {
+      toast.success('Form submitted successfully!');
+      setFormData({ name: '', email: '', message: '' });
+      setErrors({});
+    }
+  };
 
 
 
@@ -193,7 +201,7 @@ const Home = () => {
       </div>
 
       {/* About Us */}
-      <div id="values" className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 bg-white">
+      <div id="values" className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 bg-white mb-6">
         {/* Left Grid - Text Section */}
         <div>
           <h2 className="text-4xl font-bold text-green-700  text-center mb-4">ABOUT US</h2>
@@ -219,7 +227,7 @@ const Home = () => {
             </div>
             <div className="flex items-start gap-3">
               <FaPeopleGroup className="text-blue-600 text-3xl" />
-              <p>A TEAM OF<br />PROFESSIONALS</p>
+              <p>A TEAM OF<br />HIGHLY SKILLED<br /> PERSONNELS</p>
             </div>
           </div>
         </div>
@@ -266,7 +274,7 @@ const Home = () => {
           {/* Left Grid */}
           <div className="flex items-center justify-center">
             <img
-               src={sadqUmarImg}
+              src={sadqUmarImg}
               alt="CSTD CEO"
               className="w-full h-full object-cover"
             />
@@ -275,14 +283,14 @@ const Home = () => {
           {/* Right Grid */}
           <div className="flex flex-col justify-center text-center px-8 md:px-16">
             {/* Quotation Icon */}
-            <h1 className="text-lg font-bold text-black mb-4">Dr Sadiq Umar</h1>
+            <h1 className="text-lg font-bold text-black mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
             {/* Description */}
             <p className="text-lg text-black mb-6">
-              The director of CSTD
+              THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD
             </p>
             {/* Source */}
-            <p className="text-black font-bold text-lg">
-              Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest of the girl child in satellite systems.
+            <p className="text-black font-semibold text-lg">
+              Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest in satellite systems.
 
               Dr. Umar’s key focus is incentivising research activities that accelerate sustainable national development. Hence, the management and staff of CSTD emphasise the importance of research, innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.
             </p>
@@ -294,9 +302,9 @@ const Home = () => {
 
 
       {/* Our Departments section */}
-      <section id="departments" className="bg-white py-12 px-4 text-white">
+      <section id="departments" className="bg-white py-4 px-4 text-white">
         <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Our Departments</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mt-14">
           {departments.map((dept, index) => (
             <div
               key={index}
@@ -332,7 +340,7 @@ const Home = () => {
           {/* Project 1 */}
           <div className="flex flex-col items-center text-center">
             <img
-                 src={projectImg}
+              src={projectImg}
               alt="Our Projects"
               className="rounded-lg shadow-md mb-4"
             />
@@ -345,7 +353,7 @@ const Home = () => {
           {/* Project 2 */}
           <div className="flex flex-col items-center text-center">
             <img
-                 src={environmentImg}
+              src={environmentImg}
               alt="Research on Sustainable Energy Systems"
               className="rounded-lg shadow-md mb-4"
             />
@@ -358,7 +366,7 @@ const Home = () => {
           {/* Project 3 */}
           <div className="flex flex-col items-center text-center">
             <img
-                 src={partnershipImg}
+              src={partnershipImg}
               alt="Global Partnerships"
               className="rounded-lg shadow-md mb-4"
             />
@@ -403,7 +411,7 @@ const Home = () => {
                 <img
                   src={image}
                   alt={`Slide ${index + 1}`}
-                  className="rounded-lg shadow-xl w-full h-64 object-cover"
+                  className="rounded-lg shadow-xl w-full h-[600px] object-cover"
                 />
               </SwiperSlide>
             ))}
@@ -531,64 +539,64 @@ const Home = () => {
         </div>
 
         {/* Contact Form */}
-       <div>
-      <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">HAVE QUESTIONS?</h2>
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              className="border border-gray-300 px-4 py-2 w-full rounded-md"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
-          </div>
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="border border-gray-300 px-4 py-2 w-full rounded-md"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
-          </div>
-        </div>
         <div>
-          <textarea
-            name="message"
-            placeholder="Enter Your Message"
-            className="border border-gray-300 px-4 py-2 w-full rounded-md h-32"
-            value={formData.message}
-            onChange={handleChange}
-          ></textarea>
-          {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+          <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">HAVE QUESTIONS?</h2>
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  className="border border-gray-300 px-4 py-2 w-full rounded-md"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="border border-gray-300 px-4 py-2 w-full rounded-md"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+              </div>
+            </div>
+            <div>
+              <textarea
+                name="message"
+                placeholder="Enter Your Message"
+                className="border border-gray-300 px-4 py-2 w-full rounded-md h-32"
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+              {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+            </div>
+            <div className="text-center">
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-bold"
+              >
+                SUBMIT
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="text-center">
-          <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-bold"
-          >
-            SUBMIT
-          </button>
-        </div>
-      </form>
-    </div>
 
-    <ToastContainer
-        position="top-center"
-        transition={Flip}
-        autoClose={3000}
-        hideProgressBar={true}
-        closeOnClick
-        pauseOnHover
-        draggable
-      />
-        
+        <ToastContainer
+          position="top-center"
+          transition={Flip}
+          autoClose={3000}
+          hideProgressBar={true}
+          closeOnClick
+          pauseOnHover
+          draggable
+        />
+
       </div>
 
 
