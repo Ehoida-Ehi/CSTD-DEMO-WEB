@@ -1,5 +1,5 @@
 import React from 'react'
-import sipImage from '../assets/images/DG-3-point-Agenda-1.jpg'
+import sipImage from '../assets/images/CSTD SIP.png'
 const Sip = () => {
   return (
     <>
