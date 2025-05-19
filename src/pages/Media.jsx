@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,6 +6,7 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import {mediaImages} from '../utils/images';
 
 
 const Media = () => {
@@ -26,8 +27,7 @@ const Media = () => {
     setModalOpen(false);
     setModalContent({ type: '', url: '' });
   };
-
-  const newsItems = [
+ const news = [
     {
       title: "NASRDA Launches New Satellite Mission",
       date: "March 15, 2024",
@@ -110,18 +110,38 @@ const Media = () => {
     }
   ];
 
-  const images = [
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-story-6.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/new-story-5.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-1.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/new-story-5.jpg",
-    "https://innov8hub.ng/wp-content/uploads/2024/05/New-Story-2.jpg",
-    "https://cdn.pixabay.com/photo/2022/11/16/12/40/food-7595910_1280.jpg",
-    "https://cdn.pixabay.com/photo/2018/12/04/16/49/indian-food-3856050_1280.jpg",
-    " https://cdn.pixabay.com/photo/2023/01/17/07/59/mossel-dish-7724006_1280.jpg",
-    "https://cdn.pixabay.com/photo/2021/11/01/15/52/spring-roll-6760871_1280.jpg",
-    "https://cdn.pixabay.com/photo/2017/06/26/12/49/red-wine-2443699_1280.jpg",
-  ];
+  const [date, setDate] = useState('');
+  const [asc, setAsc] = useState('latest');
+  const [newsItems, setFilteredNews] = useState(news)
+
+  const images = mediaImages
+
+  // Clear filter
+const clearFilter = ()=>{
+  setDate('')
+  setAsc('latest')
+}
+
+
+useEffect(() => {
+  let result = [...news];
+  if (date) {
+    const filterDate = new Date(date).toDateString();
+    result = result.filter(item => 
+      new Date(item.date).toDateString() === filterDate
+    );
+  }
+
+  if (asc === 'oldest') {
+    result.reverse();
+  }
+
+  setFilteredNews(result);
+
+}, [date, setAsc, asc]); 
+
+
+console.log(newsItems)
 
   return (
     <div className="mt-16 bg-white">
@@ -164,37 +184,38 @@ const Media = () => {
         <div className="w-full max-w-6xl px-4">
           <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Gallery</h2>
 
-          <Swiper
-            effect="coverflow"
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView="auto"
-            coverflowEffect={{
-              rotate: 30,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[EffectCoverflow, Pagination]}
-            className="rounded-lg"
+              <Swiper
+        effect="coverflow"
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView="auto"
+        style={{ height: "80vh" }} // 👈 Set Swiper container height
+        coverflowEffect={{
+          rotate: 30,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[EffectCoverflow, Pagination]}
+        className="rounded-lg"
+      >
+        {images.map((image, index) => (
+          <SwiperSlide
+            key={index}
+            className="flex justify-center items-center w-[300px] md:w-[400px] lg:w-[500px]"
           >
-            {images.map((image, index) => (
-              <SwiperSlide
-                key={index}
-                className="flex justify-center items-center w-[300px] md:w-[400px] lg:w-[500px]"
-              >
-                <img
-                  src={image}
-                  alt={`Slide ${index + 1}`}
-                  className="rounded-lg shadow-xl w-full h-64 object-cover"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className="rounded-lg shadow-xl w-full h-full object-cover" 
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
           {/* Custom Pagination Bullet Styling */}
           <style>
@@ -278,10 +299,48 @@ const Media = () => {
         </div>
       </div>
 
+
+
+<div className=' my-5 shadow-lg p-2'>
+  <div className='w-[90%] mx-auto flex justify-end items-center gap-5'>
+  <div className='text-gray-600'>
+    <p className='font-semibold'>Filter:</p>
+  </div>
+  <div className='flex gap-3 items-center ps-3'> 
+    <select onChange={(e)=> setAsc(e.target.value)} name="" id="" className='rounded-md p-2 shadow-md border-gray-400 text-gray-600'>
+      
+      <option value="latest">Latest</option>
+      <option value="oldest">Oldest</option>
+    </select>
+   </div>
+
+  <div className="flex gap-3 items-center ps-3">    
+
+     <div className="relative">      
+      <input
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        className="rounded-md p-2 shadow-md border-gray-400 text-gray-600" 
+      />
+    </div> 
+
+    <button 
+    onClick={clearFilter}
+    className='text-gray-700 rounded-md bg-gray-100 py-2 px-3 text-sm shadow-md'>Clear filter</button>
+    
+  </div>
+  </div>
+
+  
+  
+</div>
+
+
       {/* News Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="space-y-8">
-          {newsItems.map((news, index) => (
+          {newsItems && newsItems.length > 0? newsItems.map((news, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 {/* Thumbnail */}
@@ -292,7 +351,7 @@ const Media = () => {
                     className="w-full h-64 md:h-full object-cover"
                   />
                   <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
-                    {news.date}
+                    {new Date(news.date).toDateString()}
                   </div>
                 </div>
 
@@ -351,7 +410,9 @@ const Media = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )):<div className='flex justify-center items-center text-gray-600 font-semibold'>
+            No News 
+            </div>}
         </div>
       </div>
     </div>
