@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Media from './pages/Media';
+import RnI from './pages/RnI';
 
 
 const Content = () => {
@@ -17,6 +18,7 @@ const Content = () => {
         {/* Home Page */}
         <Route path="/" element={<Home />} />
         <Route path="/media" element={<Media />} />
+        <Route path="/rni" element={<RnI />} />
 
 
       </Routes>

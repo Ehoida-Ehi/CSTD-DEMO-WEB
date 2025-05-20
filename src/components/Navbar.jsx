@@ -20,7 +20,7 @@ export default function Navbar() {
             <Dropdown label="Home" items={["Mission & Vision", "Department", "Leadership"]} />
             <Dropdown label="About Us" items={["Mission & Vision", "Leadership", "History"]} />
             <Dropdown label="Satellite Missions" items={["Past Missions", "Ongoing Projects", "Upcoming Launches"]} />
-            <Dropdown label="Research & Innovation" items={["Focus Areas", "Facilities", "Publications"]} />
+            <Link to={"/rni"}><Dropdown label="Research & Innovation" items={["Focus Areas", "Facilities", "Publications"]} /></Link>
             <Dropdown label="Divisions" items={["Engineering", "Systems", "Operations"]} />
             <Dropdown label="Media" items={["News", "Gallery", "Videos"]} />
             <Dropdown label="Contact Us" items={["Email", "Phone", "Map", "Partner with us"]} />
