@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -12,14 +10,14 @@ import {mediaImages} from '../utils/images';
 const Media = () => {
   const [expandedNews, setExpandedNews] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ type: '', url: '' });
-
+  const [modalContent, setModalContent] = useState({thumbnail: '', mediaArr: []}); //modal info accepts thumbnail and media array
+ 
   const toggleNews = (index) => {
     setExpandedNews(expandedNews === index ? null : index);
   };
 
-  const openModal = (type, url) => {
-    setModalContent({ type, url });
+  const openModal = (thumbnail, mediaArr) => {
+    setModalContent({thumbnail, mediaArr});
     setModalOpen(true);
   };
 
@@ -30,8 +28,8 @@ const Media = () => {
  const news = [
     {
       title: "NASRDA Launches New Satellite Mission",
-      date: "March 15, 2024",
-      thumbnail: "https://cdn.pixabay.com/photo/2015/01/14/18/54/satellite-photo-599494_1280.jpg",
+      date: "March 15, 2025",
+      thumbnail: "https://cdn.pixabay.com/photo/2015/01/14/18/54/satellite-photo-599494_1280.jpg", // must be  required field
       brief: "The National Space Research and Development Agency (NASRDA) has successfully launched its latest satellite mission, marking a significant milestone in Nigeria's space exploration journey.",
       content: `The successful launch represents a major achievement for Nigeria's space program. The satellite, equipped with advanced imaging capabilities, will support various applications including environmental monitoring, agricultural planning, and disaster management.
 
@@ -41,15 +39,17 @@ const Media = () => {
       • Enhanced communication payload
       
       The mission team, led by Dr. Sarah Johnson, has been working on this project for over two years. "This launch demonstrates our commitment to advancing space technology in Nigeria," said Dr. Johnson during the post-launch press conference.`,
-      media: {
+      media: [ // converted to an array to accept multiple kinds of media values
+        {
         type: 'video',
         url: require('../assets/images/tsm.mp4'),
         thumbnail: 'https://cdn.pixabay.com/photo/2015/01/14/18/54/satellite-photo-599494_1280.jpg'
       }
+    ]
     },
     {
       title: "CSTD Hosts International Space Conference",
-      date: "March 10, 2024",
+      date: "March 10, 2025",
       thumbnail: "https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg",
       brief: "The Centre for Satellite Technology Development (CSTD) successfully hosted the 2024 International Space Technology Conference, bringing together experts from around the globe.",
       content: `The conference, held at the CSTD headquarters, featured presentations from leading space agencies and research institutions. Topics covered included satellite technology, space exploration, and international collaboration in space research.
@@ -58,11 +58,23 @@ const Media = () => {
       • Panel discussions on future space missions
       • Workshops on satellite technology
       • Networking sessions with industry leaders`,
-      media: {
+      media: [
+        {
         type: 'image',
-        url: 'https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg',
+        url: 'https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg',        
         thumbnail: 'https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg'
-      }
+      },
+        {
+        type: 'image',
+        url: 'https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg',        
+        thumbnail: 'https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg'
+      },
+        {
+        type: 'video',
+        url: require('../assets/images/tsm.mp4'),        
+        thumbnail: 'https://cdn.pixabay.com/photo/2023/05/23/11/51/machine-8012596_1280.jpg'
+      },
+    ]
     },
     {
       title: "New Research Facility Inaugurated",
@@ -76,15 +88,17 @@ const Media = () => {
       • Advanced testing equipment
       • Research laboratories
       • Conference facilities`,
-      media: {
+      media: [
+        {
         type: 'video',
         url: require('../assets/images/tsm.mp4'),
         thumbnail: 'https://cdn.pixabay.com/photo/2023/05/23/11/51/machine-8012596_1280.jpg'
       }
+    ]
     },
     {
       title: "Student Space Program Launched",
-      date: "February 28, 2024",
+      date: "February 28, 2025",
       thumbnail: "https://cdn.pixabay.com/photo/2021/09/10/22/17/business-6614313_1280.png",
       brief: "CSTD has launched a new initiative to engage students in space technology and research, providing hands-on experience in satellite development.",
       content: `The program aims to inspire the next generation of space scientists and engineers. Selected students will work on real satellite projects under the guidance of experienced professionals.
@@ -93,11 +107,12 @@ const Media = () => {
       • Practical training sessions
       • Project-based learning
       • Mentorship opportunities
-      • Industry exposure`
+      • Industry exposure`,
+       media:[]
     },
     {
       title: "Partnership with International Space Agency",
-      date: "February 20, 2024",
+      date: "February 20, 2025",
       thumbnail: "https://cdn.pixabay.com/photo/2022/10/27/10/23/astronaaut-7550543_1280.png",
       brief: "CSTD has signed a landmark partnership agreement with a leading international space agency to enhance satellite technology development.",
       content: `The partnership will facilitate knowledge exchange, joint research projects, and technology transfer. This collaboration marks a significant step in strengthening Nigeria's position in the global space community.
@@ -106,8 +121,10 @@ const Media = () => {
       • Access to advanced technology
       • Joint research opportunities
       • Training programs
-      • Resource sharing`
-    }
+      • Resource sharing`,
+       media:[]
+    },
+   
   ];
 
   const [date, setDate] = useState('');
@@ -119,7 +136,7 @@ const Media = () => {
   // Clear filter
 const clearFilter = ()=>{
   setDate('')
-  setAsc('latest')
+  setAsc('')
 }
 
 
@@ -141,7 +158,7 @@ useEffect(() => {
 }, [date, setAsc, asc]); 
 
 
-console.log(newsItems)
+console.log(modalContent)
 
   return (
     <div className="mt-16 bg-white">
@@ -156,25 +173,62 @@ console.log(newsItems)
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-            </button>
-            <div className="p-4">
-              {modalContent.type === 'image' ? (
-                <img
-                  src={modalContent.url}
-                  alt="Enlarged view"
-                  className="w-full h-auto rounded-lg"
-                />
-              ) : (
-                <video
-                  src={modalContent.url}
-                  controls
-                  className="w-full h-auto rounded-lg"
-                  autoPlay
-                >
-                  Your browser does not support the video tag.
-                </video>
-              )}
-            </div>
+            </button>          
+
+              <div className="p-4">
+                {Array.isArray(modalContent?.mediaArr) && modalContent.mediaArr.length > 0 ? (
+                  <Swiper
+                    effect="coverflow"
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView="auto"
+                    style={{ height: "80vh" }}
+                    coverflowEffect={{
+                      rotate: 30,
+                      stretch: 0,
+                      depth: 100,
+                      modifier: 1,
+                      slideShadows: true,
+                    }}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    modules={[EffectCoverflow, Pagination]}
+                    className="rounded-lg"
+                  >
+                    {modalContent?.mediaArr.map((media, index) => (
+                      <SwiperSlide
+                        key={`${media.type}-${index}`}
+                        className="flex justify-center items-center w-[300px] md:w-[400px] lg:w-[500px]"
+                      >
+                        {media.type === 'image' ? (
+                          <img
+                            src={media.url}
+                            alt="Enlarged view"
+                            className="w-full h-full object-contain rounded-lg"
+                          />
+                        ) : (
+                          <video
+                            src={media.url}
+                            controls
+                            className="w-full h-full object-contain rounded-lg"
+                            autoPlay
+                          >
+                            Your browser does not support the video tag.
+                          </video>
+                        )}
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                ) : (
+                 <img
+                            src={modalContent.thumbnail}
+                            alt="Enlarged view"
+                            className="w-full h-full object-contain rounded-lg"
+                          />
+                )}
+              </div>
+                          
           </div>
         </div>
       )}
@@ -184,7 +238,7 @@ console.log(newsItems)
         <div className="w-full max-w-6xl px-4">
           <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Gallery</h2>
 
-              <Swiper
+      <Swiper
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
@@ -309,6 +363,7 @@ console.log(newsItems)
   <div className='flex gap-3 items-center ps-3'> 
     <select onChange={(e)=> setAsc(e.target.value)} name="" id="" className='rounded-md p-2 shadow-md border-gray-400 text-gray-600'>
       
+      <option value="" disabled>Sort By</option>
       <option value="latest">Latest</option>
       <option value="oldest">Oldest</option>
     </select>
@@ -380,27 +435,25 @@ console.log(newsItems)
                             <h3 className="text-xl font-semibold mb-4">Related Media</h3>
                             <div 
                               className="cursor-pointer relative group"
-                              onClick={() => openModal(news.media.type, news.media.url)}
+                              onClick={() => openModal(news.thumbnail,news.media)}
+
                             >
                               <img
-                                src={news.media.thumbnail}
+                                src={news.thumbnail}
                                 alt="Media thumbnail"
                                 className="w-full h-48 object-cover rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
-                              />
+                              />                             
+                              
                               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 rounded-lg flex items-center justify-center">
                                 <div className="bg-white bg-opacity-80 rounded-full p-3 transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                                  {news.media.type === 'video' ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                  ) : (
+                                 
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
-                                  )}
+                                  
                                 </div>
                               </div>
+                              
                             </div>
                           </div>
                         )}
