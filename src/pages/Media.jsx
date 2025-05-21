@@ -128,7 +128,7 @@ const Media = () => {
   ];
 
   const [date, setDate] = useState('');
-  const [asc, setAsc] = useState('latest');
+  const [asc, setAsc] = useState('');
   const [newsItems, setFilteredNews] = useState(news)
 
   const images = mediaImages
@@ -361,7 +361,7 @@ console.log(modalContent)
     <p className='font-semibold'>Filter:</p>
   </div>
   <div className='flex gap-3 items-center ps-3'> 
-    <select onChange={(e)=> setAsc(e.target.value)} name="" id="" className='rounded-md p-2 shadow-md border-gray-400 text-gray-600'>
+    <select onChange={(e)=> setAsc(e.target.value)} value={asc} className='rounded-md p-2 shadow-md border-gray-400 text-gray-600'>
       
       <option value="" disabled>Sort By</option>
       <option value="latest">Latest</option>
