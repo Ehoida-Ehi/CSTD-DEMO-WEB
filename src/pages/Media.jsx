@@ -157,9 +157,6 @@ useEffect(() => {
 
 }, [date, setAsc, asc]); 
 
-
-console.log(modalContent)
-
   return (
     <div className="mt-16 bg-white">
       {/* Modal Component */}
