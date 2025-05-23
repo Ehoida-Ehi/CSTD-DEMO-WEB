@@ -10,7 +10,7 @@ const Sip = () => {
       className='max-w-full h-auto rounded-lg shadow-lg'
       />
     </div>
-      <p className='text-green-600 text-2xl font-semibold flex justify-center items-center mt-2'>The Pillars of SIP</p>
+      <p className='text-green-600 text-2xl font-semibold flex justify-center items-center my-10'>The Pillars of SIP</p>
     </>
   )
 }
