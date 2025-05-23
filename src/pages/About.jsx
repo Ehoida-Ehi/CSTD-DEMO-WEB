@@ -8,7 +8,7 @@ import Fade from '../components/Fade'
 
 const About = () => {
   return (
-    <div className='container mx-auto py-20'> 
+    <div> 
       {/* <AboutHero /> */}
       <Fade />
       <Vision />
