@@ -2,7 +2,7 @@ import React from 'react'
 
 const History = () => {
   return (
-    <div className="p-6 bg-white mt-2 rounded-lg shadow-md">
+    <div className="p-6 bg-white mt-2 rounded-lg **shadow-md**">
       <h2 className="text-4xl  text-center font-bold mb-4 text-green-700">History of CSTD</h2>
       <p className="text-gray-700 leading-relaxed">
         The Centre for Satellite Technology Development (CSTD) is one of the key activity centers, better known as the heartbeat, of the National Space Research and Development Agency (NASRDA), established in line with Nigeria's National Space Policy and Programs. CSTD's primary mandate is to develop capabilities in designing, developing, and testing satellites and their subsystems for various missions, including Earth Observation, Communication, Global Navigation, and Radar Satellite systems. This is achieved through collaborations with specialized institutions, public and private organizations, and academic institutions.
