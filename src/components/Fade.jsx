@@ -29,8 +29,8 @@ const Fade = () => {
         />
       ))}
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
-        <h1 className="text-3xl md:text-5xl font-bold mb-8 rounded-lg p-2">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 ">
+        <h1 className="text-3xl md:text-5xl font-bold mb-8 rounded-lg p-2 ">
           ABOUT US
         </h1>
       </div>
