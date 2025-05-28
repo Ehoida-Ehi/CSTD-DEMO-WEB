@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import pic1 from '../assets/images/NigeriaSat-1-with-KHTT-team.png';
-import pic2 from '../assets/images/astronaaut-7550543_1280.png';
-import pic3 from '../assets/images/NigeriaSat2_with_engineers.png';
-import pic4 from '../assets/images/Eng-Sadq-Umar.jpg';
+// import pic1 from '../assets/images/satellite-1820063_1280.webp'
+import pic1 from '../assets/images/science-lab-7445779_1280.jpg';
+import pic2 from '../assets/images/NigeriaSat2_with_engineers.png';
+import pic3 from '../assets/images/satellite-1820064_1280.webp';
 
 const Fade = () => {
-  const images = [pic1, pic2, pic3, pic4];
+  const images = [pic1, pic2, pic3];
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
