@@ -86,7 +86,7 @@ const Home = () => {
     { title: "INNOVATION", content: "We foster creativity to solve real-world problems." },
     { title: "TEAM WORK", content: "We work with others to achieve greater impact." },
     { title: "PURPOSE", content: "Empowering the Future Through Knowledge and Research." },
-    { title: "INTEGRITY", content: "Guided by Principles, Accountability Transparency and Trustworthy." },
+    { title: "INTEGRITY", content: "Guided by Principles, Accountability, Transparency and Trustworthy." },
     { title: "PROFESSIONALISM", content: "Standard, Precision and Poise. Committed to Quality, Driven by Ethics." },
 
   ];
@@ -171,7 +171,7 @@ const Home = () => {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          src="https://cdn.pixabay.com/video/2024/09/25/233240_tiny.mp4"
+          src="https://cdn.pixabay.com/video/2020/04/30/37713-414754681_large.mp4"
           type="video/mp4"
           muted
           loop
