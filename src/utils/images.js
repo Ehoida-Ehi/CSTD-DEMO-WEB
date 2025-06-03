@@ -1,7 +1,7 @@
 import image1 from '../assets/images/New-Story-1.jpg'
 import image2 from '../assets/images/New-Story-2.jpg'
-import image3 from '../assets/images/new-story-5.jpg'
-import image4 from '../assets/images/New-story-6.jpg'
+import newStory8 from '../assets/images/new-story-5.jpg'
+import newStory6 from '../assets/images/New-story-6.jpg'
 
 import newStory2 from "../assets/images/chukaa.jpg";
 import newStory3 from "../assets/images/meet.jpg";
@@ -17,10 +17,10 @@ const mediaImages = [
     {url: image2,
     title:  'CSTD Visit to innovation Hub'
     },
-   { url: image3,
+   { url: newStory8,
     title:  'CSTD Visit to innovation Hub'
    },
-   { url: image4,
+   { url: newStory6,
     title:  'CSTD Visit to innovation Hub'
    },
     {  url: newStory7,
@@ -45,5 +45,15 @@ const mediaImages = [
 
 ]
 
+ const images = [
+    newStory2,
+    newStory3,
+    newStory1,
+    newStory4,
+    newStory5,
+    newStory6,
+    newStory7,
+    newStory8,
+  ];
 
-export {mediaImages}
+export {mediaImages, images}
