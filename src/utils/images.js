@@ -2,6 +2,7 @@ import image1 from '../assets/images/New-Story-1.jpg'
 import image2 from '../assets/images/New-Story-2.jpg'
 import image3 from '../assets/images/new-story-5.jpg'
 import image4 from '../assets/images/New-story-6.jpg'
+
 import newStory2 from "../assets/images/chukaa.jpg";
 import newStory3 from "../assets/images/meet.jpg";
 import newStory1 from "../assets/images/cstd group.jpg";
