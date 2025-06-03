@@ -262,7 +262,7 @@ useEffect(() => {
             <img
               src={url}
               alt={`Slide ${index + 1} ${title}`}
-              className="rounded-lg shadow-xl w-full h-full object-cover" 
+              className="rounded-lg shadow-xl w-full h-screen object-cover" 
             />
              <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
                     <p className='text-xs'>{`Caption: ${title}`}</p>
