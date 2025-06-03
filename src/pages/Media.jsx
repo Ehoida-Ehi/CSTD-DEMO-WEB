@@ -131,7 +131,7 @@ const Media = () => {
   const [asc, setAsc] = useState('');
   const [newsItems, setFilteredNews] = useState(news)
 
-  const images = mediaImages
+  const carouselGallery = mediaImages
 
   // Clear filter
 const clearFilter = ()=>{
@@ -254,16 +254,19 @@ useEffect(() => {
         modules={[EffectCoverflow, Pagination]}
         className="rounded-lg"
       >
-        {images.map((image, index) => (
+        {carouselGallery.map(({url, title}, index) => (
           <SwiperSlide
             key={index}
-            className="flex justify-center items-center w-[300px] md:w-[400px] lg:w-[500px]"
+            className="flex justify-center items-center w-[300px] md:w-[400px] lg:w-[500px] relative"
           >
             <img
-              src={image}
-              alt={`Slide ${index + 1}`}
+              src={url}
+              alt={`Slide ${index + 1} ${title}`}
               className="rounded-lg shadow-xl w-full h-full object-cover" 
             />
+             <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
+                    <p className='text-xs'>{`Caption: ${title}`}</p>
+                  </div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -294,49 +297,67 @@ useEffect(() => {
           <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Photo Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Large Image */}
-            <div className="md:col-span-2 lg:col-span-2 row-span-2">
-              <img
-                src="https://cdn.pixabay.com/photo/2015/01/14/18/54/satellite-photo-599494_1280.jpg"
+          <div className="md:col-span-2 lg:col-span-2 row-span-2 relative">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/01/14/18/54/satellite-photo-599494_1280.jpg"
                 alt="Satellite"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
-              />
-            </div>
+                  />
+                  <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
+                    <p className='text-xs'>Satellite images</p>
+                  </div>
+                </div>
             {/* Medium Images */}
-            <div className="row-span-1">
+            <div className="row-span-1 relative">
               <img
                 src="https://cdn.pixabay.com/photo/2023/05/23/11/51/machine-8012596_1280.jpg"
                 alt="Machine"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
+               <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
+                    <p className='text-xs'>Image 2</p>
+                  </div>
             </div>
-            <div className="row-span-1">
+            <div className="row-span-1 relative">
               <img
                 src="https://cdn.pixabay.com/photo/2022/10/27/10/23/astronaaut-7550543_1280.png"
                 alt="Astronaut"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
+               <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
+                    <p className='text-xs'>Image 3</p>
+                  </div>
             </div>
             {/* Small Images */}
-            <div className="row-span-1">
+            <div className="row-span-1 relative">
               <img
                 src="https://cdn.pixabay.com/photo/2021/09/10/22/17/business-6614313_1280.png"
                 alt="Business"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
+               <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
+                    <p className='text-xs'>Image 4</p>
+                  </div>
             </div>
-            <div className="row-span-1">
+            <div className="row-span-1 relative">
               <img
                 src="https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg"
                 alt="Work"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
+               <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
+                    <p className='text-xs'>Image 5</p>
+                  </div>
             </div>
-            <div className="row-span-1">
+            <div className="row-span-1 relative">
               <img
                 src="https://cdn.pixabay.com/photo/2021/11/25/20/01/tv-6824507_1280.png"
                 alt="Technology"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
+               <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white px-4 py-2">
+                    <p className='text-xs'>Image 6</p>
+                  </div>
             </div>
           </div>
         </div>

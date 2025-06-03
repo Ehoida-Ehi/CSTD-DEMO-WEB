@@ -4,10 +4,18 @@ import image3 from '../assets/images/new-story-5.jpg'
 import image4 from '../assets/images/New-story-6.jpg'
 
 const mediaImages = [
-    image1,
-    image2,
-    image3,
-    image4
+   { url: image1,
+    title: 'CSTD Visit to innovation Hub'
+   },
+    {url: image2,
+    title:  'CSTD Visit to innovation Hub'
+    },
+   { url: image3,
+    title:  'CSTD Visit to innovation Hub'
+   },
+   { url: image4,
+    title:  'CSTD Visit to innovation Hub'
+   }
 ]
 
 
