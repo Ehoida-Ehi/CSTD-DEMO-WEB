@@ -136,7 +136,8 @@ const Home = () => {
   return (
     <div className="mt-16">
       {/* Banner Video Section */}
-      <div id="home" className="relative w-full h-screen">
+      <div id="home">
+          <div  className="relative w-full h-screen">
         {/* Video Background */}
         <video
           ref={videoRef}
@@ -169,9 +170,12 @@ const Home = () => {
           {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
         </button>
       </div>
+      </div>
+      
 
       {/* About Us */}
-      <div id="values" className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 bg-white mb-6">
+      <div id="values">
+<div  className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 bg-white mb-6">
         {/* Left Grid - Text Section */}
         <div>
           <h2 className="text-4xl font-bold text-green-700  text-center mb-4">ABOUT US</h2>
@@ -233,11 +237,14 @@ const Home = () => {
           </button>
         </div>
       </div>
+      </div>
+      
 
 
 
       {/* leadership section */}
-      <div id="leadership" className="bg-white py-16 px-4">
+      <div id="leadership">
+<div  className="bg-white py-16 px-4">
         <h1 className="text-4xl text-center text-green-700 font-bold mb-10">Our Leadership</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
@@ -269,10 +276,13 @@ const Home = () => {
         </div>
 
       </div>
+      </div>
+      
 
 
       {/* Our Departments section */}
-      <section id="departments" className="bg-white py-4 px-4 text-white">
+      <div id="departments">
+  <section  className="bg-white py-4 px-4 text-white">
         <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Our Departments</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mt-14">
           {departments.map((dept, index) => (
@@ -300,9 +310,12 @@ const Home = () => {
           ))}
         </div>
       </section>
+      </div>
+    
 
       {/* Key iniciatives Section */}
-      <div id="key-initiatives" className="bg-white py-16 px-4 text-white">
+      <div id="key-initiatives">
+<div  className="bg-white py-16 px-4 text-white">
         <h2 className="text-4xl font-bold text-center mb-12 text-green-700">
           Our Key Initiatives
         </h2>
@@ -347,11 +360,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      </div>    
 
 
       {/* Gallery Section */}
-      <div id="gallery" className="py-16 bg-white flex justify-center">
+      <div id="gallery">
+ <div  className="py-16 bg-white flex justify-center">
         <div className="w-full max-w-6xl px-4">
           <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Gallery</h2>
 
@@ -406,10 +420,13 @@ const Home = () => {
           </style>
         </div>
       </div>
+      </div>
+     
 
 
       {/* Latest News Section */}
-      <div id="latest-news" className="bg-white py-16 px-4">
+      <div id="latest-news">
+      <div className="bg-white py-16 px-4">
         <h2 className="text-4xl text-center  text-green-700 font-bold  mb-12">Latest News</h2>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -486,8 +503,10 @@ const Home = () => {
           </div>
         </div>
       </div>
+      </div>
 
-      <div id="faq" className="bg-white py-16 px-4 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div id="faq">
+<div  className="bg-white py-16 px-4 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* FAQ Section */}
         <div>
           <h2 className="text-2xl font-bold text-center text-green-700 mb-6">FAQS</h2>
@@ -568,13 +587,7 @@ const Home = () => {
         />
 
       </div>
-
-
-      <div className=" bg-slate-950 h-[100px]">
-
-      </div>
-
-
+      </div>     
     </div>
   );
 };

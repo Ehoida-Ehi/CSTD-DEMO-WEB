@@ -125,7 +125,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div id='partner' className="bg-white rounded-xl shadow-lg p-8">
+          <div id='partner'>
+              <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-green-800 mb-8">Ask a Question</h2>
             <p className="text-gray-600 mb-8">
               If you have any questions, you can contact us. Please, fill out the form below.
@@ -180,10 +181,13 @@ const Contact = () => {
               </button>
             </form>
           </div>
+          </div>
+        
         </div>
 
         {/* Map Section */}
-        <div id='map' className="mt-16">
+        <div id='map'>
+            <div className="mt-16">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="aspect-w-16 aspect-h-9">
               <iframe
@@ -198,6 +202,8 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        </div>
+        
       </div>
     </div>
   )

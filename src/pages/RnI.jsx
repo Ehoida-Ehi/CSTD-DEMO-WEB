@@ -293,7 +293,8 @@ const [
             </div> 
           </div>
           </div>
-       <div id="publications" className="text-black p-3">
+          <div id="publications" >
+            <div className="text-black p-3">
             <p className="items-center flex gap-2 my-10"><h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800">Publications & White Papers</h1><HiOutlineNewspaper className="lg:text-3xl text-green-800" /></p>
             <div className="grid sm:grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-2">
               <img src="https://d2rty5wuu5bi5t.cloudfront.net/eyJidWNrZXQiOiJyc24tYnVja2V0Iiwia2V5IjoicHJvZHVjdGlvbi90ZWFzZXJzL21hdGhzLWJsb2cuanBnIiwiZWRpdHMiOnsianBlZyI6eyJxdWFsaXR5Ijo4MiwicHJvZ3Jlc3NpdmUiOnRydWUsInRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pemVTY2FucyI6dHJ1ZX0sInJlc2l6ZSI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NjgsImZpdCI6ImNvdmVyIn0sInNoYXJwZW4iOnRydWV9fQ==" alt="IMAGES" className="lg:hidden rows-span-1 lg:col-span-1 w-full object-cover mx-auto justify-center flex h-full"/>
@@ -311,6 +312,8 @@ const [
               <img src={pic17} alt="IMAGES" className="hidden sm:rows-span-1 lg:col-span-1 w-full object-cover mx-auto justify-center lg:flex h-full"/>
             </div>
           </div>  
+          </div>
+      
         </div>
       </div>
     </div>

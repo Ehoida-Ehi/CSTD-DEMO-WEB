@@ -308,7 +308,8 @@ useEffect(() => {
       <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Photo Gallery</h2>
-          <div id='gallery' className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div id='gallery'>
+             <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Large Image */}
           <div className="md:col-span-2 lg:col-span-2 row-span-2 relative">
                   <img
@@ -373,10 +374,13 @@ useEffect(() => {
                   </div>
             </div>
           </div>
+          </div>
+         
         </div>
       </div>
 
       {/* Header Section */}
+      <div id='news'>
       <div className="bg-slate-950 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-center mb-4">Latest News</h1>
@@ -386,7 +390,7 @@ useEffect(() => {
 
 
 
-<div id='news' className=' my-5 shadow-lg p-2'>
+<div className=' my-5 shadow-lg p-2'>
   <div className='w-[90%] mx-auto flex justify-end items-center gap-5'>
   <div className='text-gray-600'>
     <p className='font-semibold'>Filter:</p>
@@ -499,6 +503,9 @@ useEffect(() => {
             </div>}
         </div>
       </div>
+      </div>
+
+
     </div>
     </>
   );

@@ -1,6 +1,6 @@
 const Vision = () => {
   return (
-   <div id='mission-and-vision' className="p-6 bg-white text-center rounded-lg *shadow-md* shadow-2xl cursor-pointer transform transition-transform duration-300 hover:scale-105">
+   <div className="p-6 bg-white text-center rounded-lg *shadow-md* shadow-2xl cursor-pointer transform transition-transform duration-300 hover:scale-105">
       <h2 className="text-4xl font-bold mb-4 text-green-700 ">VISION</h2>
       
       <p className="text-gray-700 leading-relaxed">

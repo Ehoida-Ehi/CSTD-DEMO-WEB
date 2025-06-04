@@ -22,10 +22,13 @@ const About = () => {
     <div> 
       <Fade />
       <div className='container mx-auto'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-8 lg:px-16 mt-4'>
+          <div id='mission-and-vision'>
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-8 lg:px-16 mt-4'>
             <Vision />
             <Mission />
           </div>
+          </div>
+          
           <History />
           <Sip />
       </div>
