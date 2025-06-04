@@ -184,7 +184,7 @@ const Home = () => {
             WELCOME TO CENTER FOR <br className="hidden md:block" /> SATELLITE TECHNOLOGY DEVELOPEMENT
           </h1>
           <a
-            href="#about"
+            href="/about"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300"
           >
             ABOUT US

@@ -21,6 +21,7 @@ export default function Navbar() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8 items-center text-md">
+<<<<<<< HEAD
             <Dropdown label="Home" page="/" items={["Values", "Leadership", "Departments", "Key Initiatives", "Gallery", "Latest News", "FAQ"]} />
             <Dropdown label="About Us" page="/#" items={["Mission & Vision", "History", "SIP"]} />
             <Dropdown label="Satellite Missions" page="https://central.nasrda.gov.ng/space-missions/" items={["NigeriaSAT – 1", "NigeriaSAT – 2", "NigeriaSAT -X"]} />
@@ -28,6 +29,16 @@ export default function Navbar() {
             <Dropdown label="Divisions" page="/#" items={["Departments"]} />
             <Dropdown label="Media" page="/#" items={["News", "Gallery", "Videos"]} />
             <Dropdown label="Contact Us" page="/#" items={["Email", "Phone", "Map", "Partner with us"]} />
+=======
+            {/** Navigation Items with Dropdown */}
+            <Dropdown label="Home" items={["Mission & Vision", "Department", "Leadership"]} />
+            <Link to="/about"><Dropdown label="About Us" items={["Mission & Vision", "Leadership", "History"]} /></Link>
+            <Dropdown label="Satellite Missions" items={["Past Missions", "Ongoing Projects", "Upcoming Launches"]} />
+            <Dropdown label="Research & Innovation" items={["Focus Areas", "Facilities", "Publications"]} />
+            <Dropdown label="Divisions" items={["Engineering", "Systems", "Operations"]} />
+            <Dropdown label="Media" items={["News", "Gallery", "Videos"]} />
+            <Dropdown label="Contact Us" items={["Email", "Phone", "Map", "Partner with us"]} />
+>>>>>>> about-page
           </div>
 
           {/* Right Side - News/Events */}
