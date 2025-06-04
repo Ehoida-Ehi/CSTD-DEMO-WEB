@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiMiniWrenchScrewdriver } from "react-icons/hi2";
 import { FaGears } from "react-icons/fa6";
 import { BsFillMegaphoneFill } from "react-icons/bs";
@@ -43,6 +43,16 @@ const RnI = () => {
 
     return () => clearInterval(interval);
   }, []);
+      const { hash } = useLocation();
+  
+    useEffect(() => {
+      if (hash) {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, [hash]);
 
   return (
     <div className="mt-16">
@@ -143,7 +153,8 @@ const RnI = () => {
           
         </div>
         <div className="flex flex-col">
-          <div className="flex space-x-3 items-center text-black mt-12 mb-5 lg:mt-20">
+          <div id="projects">
+    <div className="flex space-x-3 items-center text-black mt-12 mb-5 lg:mt-20">
             <HiMiniWrenchScrewdriver className="text-3xl text-green-900" />
             <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800">Past Projects</h1>
             <FaGears className="text-3xl text-green-900" />
@@ -284,7 +295,8 @@ const RnI = () => {
               </div>
             </div> 
           </div>
-          <div className="text-black p-3">
+          </div>
+       <div id="publications" className="text-black p-3">
             <p className="items-center flex gap-2 my-10"><h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800">Publications & White Papers</h1><HiOutlineNewspaper className="lg:text-3xl text-green-800" /></p>
             <div className="grid sm:grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-2">
               <img src="https://d2rty5wuu5bi5t.cloudfront.net/eyJidWNrZXQiOiJyc24tYnVja2V0Iiwia2V5IjoicHJvZHVjdGlvbi90ZWFzZXJzL21hdGhzLWJsb2cuanBnIiwiZWRpdHMiOnsianBlZyI6eyJxdWFsaXR5Ijo4MiwicHJvZ3Jlc3NpdmUiOnRydWUsInRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pemVTY2FucyI6dHJ1ZX0sInJlc2l6ZSI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NjgsImZpdCI6ImNvdmVyIn0sInNoYXJwZW4iOnRydWV9fQ==" alt="IMAGES" className="lg:hidden rows-span-1 lg:col-span-1 w-full object-cover mx-auto justify-center flex h-full"/>

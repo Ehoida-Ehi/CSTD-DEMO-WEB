@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Vision from '../components/Vision'
 import Mission from '../components/Mission'
 import History from '../components/History'
 import Sip from '../components/Sip'
 
 import Fade from '../components/Fade'
+import { useLocation } from 'react-router-dom'
 
 const About = () => {
+    const { hash } = useLocation(); 
+
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
   return (
     <div> 
       <Fade />

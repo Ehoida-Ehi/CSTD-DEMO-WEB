@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
 import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
@@ -159,7 +159,16 @@ const Home = () => {
     }
   };
 
+    const { hash } = useLocation();
 
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
 
 
 
