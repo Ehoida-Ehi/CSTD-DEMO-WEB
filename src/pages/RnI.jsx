@@ -1,38 +1,35 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { HiMiniWrenchScrewdriver } from "react-icons/hi2";
 import { FaGears } from "react-icons/fa6";
-import { BsFillMegaphoneFill } from "react-icons/bs";
 import { PiArrowFatLinesRightFill } from "react-icons/pi";
-import { HiMiniPencilSquare } from "react-icons/hi2";
 import { HiOutlineNewspaper } from "react-icons/hi2";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import pic1 from "../assets/images/rniPic1.jpg"
-import pic2 from "../assets/images/rniPic2.jpg"
-import pic3 from "../assets/images/rniPic3.jpg"
-import pic4 from "../assets/images/rniPic4.jpg"
-import pic5 from "../assets/images/rniPic5.png"
-import pic6 from "../assets/images/rniPic6.jpg"
-import pic7 from "../assets/images/rniPic7.png"
-import pic8 from "../assets/images/rniPic8.png"
-import pic9 from "../assets/images/rniPic9.jpg"
-import pic10 from "../assets/images/rniPic10.jpg"
-import pic11 from "../assets/images/rniPic11.jpg"
-import pic12 from "../assets/images/rniPic12.jpg"
-import pic13 from "../assets/images/rniPic13.png"
-import pic14 from "../assets/images/rniPic14.png"
-import pic15 from "../assets/images/rniPic15.png"
-import pic16 from "../assets/images/rniPic16.png"
-import pic17 from "../assets/images/rniPic17.png"
+import {rniImages} from "../utils/images"
+
+
+const RnI = () => {
 
 const image1 = "https://cdn.pixabay.com/photo/2024/01/10/16/22/woman-8499959_1280.jpg"
 const image2 = "https://cdn.pixabay.com/photo/2015/08/25/00/01/drone-905955_1280.jpg"
 const image3 = "https://cdn.pixabay.com/photo/2017/09/10/02/58/drone-asperjando-2734242_1280.jpg"
 
-const RnI = () => {
-  
+const [
+   pic5,
+   pic6,
+   pic7,
+   pic8, 
+   pic9, 
+   pic11, 
+   pic12, 
+   pic13, 
+   pic14, 
+   pic15, 
+   pic16, 
+   pic17, 
+] = rniImages
 
   const [activeImage, setActiveImage] = useState(0);
 

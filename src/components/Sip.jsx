@@ -1,4 +1,3 @@
-import React from 'react'
 import sipImage from '../assets/images/CSTD SIP.png'
 const Sip = () => {
   return (

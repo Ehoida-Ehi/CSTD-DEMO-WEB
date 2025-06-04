@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Mission = () => {
   return (
    <div className="p-6 bg-white text-center rounded-lg *shadow-md* shadow-2xl cursor-pointer transform transition-transform duration-300 hover:scale-105">

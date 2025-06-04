@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Vision from '../components/Vision'
 import Mission from '../components/Mission'
 import History from '../components/History'

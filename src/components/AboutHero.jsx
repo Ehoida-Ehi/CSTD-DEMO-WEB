@@ -1,5 +1,4 @@
 import sipImage from '../assets/images/DG-3-point-Agenda-1.jpg'
-import React from 'react'
 
 const AboutHero = () => {
   return (

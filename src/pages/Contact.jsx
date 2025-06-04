@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import CareImage from '../assets/images/NasrdaGate.webp'
-import NasrdaGate from '../assets/images/NasrdaGate.webp'
-import StartUp from '../assets/images/StartUP.jpg'
+import {contactImages} from '../utils/images'
 import { useLocation } from 'react-router-dom';
 
-const images = [
-  NasrdaGate,
-  StartUp,
-  NasrdaGate,
-  StartUp,
-];
+const images = contactImages
 
 const Services = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

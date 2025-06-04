@@ -1,5 +1,3 @@
-import React from 'react'
-
 const History = () => {
   return (
     <div id='history' className="p-6 bg-gray-50  mt-2 rounded-lg **shadow-md**">

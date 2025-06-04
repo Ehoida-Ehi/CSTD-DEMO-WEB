@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
 import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
@@ -13,29 +13,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 import sadqUmarImg from '../assets/images/Eng-Sadq-Umar.jpg';
 
-import satelliteImg from '../assets/images/astronaaut-7550543_1280.png';
-import researchImg from '../assets/images/business-6614313_1280.webp';
-import spacemissionsImg from '../assets/images/datA.jpg';
-import financeImg from '../assets/images/financial-4560047_1280.webp';
-import ictImg from '../assets/images/cloud-3998880_1280.webp';
-import spacecraftImg from '../assets/images/machine-8012596_1280.jpg';
-import droneImg from '../assets/images/drone-4256093_1280.webp';
-import adminImg from '../assets/images/work-8396635_1280.jpg';
-import groundsegmentImg from '../assets/images/ai-generated-8910182_1280.png';
-import directorateImg from '../assets/images/computer-3241350_1280.webp';
-
 import projectImg from '../assets/images/drone-2879538_1280.jpg';
 import environmentImg from '../assets/images/environment-7412967_1280.jpg';
 import partnershipImg from '../assets/images/pbusiness-7768170_1280.jpg';
 
-import newStory2 from "../assets/images/chukaa.jpg";
-import newStory3 from "../assets/images/meet.jpg";
-import newStory1 from "../assets/images/cstd group.jpg";
-import newStory4 from "../assets/images/karri.jpg";
-import newStory5 from "../assets/images/slidepix.jpg";
-import newStory6 from "../assets/images/New-story-6.jpg";
-import newStory7 from "../assets/images/New-Story-3.jpg";
-import newStory8 from "../assets/images/new-story-5.jpg";
+import {departmentsDetails, homeImages} from '../utils/images';
 
 const Home = () => {
   const videoRef = useRef(null);
@@ -62,18 +44,7 @@ const Home = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-
-
-  const images = [
-    newStory2,
-    newStory3,
-    newStory1,
-    newStory4,
-    newStory5,
-    newStory6,
-    newStory7,
-    newStory8,
-  ];
+  const images = homeImages
 
   const [open, setOpen] = useState(null);
 
@@ -91,18 +62,8 @@ const Home = () => {
 
   ];
 
-  const departments = [
-    { title: "Satellite Systems", image: satelliteImg },
-    { title: "Research, Development and Innovation", image: researchImg },
-    { title: "Satellite Missions & Data Communication", image: spacemissionsImg },
-    { title: "Finance and Account", image: financeImg },
-    { title: "ICT", image: ictImg },
-    { title: "Spacecraft Structure & Mechanisms", image: spacecraftImg },
-    { title: "Spacecraft Aerodynamics and Control", image: droneImg },
-    { title: "Administration", image: adminImg },
-    { title: "Ground Segment", image: groundsegmentImg },
-    { title: "Directorate", image: directorateImg },
-  ];
+  const departments = departmentsDetails
+  
 
 
   const faqs = [
