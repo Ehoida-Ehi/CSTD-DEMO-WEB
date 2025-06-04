@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Media from './pages/Media';
 import RnI from './pages/RnI';
+import Contact from './pages/Contact';
 
 
 const Content = () => {
@@ -21,6 +22,7 @@ const Content = () => {
       <Route path="/about" element={<About />} />
         <Route path="/media" element={<Media />} />
         <Route path="/rni" element={<RnI />} />
+        <Route path="/Contact" element={<Contact />} />
 
 
       </Routes>
