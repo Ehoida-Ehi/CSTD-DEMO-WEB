@@ -22,7 +22,7 @@ export default function Navbar() {
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8 items-center text-md">
             <Dropdown label="Home" page="/" items={["Values", "Leadership", "Departments", "Key Initiatives", "Gallery", "Latest News", "FAQ"]} />
-            <Dropdown label="About Us" page="/#" items={["Mission & Vision", "History", "SIP"]} />
+            <Dropdown label="About Us" page="/about" items={["Mission & Vision", "History", "SIP"]} />
             <Dropdown label="Satellite Missions" page="https://central.nasrda.gov.ng/space-missions/" items={["NigeriaSAT – 1", "NigeriaSAT – 2", "NigeriaSAT -X"]} />
             <Dropdown label="Research & Innovation" page="#" items={["Projects", "Publications"]} />
             <Dropdown label="Divisions" page="/#" items={["Departments"]} />
@@ -56,7 +56,9 @@ function Dropdown({ label, items, page }) {
   const externalLinks = {
     "NigeriaSAT – 1": "https://central.nasrda.gov.ng/space-missions/nigeriasat-1/",
     "NigeriaSAT – 2": "https://central.nasrda.gov.ng/space-missions/nigeriasat-2/",
-    "NigeriaSAT -X": "https://central.nasrda.gov.ng/space-missions/nigeriasat-x/"
+    "NigeriaSAT -X": "https://central.nasrda.gov.ng/space-missions/nigeriasat-x/",
+    "Mission & Vision": "/about#mission-and-vision",
+    "SIP": "/about#sip"
   };
 
   return (

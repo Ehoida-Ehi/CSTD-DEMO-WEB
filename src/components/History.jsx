@@ -2,7 +2,7 @@ import React from 'react'
 
 const History = () => {
   return (
-    <div className="p-6 bg-gray-50  mt-2 rounded-lg **shadow-md**">
+    <div id='history' className="p-6 bg-gray-50  mt-2 rounded-lg **shadow-md**">
       <h2 className="text-2xl font-bold mb-6 text-green-800 text-center">History of CSTD</h2>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

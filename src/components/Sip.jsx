@@ -3,7 +3,9 @@ import sipImage from '../assets/images/CSTD SIP.png'
 const Sip = () => {
   return (
     <>
-    <div className='flex justify-center items-center p-4 bg--gray-100 rounded-lg **shadow-md** **shadow-2xl**'>
+    <div 
+    id='sip'
+    className='flex justify-center items-center p-4 bg--gray-100 rounded-lg **shadow-md** **shadow-2xl**'>
       <img 
       src={sipImage} 
       alt="SIP"
