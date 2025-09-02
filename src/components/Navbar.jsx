@@ -19,13 +19,29 @@ export default function Navbar() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8 items-center text-md">
-            <Dropdown label="Home" page="/" items={["Values", "Leadership", "Departments", "Key Initiatives", "Gallery", "Latest News", "FAQ"]} />
-            <Dropdown label="About Us" page="/about" items={["Mission & Vision", "History", "SIP"]} />
-            <Dropdown label="Satellite Missions" page="https://central.nasrda.gov.ng/space-missions/" items={["NigeriaSAT – 1", "NigeriaSAT – 2", "NigeriaSAT -X"]} />
-            <Dropdown label="Research & Innovation" page="/rni" items={["Projects", "Publications"]} />
-            <Dropdown label="Divisions" page="/#departments" items={["Departments"]} />
-            <Dropdown label="Media" page="/media" items={["Gallery", "News"]} />
-            <Dropdown label="Contact Us" page="/contact" items={["Partner with us", "Map"]} />
+            {/** Navigation Items with Dropdown */}
+            <Link to="/" className="text-white hover:text-green-600 relative group">
+              Home
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/About" className="text-white hover:text-green-600 relative group">
+              About Us
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <SatelliteDropdown />
+            <Link to="/RnI" className="text-white hover:text-green-600 relative group">
+              Research & Innovation
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/" className="text-white hover:text-green-600 relative group">
+              Departments
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Dropdown label="Media" items={["News", "Gallery", "Videos"]} />
+            <Link to="/Contact" className="text-white hover:text-green-600 relative group">
+              Contact Us
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </div>
 
           {/* Right Side - News/Events */}
@@ -113,6 +129,34 @@ function Dropdown({ label, items, page }) {
             </Link>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+function SatelliteDropdown() {
+  const satelliteItems = [
+    { name: "Nigeria Sat-1", path: "/Sat1" },
+    { name: "Nigeria Sat-2", path: "/Sat2" },
+    { name: "Nigeria Sat-X", path: "/SatX" }
+  ];
+
+  return (
+    <div className="relative group">
+      <button className="text-white hover:text-green-600 relative group">
+        Satellite Missions
+        <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+      </button>
+      <div className="absolute top-full left-0 bg-white shadow-lg rounded-md text-md hidden group-hover:block z-50 min-w-[200px]">
+        {satelliteItems.map((item, idx) => (
+          <Link
+            key={idx}
+            to={item.path}
+            className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
+          >
+            {item.name}
+          </Link>
+        ))}
       </div>
     </div>
   );
