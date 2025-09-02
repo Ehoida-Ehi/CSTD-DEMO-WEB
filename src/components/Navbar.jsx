@@ -20,13 +20,28 @@ export default function Navbar() {
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8 items-center text-md">
             {/** Navigation Items with Dropdown */}
-            <Dropdown label="Home" items={["Mission & Vision", "Department", "Leadership"]} />
-            <Dropdown label="About Us" items={["Mission & Vision", "Leadership", "History"]} />
-            <Dropdown label="Satellite Missions" items={["Past Missions", "Ongoing Projects", "Upcoming Launches"]} />
-            <Dropdown label="Research & Innovation" items={["Focus Areas", "Facilities", "Publications"]} />
-            <Dropdown label="Divisions" items={["Engineering", "Systems", "Operations"]} />
+            <Link to="/" className="text-white hover:text-green-600 relative group">
+              Home
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/About" className="text-white hover:text-green-600 relative group">
+              About Us
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <SatelliteDropdown />
+            <Link to="/RnI" className="text-white hover:text-green-600 relative group">
+              Research & Innovation
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/" className="text-white hover:text-green-600 relative group">
+              Departments
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <Dropdown label="Media" items={["News", "Gallery", "Videos"]} />
-            <Dropdown label="Contact Us" items={["Email", "Phone", "Map", "Partner with us"]} />
+            <Link to="/Contact" className="text-white hover:text-green-600 relative group">
+              Contact Us
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </div>
 
           {/* Right Side - News/Events */}
@@ -121,9 +136,9 @@ function Dropdown({ label, items, page }) {
 
 function SatelliteDropdown() {
   const satelliteItems = [
-    { name: "NigeriaSAT-1", path: "/Sat1" },
-    { name: "NigeriaSAT-2", path: "/Sat2" },
-    { name: "NigeriaSAT-X", path: "/SatX" }
+    { name: "Nigeria Sat-1", path: "/Sat1" },
+    { name: "Nigeria Sat-2", path: "/Sat2" },
+    { name: "Nigeria Sat-X", path: "/SatX" }
   ];
 
   return (

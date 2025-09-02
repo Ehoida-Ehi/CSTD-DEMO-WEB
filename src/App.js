@@ -1,16 +1,18 @@
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-<<<<<<<<< Temporary merge branch 1
+import About from './pages/About';
 import Contact from './pages/Contact';
-=========
+import Sat1 from './pages/Sat1';
+import Sat2 from './pages/Sat2';
+import SatX from './pages/SatX';
 import Media from './pages/Media';
->>>>>>>>> Temporary merge branch 2
+import RnI from './pages/RnI';
 
 
 const Content = () => {
-  const location = useLocation(); // Get the current location
+  
 
 
   return (
@@ -20,12 +22,13 @@ const Content = () => {
       <Routes>
         {/* Home Page */}
         <Route path="/" element={<Home />} />
-<<<<<<<<< Temporary merge branch 1
+        <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
-=========
-        <Route path="/media" element={<Media />} />
->>>>>>>>> Temporary merge branch 2
-
+        <Route path="/Media" element={<Media />} />
+        <Route path="/Sat1" element={<Sat1 />} />
+        <Route path="/Sat2" element={<Sat2 />} />
+        <Route path="/SatX" element={<SatX />} />
+        <Route path="/RnI" element={<RnI />} />
 
       </Routes>
       <Footer />
