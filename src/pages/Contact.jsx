@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import CareImage from '../assets/images/NasrdaGate.webp'
-import NasrdaGate from '../assets/images/NasrdaGate.webp'
-import StartUp from '../assets/images/StartUP.jpg'
+import {contactImages} from '../utils/images'
+import { useLocation } from 'react-router-dom';
 
-const images = [
-  NasrdaGate,
-  StartUp,
-  NasrdaGate,
-  StartUp,
-];
+const images = contactImages
 
 const Services = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -22,7 +17,16 @@ const Services = () => {
 
     return () => clearInterval(interval);
   }, []);
+    const { hash } = useLocation(); 
 
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
   return (
     <div>
       <div className="relative w-full h-[500px]">
@@ -113,14 +117,16 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">Email</h3>
-                  <p className="text-gray-600">cstdinfo@cstd.nasrda.gov.ng</p>
+                  
+                  <p onClick={() => window.location = 'mailto:cstdinfo@cstd.nasrda.gov.ng'} className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-600">cstdinfo@cstd.nasrda.gov.ng</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div id='partner'>
+              <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-green-800 mb-8">Ask a Question</h2>
             <p className="text-gray-600 mb-8">
               If you have any questions, you can contact us. Please, fill out the form below.
@@ -175,10 +181,13 @@ const Contact = () => {
               </button>
             </form>
           </div>
+          </div>
+        
         </div>
 
         {/* Map Section */}
-        <div className="mt-16">
+        <div id='map'>
+            <div className="mt-16">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="aspect-w-16 aspect-h-9">
               <iframe
@@ -193,6 +202,8 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        </div>
+        
       </div>
     </div>
   )

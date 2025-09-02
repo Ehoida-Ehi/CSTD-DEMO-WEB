@@ -1,10 +1,11 @@
-import React from "react";
 import {
   FaFacebookF,
   FaInstagram,
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
+import cstdImg from '../assets/images/cstd logoogo.png';
+
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
            {/* Logo and Mission */}
            <div className="md:col-span-2">
              <img
-               src="/footnasa.png" 
+                src={cstdImg}
                alt="NASRDA Logo"
                className="w-20 mb-4"
              />
@@ -105,7 +106,7 @@ const Footer = () => {
              <a href="#">Accessibility</a>
            </div>
            <div className="mt-4">
-             Page Last Updated: <span className="text-white font-medium">May 12, 2025</span><br />
+             Page Last Updated: <span className="text-white font-medium">May 19, 2025</span><br />
              Page Editor: <span className="font-semibold text-white">Ehi Jennifer Ehoida</span><br />
              Responsible CSTD Official:{" "}
              <span className="font-semibold text-white">Omotayo Maryam</span>
