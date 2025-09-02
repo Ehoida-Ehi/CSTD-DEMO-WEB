@@ -5,6 +5,7 @@ import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
+import useRevealOnScroll from "../components/RevealnScroll";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -12,6 +13,11 @@ import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import sadqUmarImg from '../assets/images/Eng-Sadq-Umar.jpg';
+import nigImg from "../assets/images/earth-africa2.png"
+import partners from "../assets/images/partnership.png"
+import engineers from "../assets/images/graduates.png"
+import projects from "../assets/images/satellite.png"
+import years from "../assets/images/2025.png"
 
 import projectImg from '../assets/images/drone-2879538_1280.jpg';
 import environmentImg from '../assets/images/environment-7412967_1280.jpg';
@@ -122,38 +128,81 @@ const Home = () => {
 
     const { hash } = useLocation();
 
+  // useEffect(() => {
+  //   if (hash) {
+  //     const el = document.querySelector(hash);
+  //     if (el) {
+  //       el.scrollIntoView({ behavior: "smooth" });
+  //     }
+  //   }
+  // }, [hash]);
+
+////////////////////////////ADELSON CODE///////////////////////////////////////////
+
+useRevealOnScroll(['.reveal', ".slide-in-left", ".slide-in-right"])
+
+const StatNumber = ({ target }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
   useEffect(() => {
-    if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
+    let observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+              setCount(Math.floor(current));
+            }, 30);
+
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% visible
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
     }
-  }, [hash]);
 
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [target]);
 
-
+    return (
+      <div ref={ref} className="stat-number text-4xl font-bold text-blue-600">
+        {count}
+      </div>
+    );
+}
   return (
     <div className="mt-16">
       {/* Banner Video Section */}
       <div id="home">
           <div  className="relative w-full h-screen">
         {/* Video Background */}
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          src="https://cdn.pixabay.com/video/2020/04/30/37713-414754681_large.mp4"
-          type="video/mp4"
-          muted
-          loop
-          autoPlay
-        />
-
-        {/* Overlay Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black bg-opacity-40 px-4">
-          <h1 className="text-3xl md:text-5xl font-bold mb-8">
-            WELCOME TO CENTER FOR <br className="hidden md:block" /> SATELLITE TECHNOLOGY DEVELOPEMENT
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              src="https://cdn.pixabay.com/video/2020/04/30/37713-414754681_large.mp4"
+              type="video/mp4"
+              muted
+              loop
+              autoPlay
+            />
+        <div className="absolute inset-0 flex flex-col items-center space-y-3 justify-center text-center text-white bg-black bg-opacity-40 px-4">
+          <h1 className="text-3xl md:text-5xl px-20 font-bold mb-8">
+            CENTER FOR SATELLITE TECHNOLOGY DEVELOPEMENT
           </h1>
+          <p className="mx-auto px-44">Pioneering Nigeria's space frontier through advanced satellite technology, cutting-edge research, and innovation that propels our nation toward a sustainable space-based future.</p>
           <a
             href="/about"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300"
@@ -161,8 +210,6 @@ const Home = () => {
             ABOUT US
           </a>
         </div>
-
-        {/* Play/Pause Button */}
         <button
           onClick={togglePlayPause}
           className="absolute bottom-4 right-4 p-3 bg-gray-800 bg-opacity-50 text-white rounded-full shadow-md hover:bg-gray-700 transition duration-300"
@@ -174,9 +221,9 @@ const Home = () => {
       
 
       {/* About Us */}
-      <div id="values">
-<div  className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 bg-white mb-6">
-        {/* Left Grid - Text Section */}
+      <div id="values" className="p-10">
+      {/* <div  className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 mb-6">
+        
         <div>
           <h2 className="text-4xl font-bold text-green-700  text-center mb-4">ABOUT US</h2>
           <p className="text-gray-800 mb-8">
@@ -185,7 +232,7 @@ const Home = () => {
             We work closely with local and international partners to drive research, develop skills, and support sustainable solutions through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria’s space technology and empowering the next generation of aerospace professionals.
           </p>
 
-          {/* Icons Row */}
+        
           <div className="grid grid-cols-2 gap-6 text-gray-800 font-semibold">
             <div className="flex items-start gap-3">
               <FaTrophy className="text-blue-600 text-3xl" />
@@ -206,8 +253,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Right Grid - Image Section */}
-        {/* Our Values */}
+        
         <div>
           <h2 className="text-4xl font-bold text-green-700 text-center mb-4">OUR VALUES</h2>
           <p className="text-gray-800 mb-6">
@@ -236,19 +282,64 @@ const Home = () => {
             Learn More
           </button>
         </div>
-      </div>
+      </div> */}
+        <div className="container text-black reveal" id="about">
+            <div className="grid grid-cols-2 gap-5">
+                <div className="about-content col-span-1 slide-in-left">
+                    <h2 className="header">About CSTD</h2>
+                    <p>The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
+                    <p>We work closely with international partners and local institutions to advance Nigeria's space capabilities through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria's space technology and empowering the next generation of aerospace professionals.</p>
+                    <div className="about-stats">
+                        <div className="stat-item">
+                          <div className="flex items-center justify-center space-x-5">
+                            <StatNumber target={20} />
+                            <img src={years} width={40} alt="" />
+                          </div>
+                            <p className="stat-label">Years of Excellence</p>
+                        </div>
+                        <div className="stat-item">
+                          <div className="flex items-center justify-center space-x-5">
+                            <StatNumber target={500} />
+                            <img src={engineers} width={40} alt="" />
+                          </div>
+                            <p className="stat-label">Engineers Trained</p>
+                        </div>
+                        <div className="stat-item">
+                          <div className="flex items-center justify-center space-x-5">
+                            <StatNumber target={15} />
+                            <img src={projects} width={40} alt="" />
+                          </div>
+                            
+                            <p className="stat-label">Satellite Projects</p>
+                        </div>
+                        <div class="stat-item">
+                          <div className="flex items-center justify-center space-x-5">
+                            <StatNumber target={50} />
+                            <img src={partners} width={40} alt="" />
+                          </div>
+                            <p className="stat-label">International Partners</p>
+                        </div>
+                    </div>
+                </div>
+                <div  className="col-span-1 smBoxShadow slide-in-right">
+                  <div className="about-visual">
+                    <img src={nigImg} className="flex icon w-[24rem]" alt="Image not Available" />
+                  </div>
+                </div>
+            </div>
+        </div>
       </div>
       
 
 
 
-      {/* leadership section */}
+      
       <div id="leadership">
 <div  className="bg-white py-16 px-4">
         <h1 className="text-4xl text-center text-green-700 font-bold mb-10">Our Leadership</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Left Grid */}
+          
           <div className="flex items-center justify-center">
             <img
               src={sadqUmarImg}
@@ -257,15 +348,15 @@ const Home = () => {
             />
           </div>
 
-          {/* Right Grid */}
+          
           <div className="flex flex-col justify-center text-center px-8 md:px-16">
-            {/* Quotation Icon */}
+            
             <h1 className="text-lg font-bold text-black mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
-            {/* Description */}
+            
             <p className="text-lg text-black mb-6">
               THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD
             </p>
-            {/* Source */}
+            
             <p className="text-black font-semibold text-lg">
               Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest in satellite systems.
 
