@@ -33,10 +33,10 @@ export default function Navbar() {
               Research & Innovation
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link to="/" className="text-white hover:text-green-600 relative group">
+            <a href="#departments" className="text-white hover:text-green-600 relative group">
               Departments
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            </a>
             <Dropdown label="Media" items={["News", "Gallery", "Videos"]} />
             <Link to="/Contact" className="text-white hover:text-green-600 relative group">
               Contact Us

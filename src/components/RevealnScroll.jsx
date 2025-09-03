@@ -1,26 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function useRevealOnScroll(selectors = []) {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-x-0"); 
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 } // adjust visibility threshold
-    );
+  const [isReveal, setIsReveal] = useState()
+ useEffect(() => {
+    const onScroll = () => {
+      const target = document.getElementById("reveal-section");
+      if (!target) return;
 
-    selectors.forEach((selector) => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach((el) => {
-        observer.observe(el);
-      });
-    });
+      const rect = target.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.8) {
+        setIsReveal(true);
+      }
+    };
 
-    return () => observer.disconnect();
-  }, [selectors]);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 }

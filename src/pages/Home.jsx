@@ -19,11 +19,19 @@ import engineers from "../assets/images/graduates.png"
 import projects from "../assets/images/satellite.png"
 import years from "../assets/images/2025.png"
 
+import excellence from "../assets/images/excellence.png"
+import innovation from "../assets/images/innovation.png"
+import teamwork from "../assets/images/collaboration.png"
+import purpose from "../assets/images/purpose.png"
+import integrity from "../assets/images/integrity.png"
+import professionalism from "../assets/images/professionals.png"
+
 import projectImg from '../assets/images/drone-2879538_1280.jpg';
 import environmentImg from '../assets/images/environment-7412967_1280.jpg';
 import partnershipImg from '../assets/images/pbusiness-7768170_1280.jpg';
 
 import {departmentsDetails, homeImages} from '../utils/images';
+// import { set } from "react-datepicker/dist/date_utils";
 
 const Home = () => {
   const videoRef = useRef(null);
@@ -59,12 +67,12 @@ const Home = () => {
   };
 
   const values = [
-    { title: "EXCELLENCE", content: "We pursue the highest standards in all we do." },
-    { title: "INNOVATION", content: "We foster creativity to solve real-world problems." },
-    { title: "TEAM WORK", content: "We work with others to achieve greater impact." },
-    { title: "PURPOSE", content: "Empowering the Future Through Knowledge and Research." },
-    { title: "INTEGRITY", content: "Guided by Principles, Accountability, Transparency and Trustworthy." },
-    { title: "PROFESSIONALISM", content: "Standard, Precision and Poise. Committed to Quality, Driven by Ethics." },
+    { title: "EXCELLENCE", content: "We pursue the highest standards in all we do.", profile: excellence },
+    { title: "INNOVATION", content: "We foster creativity to solve real-world problems.", profile: innovation },
+    { title: "TEAM WORK", content: "We work with others to achieve greater impact.", profile: teamwork },
+    { title: "PURPOSE", content: "Empowering the Future Through Knowledge and Research.", profile: purpose },
+    { title: "INTEGRITY", content: "Guided by Principles, Accountability, Transparency and Trustworthy.", profile: integrity },
+    { title: "PROFESSIONALISM", content: "Standard, Precision and Poise. Committed to Quality, Driven by Ethics.", profile: professionalism },
 
   ];
 
@@ -128,18 +136,72 @@ const Home = () => {
 
     const { hash } = useLocation();
 
-  // useEffect(() => {
-  //   if (hash) {
-  //     const el = document.querySelector(hash);
-  //     if (el) {
-  //       el.scrollIntoView({ behavior: "smooth" });
-  //     }
-  //   }
-  // }, [hash]);
-
 ////////////////////////////ADELSON CODE///////////////////////////////////////////
 
-useRevealOnScroll(['.reveal', ".slide-in-left", ".slide-in-right"])
+const [isRevealAbout, setIsRevealAbout] = useState(false);
+const [isRevealValue, setIsRevealValue] = useState(false);
+const [isRevealDept, setIsRevealDept] = useState(false);
+const [isRevealFAQ, setIsRevealFAQ] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const target = document.getElementById("about-section");
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.8) {
+        setIsRevealAbout(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const target = document.getElementById("value-section");
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.8) {
+        setIsRevealValue(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const target = document.getElementById("dept-section");
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.8) {
+        setIsRevealDept(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const target = document.getElementById("FAQ-section");
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.8) {
+        setIsRevealFAQ(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
 const StatNumber = ({ target }) => {
   const [count, setCount] = useState(0);
@@ -187,7 +249,7 @@ const StatNumber = ({ target }) => {
     <div className="mt-16">
       {/* Banner Video Section */}
       <div id="home">
-          <div  className="relative w-full h-screen">
+        <div  className="relative w-full h-screen">
         {/* Video Background */}
             <video
               ref={videoRef}
@@ -216,469 +278,414 @@ const StatNumber = ({ target }) => {
         >
           {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
         </button>
-      </div>
-      </div>
+      </div>      
       
-
-      {/* About Us */}
-      <div id="values" className="p-10">
-      {/* <div  className="grid grid-cols-1 md:grid-cols-2 h-[550px] gap-8 items-center p-8 mb-6">
-        
-        <div>
-          <h2 className="text-4xl font-bold text-green-700  text-center mb-4">ABOUT US</h2>
-          <p className="text-gray-800 mb-8">
-            The Centre for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria’s capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the Tubesat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.
-
-            We work closely with local and international partners to drive research, develop skills, and support sustainable solutions through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria’s space technology and empowering the next generation of aerospace professionals.
-          </p>
-
-        
-          <div className="grid grid-cols-2 gap-6 text-gray-800 font-semibold">
-            <div className="flex items-start gap-3">
-              <FaTrophy className="text-blue-600 text-3xl" />
-              <p>COMMITTED TO<br />EXCELLENCE IN<br />SATELLITE TECHNOLOGY</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <FaHandshake className="text-blue-600 text-3xl" />
-              <p>WE BUILD<br />PARTNERSHIPS</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <FaThumbsUp className="text-blue-600 text-3xl" />
-              <p>GUIDED BY<br />COMMITMENT</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <FaPeopleGroup className="text-blue-600 text-3xl" />
-              <p>A TEAM OF<br />HIGHLY SKILLED<br /> PERSONNELS</p>
-            </div>
-          </div>
-        </div>
-
-        
-        <div>
-          <h2 className="text-4xl font-bold text-green-700 text-center mb-4">OUR VALUES</h2>
-          <p className="text-gray-800 mb-6">
-            We operate under this set of core values to guide us on our mission and activities.
-          </p>
-
-          {values.map((val, index) => (
-            <div key={index} className="mb-3 border border-gray-300 rounded">
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex justify-between items-center px-4 py-3 font-semibold"
-              >
-                {val.title}
-                {open === index ? (
-                  <ChevronUpIcon className="w-5 h-5" />
-                ) : (
-                  <ChevronDownIcon className="w-5 h-5" />
-                )}
-              </button>
-              {open === index && (
-                <div className="px-4 pb-4 text-sm text-gray-700">{val.content}</div>
-              )}
-            </div>
-          ))}
-          <button className="mt-6 bg-blue-600 text-white px-6 py-3 font-bold rounded hover:bg-blue-700">
-            Learn More
-          </button>
-        </div>
-      </div> */}
-        <div className="container text-black reveal" id="about">
-            <div className="grid grid-cols-2 gap-5">
-                <div className="about-content col-span-1 slide-in-left">
-                    <h2 className="header">About CSTD</h2>
-                    <p>The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
-                    <p>We work closely with international partners and local institutions to advance Nigeria's space capabilities through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria's space technology and empowering the next generation of aerospace professionals.</p>
-                    <div className="about-stats">
-                        <div className="stat-item">
-                          <div className="flex items-center justify-center space-x-5">
-                            <StatNumber target={20} />
-                            <img src={years} width={40} alt="" />
-                          </div>
-                            <p className="stat-label">Years of Excellence</p>
-                        </div>
-                        <div className="stat-item">
-                          <div className="flex items-center justify-center space-x-5">
-                            <StatNumber target={500} />
-                            <img src={engineers} width={40} alt="" />
-                          </div>
-                            <p className="stat-label">Engineers Trained</p>
-                        </div>
-                        <div className="stat-item">
-                          <div className="flex items-center justify-center space-x-5">
-                            <StatNumber target={15} />
-                            <img src={projects} width={40} alt="" />
-                          </div>
-                            
-                            <p className="stat-label">Satellite Projects</p>
-                        </div>
-                        <div class="stat-item">
-                          <div className="flex items-center justify-center space-x-5">
-                            <StatNumber target={50} />
-                            <img src={partners} width={40} alt="" />
-                          </div>
-                            <p className="stat-label">International Partners</p>
-                        </div>
+      <section>
+        <div className={`container text-black bg-blue-50 p-8`} id="about-section">
+          <div className="grid grid-cols-2 gap-5">
+            <div className={`about-content col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
+              <h2 className="header">About CSTD</h2>
+              <p>The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
+              <p>We work closely with international partners and local institutions to advance Nigeria's space capabilities through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria's space technology and empowering the next generation of aerospace professionals.</p>
+              <div className="about-stats">
+                  <div className="stat-item">
+                    <div className="flex items-center justify-center space-x-5">
+                      <StatNumber target={20} />
+                      <img src={years} width={40} alt="" />
                     </div>
-                </div>
-                <div  className="col-span-1 smBoxShadow slide-in-right">
-                  <div className="about-visual">
-                    <img src={nigImg} className="flex icon w-[24rem]" alt="Image not Available" />
+                      <p className="stat-label">Years of Excellence</p>
                   </div>
-                </div>
-            </div>
-        </div>
-      </div>
-      
-
-
-
-      
-      <div id="leadership">
-<div  className="bg-white py-16 px-4">
-        <h1 className="text-4xl text-center text-green-700 font-bold mb-10">Our Leadership</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          
-          <div className="flex items-center justify-center">
-            <img
-              src={sadqUmarImg}
-              alt="CSTD CEO"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          
-          <div className="flex flex-col justify-center text-center px-8 md:px-16">
-            
-            <h1 className="text-lg font-bold text-black mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
-            
-            <p className="text-lg text-black mb-6">
-              THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD
-            </p>
-            
-            <p className="text-black font-semibold text-lg">
-              Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest in satellite systems.
-
-              Dr. Umar’s key focus is incentivising research activities that accelerate sustainable national development. Hence, the management and staff of CSTD emphasise the importance of research, innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-      </div>
-      
-
-
-      {/* Our Departments section */}
-      <div id="departments">
-  <section  className="bg-white py-4 px-4 text-white">
-        <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Our Departments</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mt-14">
-          {departments.map((dept, index) => (
-            <div
-              key={index}
-              className="relative bg-white text-black rounded-lg shadow-2xl p-4 pt-20"
-            >
-              {/* Image Div */}
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-44 h-24 bg-blue-200 rounded-md overflow-hidden shadow-xl">
-                <img
-                  src={dept.image}
-                  alt={dept.title}
-                  className="w-full h-full object-cover"
-                />
+                  <div className="stat-item">
+                    <div className="flex items-center justify-center space-x-5">
+                      <StatNumber target={500} />
+                      <img src={engineers} width={40} alt="" />
+                    </div>
+                      <p className="stat-label">Engineers Trained</p>
+                  </div>
+                  <div className="stat-item">
+                    <div className="flex items-center justify-center space-x-5">
+                      <StatNumber target={15} />
+                      <img src={projects} width={40} alt="" />
+                    </div>
+                      
+                      <p className="stat-label">Satellite Projects</p>
+                  </div>
+                  <div class="stat-item">
+                    <div className="flex items-center justify-center space-x-5">
+                      <StatNumber target={50} />
+                      <img src={partners} width={40} alt="" />
+                    </div>
+                      <p className="stat-label">International Partners</p>
+                  </div>
               </div>
-
-              {/* Title */}
-              <h3 className="text-center text-lg font-semibold mb-2">{dept.title}</h3>
-
-              {/* Explore Link */}
-              {/* <p className="text-center text-blue-600 font-medium cursor-pointer hover:underline">
-                Explore
-              </p> */}
+          </div>
+          <div className={`about-content bg-blue-50 col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-right overflow-hidden"}`}>
+            <div className="about-visual bg-blue-50">
+              <img src={nigImg} className="flex icon w-[24rem]" alt="Image not Available" />
             </div>
-          ))}
+          </div>
+          </div>                
         </div>
       </section>
-      </div>
-    
 
-      {/* Key iniciatives Section */}
-      <div id="key-initiatives">
-<div  className="bg-white py-16 px-4 text-white">
-        <h2 className="text-4xl font-bold text-center mb-12 text-green-700">
-          Our Key Initiatives
-        </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Project 1 */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src={projectImg}
-              alt="Our Projects"
-              className="rounded-lg shadow-md mb-4"
-            />
-            <h3 className="text-xl font-semibold text-black">Our Projects</h3>
-            <p className="text-sm mt-2 text-black">
-              Advancing satellite platforms, remote sensing, and mission operations.
-            </p>
-          </div>
-
-          {/* Project 2 */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src={environmentImg}
-              alt="Research on Sustainable Energy Systems"
-              className="rounded-lg shadow-md mb-4"
-            />
-            <h3 className="text-xl font-semibold text-black">Research on Sustainable Energy Systems</h3>
-            <p className="text-sm mt-2 text-black ">
-              Exploring renewable energy through satellite-enabled technologies.
-            </p>
-          </div>
-
-          {/* Project 3 */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src={partnershipImg}
-              alt="Global Partnerships"
-              className="rounded-lg shadow-md mb-4"
-            />
-            <h3 className="text-xl font-semibold text-black">Global Partnerships</h3>
-            <p className="text-sm mt-2 text-black">
-              Collaborating with international agencies to expand innovation and impact.
-            </p>
+      <section>
+        <div className="space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 p-2" id={"value-section"}>
+          <h2 className="text-4xl font-bold header text-center">OUR VALUES</h2>
+          <p className="text-gray-800 text-center">We operate under this set of core values to guide us on our mission and activities.</p>
+          <div className={`grid grid-cols-3 gap-6 px-20 py-10 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+             {values.map((val, index) => (
+              <div key={index} className="value-card text-black rounded-lg col-span-1 items-center flex flex-col space-y-4">
+                <div className="border rounded-lg p-10">
+                  {open === index ? (
+                  <button onClick={()=>toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
+                    <div className="flex flex-col space-y-5">
+                      <img src={val.profile} className="w-28" alt="Image Profile" />
+                      <p>
+                        {val.title}
+                      </p>
+                    </div>
+                  </button>
+                  ) : (
+                  <button onClick={() => toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
+                    <div className="flex flex-col space-y-5">
+                      <img src={val.profile} className="w-28" alt="Image Profile" />
+                      <p>
+                        {val.title}
+                      </p>
+                    </div>
+                  </button>  
+                  )}
+                
+                <div className={`transition-all duration-300 overflow-hidden ${open === index ? "max-h-40" : "max-h-0"}`}>
+                  <div className="px-4 pb-4 text-sm text-gray-700">{val.content}</div>
+                </div>
+                </div>
+              </div>
+            ))}          
           </div>
         </div>
-      </div>
-      </div>    
-
-
-      {/* Gallery Section */}
-      <div id="gallery">
- <div  className="py-16 bg-white flex justify-center">
-        <div className="w-full max-w-6xl px-4">
-          <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Gallery</h2>
-
-          <Swiper
-            effect="coverflow"
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView="auto"
-            coverflowEffect={{
-              rotate: 30,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[EffectCoverflow, Pagination]}
-            className="rounded-lg"
-          >
-            {images.map((image, index) => (
-              <SwiperSlide
-                key={index}
-                className="flex justify-center items-center w-[300px] md:w-[400px] lg:w-[500px]"
-              >
+      </section>
+      
+      <section>
+        <div id="leadership" className="space-y-10 p-8 bg-blue-50">
+          <div  className="py-10 bg-blue-50 px-4">
+            <div className="mb-10 text-black flex flex-col gap-5">
+              <h1 className="text-4xl text-center header font-bold">Our Leadership</h1>
+              <p className="p-12 text-center">Visionary leadership driving Nigeria's space technology advancement</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-5 border rounded-lg p-6 shadow-lg bg-gradient-to-r from-blue-950 via-transparent to-blue-50">   
+              <div className="flex items-center justify-center col-span-2">
                 <img
-                  src={image}
-                  alt={`Slide ${index + 1}`}
-                  className="rounded-lg shadow-xl w-full h-[600px] object-cover"
+                  src={sadqUmarImg}
+                  alt="CSTD CEO"
+                  className="h-[300px] object-cover"
                 />
-              </SwiperSlide>
+              </div>
+
+              <div className="flex flex-col justify-center text-center px-8 md:px-16 col-span-3">                
+                <h1 className="text-lg font-bold text-black mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
+                <p className="text-lg text-black mb-6">
+                  THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD
+                </p>
+                <p className="text-black font-semibold text-lg">
+                  Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest in satellite systems.
+
+                  Dr. Umar’s key focus is incentivising research activities that accelerate sustainable national development. Hence, the management and staff of CSTD emphasise the importance of research, innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
+      <section  className="bg-blue-50 py-4 px-4 text-white" id="departments">
+        <div className="my-10" id="dept-section">
+          <h2 className="text-4xl font-bold text-center header">Our Departments</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 px-32">
+            {departments.map((dept, index) => (
+              <div key={index} className={`relative bg-white text-black rounded-lg shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+                {/* Image Div */}
+                  <img
+                    src={dept.image}
+                    alt={dept.title}
+                    className="w-full h-[45%] rounded-t-lg object-cover"
+                  />
+                {/* Title */}
+                <h3 className="text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
+
+              </div>
             ))}
-          </Swiper>
-
-          {/* Custom Pagination Bullet Styling */}
-          <style>
-            {`
-        .swiper-pagination-bullet {
-          background-color: white;
-          width: 12px;
-          height: 12px;
-          opacity: 0.6;
-          transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .swiper-pagination-bullet-active {
-          background-color: #3b82f6; /* Tailwind's blue-500 */
-          opacity: 1;
-          transform: scale(1.2);
-        }
-      `}
-          </style>
+          </div>
         </div>
-      </div>
-      </div>
-     
-
-
-      {/* Latest News Section */}
-      <div id="latest-news">
-      <div className="bg-white py-16 px-4">
-        <h2 className="text-4xl text-center  text-green-700 font-bold  mb-12">Latest News</h2>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* News Item 1 */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-            <img
-              src="https://cdn.pixabay.com/photo/2015/10/28/16/36/raisting-satellite-1010862_1280.jpg"
-              alt="Satellite Launch"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">New Satellite Launch Announced</h3>
-              <p className="text-sm text-black">The agency confirms the launch date for its newest Earth observation satellite.</p>
+      </section>
+      
+     <section>
+      <div id="key-initiatives">
+        <div  className="bg-blue-50 px-4 text-white">
+          <h2 className="text-4xl font-bold text-center mb-20 header">
+            Our Key Initiatives
+          </h2>
+          <div className="max-w-7xl mx-auto grid grid-cols-1 px-20 md:grid-cols-3 gap-8">
+            {/* Project 1 */}
+            <div className="flex flex-col items-center text-center">
+              <img
+                src={projectImg}
+                alt="Our Projects"
+                className="rounded-lg shadow-md mb-4"
+              />
+              <h3 className="text-xl font-semibold text-black">Our Projects</h3>
+              <p className="text-sm mt-2 text-black">
+                Advancing satellite platforms, remote sensing, and mission operations.
+              </p>
             </div>
-          </div>
 
-          {/* News Item 2 */}
-          <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-2">CSTD Hosts Innovation Workshop</h3>
-            <p className="text-sm text-black">
-              Researchers gathered to explore future technologies in climate monitoring, AI, and nanosatellite systems.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet porro temporibus debitis quos ratione ex, sapiente aspernatur nemo dignissimos esse, alias culpa veritatis officia obcaecati molestias non reiciendis quam repudiandae.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vitae, dicta sint aliquam quam neque ipsum fugiat eos commodi ratione, veritatis provident voluptatem placeat molestiae consectetur odio aliquid quae suscipit?
-            </p>
-          </div>
-
-          {/* News Item 3 */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-            <img
-              src="https://cdn.pixabay.com/photo/2012/11/28/09/08/mars-67522_1280.jpg"
-              alt="Research Collaboration"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">Nigeria Partners with EU on Space Tech</h3>
-              <p className="text-sm text-black">A new partnership with the European Union aims to boost R&D in sustainable satellite systems.</p>
+            {/* Project 2 */}
+            <div className="flex flex-col items-center text-center">
+              <img
+                src={environmentImg}
+                alt="Research on Sustainable Energy Systems"
+                className="rounded-lg shadow-md mb-4"
+              />
+              <h3 className="text-xl font-semibold text-black">Research on Sustainable Energy Systems</h3>
+              <p className="text-sm mt-2 text-black ">
+                Exploring renewable energy through satellite-enabled technologies.
+              </p>
             </div>
-          </div>
 
-          {/* News Item 4 */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-            <img
-              src="https://cdn.pixabay.com/photo/2022/01/09/10/19/satellite-6925679_1280.jpg"
-              alt="Tech Demo"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">Technology Demonstration in Abuja</h3>
-              <p className="text-sm text-black">Live demo of unmanned aerial systems for disaster response and agriculture mapping.</p>
-            </div>
-          </div>
-
-          {/* News Item 5 */}
-          <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-2">CSTD Scientist Wins Award</h3>
-            <p className="text-sm text-black">
-              Dr. Adewale received the KARI innovation medal for outstanding contributions in nanosatellite development.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni facilis facere natus quae. Perspiciatis, ea blanditiis amet nihil eius qui rerum aut ad illum doloremque quisquam quae quam iure suscipit.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores obcaecati ea ipsam voluptates consectetur minima repudiandae facere, explicabo, enim reiciendis deleniti vitae totam. Ducimus recusandae ipsam, iusto veniam quisquam incidunt.
-            </p>
-          </div>
-
-          {/* News Item 6 */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-            <img
-              src="https://cdn.pixabay.com/photo/2012/11/28/11/25/satellite-67718_1280.jpg"
-              alt="STEM Outreach"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">STEM Outreach Hits 50 Schools</h3>
-              <p className="text-sm text-black">The space center reaches students nationwide with its science and satellite education campaign.</p>
+            {/* Project 3 */}
+            <div className="flex flex-col items-center text-center">
+              <img
+                src={partnershipImg}
+                alt="Global Partnerships"
+                className="rounded-lg shadow-md mb-4"
+              />
+              <h3 className="text-xl font-semibold text-black">Global Partnerships</h3>
+              <p className="text-sm mt-2 text-black">
+                Collaborating with international agencies to expand innovation and impact.
+              </p>
             </div>
           </div>
         </div>
-      </div>
-      </div>
+      </div>    
+     </section>
 
-      <div id="faq">
-<div  className="bg-white py-16 px-4 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
-        {/* FAQ Section */}
-        <div>
-          <h2 className="text-2xl font-bold text-center text-green-700 mb-6">FAQS</h2>
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-gray-300 mb-4 p-4 rounded-md cursor-pointer bg-white shadow"
-              onClick={() => toggleFaq(index)}
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="font-bold text-lg">{faq.question}</h3>
-                <span className="text-xl">{openIndex === index ? "▲" : "▼"}</span>
-              </div>
-              {openIndex === index && (
-                <p className="mt-2 text-gray-700">{faq.answer}</p>
-              )}
-            </div>
-          ))}
-        </div>
+      <section>
+        <div id="gallery">
+          <div  className="py-16 bg-gradient-to-b from-blue-50 via-transparent to-blue-50  flex justify-center">
+            <div className="w-full max-w-6xl px-4">
+              <h2 className="text-4xl header font-bold text-center mb-10">Gallery</h2>
 
-        {/* Contact Form */}
-        <div>
-          <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">HAVE QUESTIONS?</h2>
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  className="border border-gray-300 px-4 py-2 w-full rounded-md"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-                {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="border border-gray-300 px-4 py-2 w-full rounded-md"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
-              </div>
-            </div>
-            <div>
-              <textarea
-                name="message"
-                placeholder="Enter Your Message"
-                className="border border-gray-300 px-4 py-2 w-full rounded-md h-32"
-                value={formData.message}
-                onChange={handleChange}
-              ></textarea>
-              {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
-            </div>
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-bold"
+              <Swiper
+                effect="coverflow"
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView="auto"
+                coverflowEffect={{
+                  rotate: 30,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                  slideShadows: true,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[EffectCoverflow, Pagination]}
+                className="rounded-lg"
               >
-                SUBMIT
-              </button>
+                {images.map((image, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className="flex justify-center items-center w-[300px] md:w-[400px] lg:w-[500px]"
+                  >
+                    <img
+                      src={image}
+                      alt={`Slide ${index + 1}`}
+                      className="rounded-lg shadow-xl w-full h-[600px] object-cover"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Custom Pagination Bullet Styling */}
+              <style>
+                {`
+            .swiper-pagination-bullet {
+              background-color: white;
+              width: 12px;
+              height: 12px;
+              opacity: 0.6;
+              transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            .swiper-pagination-bullet-active {
+              background-color: #3b82f6; /* Tailwind's blue-500 */
+              opacity: 1;
+              transform: scale(1.2);
+            }
+          `}
+              </style>
             </div>
-          </form>
+          </div>
         </div>
+      </section>
+     
+      <section>
+        <div id="latest-news">
+          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50  py-16 px-4">
+            <h2 className="text-4xl text-center header font-bold  mb-12">Latest News</h2>
 
-        <ToastContainer
-          position="top-center"
-          transition={Flip}
-          autoClose={3000}
-          hideProgressBar={true}
-          closeOnClick
-          pauseOnHover
-          draggable
-        />
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* News Item 1 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/10/28/16/36/raisting-satellite-1010862_1280.jpg"
+                  alt="Satellite Launch"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">New Satellite Launch Announced</h3>
+                  <p className="text-sm text-black">The agency confirms the launch date for its newest Earth observation satellite.</p>
+                </div>
+              </div>
 
-      </div>
-      </div>     
+              {/* News Item 2 */}
+              <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
+                <h3 className="text-xl font-semibold mb-2">CSTD Hosts Innovation Workshop</h3>
+                <p className="text-sm text-black">
+                  Researchers gathered to explore future technologies in climate monitoring, AI, and nanosatellite systems.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet porro temporibus debitis quos ratione ex, sapiente aspernatur nemo dignissimos esse, alias culpa veritatis officia obcaecati molestias non reiciendis quam repudiandae.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vitae, dicta sint aliquam quam neque ipsum fugiat eos commodi ratione, veritatis provident voluptatem placeat molestiae consectetur odio aliquid quae suscipit?
+                </p>
+              </div>
+
+              {/* News Item 3 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                <img
+                  src="https://cdn.pixabay.com/photo/2012/11/28/09/08/mars-67522_1280.jpg"
+                  alt="Research Collaboration"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">Nigeria Partners with EU on Space Tech</h3>
+                  <p className="text-sm text-black">A new partnership with the European Union aims to boost R&D in sustainable satellite systems.</p>
+                </div>
+              </div>
+
+              {/* News Item 4 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                <img
+                  src="https://cdn.pixabay.com/photo/2022/01/09/10/19/satellite-6925679_1280.jpg"
+                  alt="Tech Demo"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">Technology Demonstration in Abuja</h3>
+                  <p className="text-sm text-black">Live demo of unmanned aerial systems for disaster response and agriculture mapping.</p>
+                </div>
+              </div>
+
+              {/* News Item 5 */}
+              <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
+                <h3 className="text-xl font-semibold mb-2">CSTD Scientist Wins Award</h3>
+                <p className="text-sm text-black">
+                  Dr. Adewale received the KARI innovation medal for outstanding contributions in nanosatellite development.
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni facilis facere natus quae. Perspiciatis, ea blanditiis amet nihil eius qui rerum aut ad illum doloremque quisquam quae quam iure suscipit.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores obcaecati ea ipsam voluptates consectetur minima repudiandae facere, explicabo, enim reiciendis deleniti vitae totam. Ducimus recusandae ipsam, iusto veniam quisquam incidunt.
+                </p>
+              </div>
+
+              {/* News Item 6 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                <img
+                  src="https://cdn.pixabay.com/photo/2012/11/28/11/25/satellite-67718_1280.jpg"
+                  alt="STEM Outreach"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">STEM Outreach Hits 50 Schools</h3>
+                  <p className="text-sm text-black">The space center reaches students nationwide with its science and satellite education campaign.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div id="FAQ-section">
+          <div  className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50  py-16 px-4 lg:px-20 grid grid-cols-1 text-black lg:grid-cols-2 gap-10">
+            <div className={`col-span-1 ${!isRevealFAQ ? "hidden" : "slide-in-left overflow-hidden"}`}>
+              <h2 className="text-2xl font-bold text-center header mb-6">FAQS</h2>
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border border-gray-300 mb-4 p-4 rounded-md cursor-pointer bg-white shadow"
+                  onClick={() => toggleFaq(index)}
+                >
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-bold text-lg">{faq.question}</h3>
+                    <span className="text-xl">{openIndex === index ? "▲" : "▼"}</span>
+                  </div>
+                  {openIndex === index && (
+                    <p className="mt-2 text-gray-700">{faq.answer}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className={`col-span-1 ${!isRevealFAQ ? "hidden" : "slide-in-right overflow-hidden"}`}>
+              <h2 className="text-2xl font-bold header mb-6 text-center">HAVE QUESTIONS?</h2>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      className="border border-gray-300 px-4 py-2 w-full rounded-md"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                    {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      className="border border-gray-300 px-4 py-2 w-full rounded-md"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                    {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+                  </div>
+                </div>
+                <div>
+                  <textarea
+                    name="message"
+                    placeholder="Enter Your Message"
+                    className="border border-gray-300 px-4 py-2 w-full rounded-md h-32"
+                    value={formData.message}
+                    onChange={handleChange}
+                  ></textarea>
+                  {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+                </div>
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-bold"
+                  >
+                    SUBMIT
+                  </button>
+                </div>
+              </form>
+            </div>
+            <ToastContainer position="top-center" transition={Flip} autoClose={3000} hideProgressBar={true} closeOnClick pauseOnHover draggable />
+          </div>
+        </div>     
+      </section>
+    </div>
     </div>
   );
 };

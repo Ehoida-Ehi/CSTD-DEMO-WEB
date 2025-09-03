@@ -123,7 +123,6 @@
         .about-visual {
             position: relative;
             height: 100%;
-            background: white;
             border-radius: 24px;
             overflow: hidden;
             display: flex;
@@ -157,36 +156,109 @@
             0%, 100% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.1); opacity: 1; }
         }
-                .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
-
-        /* .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .slide-in-left {
             opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease;
+            animation: slideInFromLeft .8s ease-out forwards;
+            animation-delay: 0s;
         }
-
-        .slide-in-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
         .slide-in-right {
             opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s ease;
+            animation: slideInFromRight .8s ease-out forwards;
+            animation-delay: 0s;
+        }
+        .slide-in-top {
+            opacity: 0;
+            animation: slideInFromTop .8s ease-out forwards;
+            animation-delay: 0s;
+        }
+        .slide-in-bottom {
+            opacity: 0;
+            animation: slideInFromBottom .8s ease-out forwards;
+            animation-delay: 0s;
+        }
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-green: #10b981;
+            --dark-green: #065f46;
+            --gold: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #10b981 100%);
+            --gradient-secondary: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+        }
+        .value-card {
+            background: white;
+            border: 1px solid var(--gradient-primary);
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+         .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
-        .slide-in-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        } */
-  
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
