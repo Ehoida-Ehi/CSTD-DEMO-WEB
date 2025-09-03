@@ -1,12 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import cstdImg from '../assets/images/cstd logoogo.png';
+import { useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 
 export default function Navbar() {
+  const [isSmallScreen, setSmallScreen] = useState(false)
  
   return (
     <nav className="fixed top-0 left-0 w-full bg-slate-950 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="text-left">
@@ -50,6 +53,14 @@ export default function Navbar() {
             <span>|</span>
             <Link to="/#events" className="hover:text-green-600">Events</Link>
           </div>
+
+          <div className="lg:hidden flex">
+            <RxHamburgerMenu className="text-3xl" />
+            {isSmallScreen ? (
+              <div></div>
+            ) : null}
+          </div>
+          
         </div>
       </div>
     </nav>

@@ -261,10 +261,10 @@ const StatNumber = ({ target }) => {
               autoPlay
             />
         <div className="absolute inset-0 flex flex-col items-center space-y-3 justify-center text-center text-white bg-black bg-opacity-40 px-4">
-          <h1 className="lg:text-3xl text-2xl md:text-5xl lg:px-20 font-bold mb-8">
+          <h1 className="text-3xl md:text-5xl px-20 font-bold mb-8">
             CENTER FOR SATELLITE TECHNOLOGY DEVELOPEMENT
           </h1>
-          <p className="mx-auto lg:px-44 text-sm lg:text-lg">Pioneering Nigeria's space frontier through advanced satellite technology, cutting-edge research, and innovation that propels our nation toward a sustainable space-based future.</p>
+          <p className="mx-auto px-44">Pioneering Nigeria's space frontier through advanced satellite technology, cutting-edge research, and innovation that propels our nation toward a sustainable space-based future.</p>
           <a
             href="/about"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300"
@@ -281,15 +281,13 @@ const StatNumber = ({ target }) => {
       </div>      
       
       <section>
-        <div className={`w-full text-black bg-blue-50 p-6 lg:p-8`} id="about-section">
-          <div className="grid lg:grid-cols-2 gap-5">
-            <div className={`about-content lg:col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
+        <div className={`container text-black bg-blue-50 p-8`} id="about-section">
+          <div className="grid grid-cols-2 gap-5">
+            <div className={`about-content col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
               <h2 className="header">About CSTD</h2>
-             <div className="text-sm lg:text-lg">
               <p>The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
               <p>We work closely with international partners and local institutions to advance Nigeria's space capabilities through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria's space technology and empowering the next generation of aerospace professionals.</p>
-             </div>
-              <div className="grid lg:grid-cols-2 grid-cols-1 gap-[2rem] mt-[2rem]">
+              <div className="about-stats">
                   <div className="stat-item">
                     <div className="flex items-center justify-center space-x-5">
                       <StatNumber target={20} />
@@ -321,9 +319,9 @@ const StatNumber = ({ target }) => {
                   </div>
               </div>
           </div>
-          <div className={`about-content bg-blue-50 lg:col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-right overflow-hidden"}`}>
-            <div className="about-visual my-auto align-middle bg-blue-50">
-              <img src={nigImg} className="flex icon lg:w-[24rem] w-[16rem]" alt="Image not Available" />
+          <div className={`about-content bg-blue-50 col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-right overflow-hidden"}`}>
+            <div className="about-visual bg-blue-50">
+              <img src={nigImg} className="flex icon w-[24rem]" alt="Image not Available" />
             </div>
           </div>
           </div>                
@@ -333,8 +331,8 @@ const StatNumber = ({ target }) => {
       <section>
         <div className="space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 p-2" id={"value-section"}>
           <h2 className="text-4xl font-bold header text-center">OUR VALUES</h2>
-          <p className="text-gray-800 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
-          <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 px-10 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+          <p className="text-gray-800 text-center">We operate under this set of core values to guide us on our mission and activities.</p>
+          <div className={`grid grid-cols-3 gap-6 px-20 py-10 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
              {values.map((val, index) => (
               <div key={index} className="value-card text-black rounded-lg col-span-1 items-center flex flex-col space-y-4">
                 <div className="border rounded-lg p-10">
@@ -369,39 +367,31 @@ const StatNumber = ({ target }) => {
       </section>
       
       <section>
-        <div id="leadership" className="space-y-10 lg:p-8 p-4 bg-blue-50">
+        <div id="leadership" className="space-y-10 p-8 bg-blue-50">
           <div  className="py-10 bg-blue-50 px-4">
             <div className="mb-10 text-black flex flex-col gap-5">
               <h1 className="text-4xl text-center header font-bold">Our Leadership</h1>
-              <p className="lg:p-12 lg:text-lg text-sm text-center">Visionary leadership driving Nigeria's space technology advancement</p>
+              <p className="p-12 text-center">Visionary leadership driving Nigeria's space technology advancement</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-5 border rounded-lg lg:p-6 p-2 shadow-lg bg-gradient-to-b lg:bg-gradient-to-r from-blue-950 via-transparent to-blue-50">   
+            <div className="grid grid-cols-1 md:grid-cols-5 border rounded-lg p-6 shadow-lg bg-gradient-to-r from-blue-950 via-transparent to-blue-50">   
               <div className="flex items-center justify-center col-span-2">
                 <img
                   src={sadqUmarImg}
                   alt="CSTD CEO"
-                  className="lg:h-[300px] h-[200px] object-cover"
+                  className="h-[300px] object-cover"
                 />
               </div>
 
-              <div className="flex flex-col justify-center lg:px-8 md:px-16 col-span-3">                
-                <div className="text-center">
-                  <h1 className="text-lg font-bold text-black mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
-                  <p className="lg:text-lg text-sm text-black mb-6">
-                    THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD
-                  </p>
-                </div>
-                <p className="hidden lg:block text-black font-semibold lg:text-lg text-sm p-2">
+              <div className="flex flex-col justify-center text-center px-8 md:px-16 col-span-3">                
+                <h1 className="text-lg font-bold text-black mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
+                <p className="text-lg text-black mb-6">
+                  THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD
+                </p>
+                <p className="text-black font-semibold text-lg">
                   Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest in satellite systems.
 
                   Dr. Umar’s key focus is incentivising research activities that accelerate sustainable national development. Hence, the management and staff of CSTD emphasise the importance of research, innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.
                 </p>
-                <div className="lg:hidden space-y-5 text-black font-semibold lg:text-lg text-sm p-2">
-                  <p>Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, the centre is repositioning itself as an engine of national development.</p>
-                  <p>The centre has prioritised community outreach to address grassroots challenges and stimulate the academic interest in satellite systems.</p>
-                  <p>Dr. Umar’s key focus is incentivising research activities that accelerate sustainable national development.</p>
-                  <p>Hence, the management and staff of CSTD emphasise the importance of research, innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.</p>
-                </div>
               </div>
 
             </div>
@@ -413,7 +403,7 @@ const StatNumber = ({ target }) => {
       <section  className="bg-blue-50 py-4 px-4 text-white" id="departments">
         <div className="my-10" id="dept-section">
           <h2 className="text-4xl font-bold text-center header">Our Departments</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 p-6 lg:px-32">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 px-32">
             {departments.map((dept, index) => (
               <div key={index} className={`relative bg-white text-black rounded-lg shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
                 {/* Image Div */}
@@ -702,6 +692,270 @@ const StatNumber = ({ target }) => {
 
 export default Home;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add global background color to the body */
+/* body {
+    @apply bg-gray-100;
+  } */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
+
+   body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--dark-bg);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .Someanimation {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 255, 136, 0.1) 0%, transparent 70%),
+                        linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .Someanimation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 136, 0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(0, 212, 255, 0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.1), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(0, 255, 136, 0.2), transparent);
+            background-repeat: repeat;
+            background-size: 150px 100px;
+            animation: stars 20s linear infinite;
+        }
+
+        @keyframes stars {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        /* Header */
+        .header {
+          color: #15008b;        
+          padding: 1rem 0;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .statNumber {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-self: center;
+            justify-content: center;
+        }
+        .smBoxShadow {
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+          align-self: center;
+          height: 80%;
+        }
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            align-self: center;
+        }
+
+        .about-visual .icon {
+            opacity: 0.8;
+            animation: pulse 4s ease-in-out infinite;
+            align-self: center;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            animation: slideInFromLeft .8s ease-out forwards;
+            animation-delay: 0s;
+        }
+        .slide-in-right {
+            opacity: 0;
+            animation: slideInFromRight .8s ease-out forwards;
+            animation-delay: 0s;
+        }
+        .slide-in-top {
+            opacity: 0;
+            animation: slideInFromTop .8s ease-out forwards;
+            animation-delay: 0s;
+        }
+        .slide-in-bottom {
+            opacity: 0;
+            animation: slideInFromBottom .8s ease-out forwards;
+            animation-delay: 0s;
+        }
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-green: #10b981;
+            --dark-green: #065f46;
+            --gold: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #10b981 100%);
+            --gradient-secondary: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+        }
+        .value-card {
+            background: white;
+            border: 1px solid var(--gradient-primary);
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+         .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
 
 
 
