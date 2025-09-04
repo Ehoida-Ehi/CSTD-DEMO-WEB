@@ -16,6 +16,44 @@
             line-height: 1.6;
         }
 
+        @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --font-sans: var(--font-geist-sans);
+        --font-mono: var(--font-geist-mono);
+        }
+        @font-face {
+        font-family: 'Roboto';
+        src: url("/public/fonts/Roboto.woff2") format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: 'Lobster';
+        src: url("/public/fonts/Lobster.woff2") format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: 'Odibee_Sans';
+        src: url("/public/fonts/Odibee-Sans.woff2") format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        }
+
+        .roboto{
+        font-family: var(--font-roboto), sans-serif;
+        }
+        .lobster{
+        font-family:  var(--font-lobster), cursive;;
+        }
+        .odibee{
+        font-family: var(--font-odibee), Arial, Helvetica, sans-serif;
+        }
+        .saira{
+        font-family: var(--font-saira), Arial, Helvetica, sans-serif;
+        }
+
         /* Animated Background */
         .Someanimation {
             width: 100%;
@@ -196,6 +234,17 @@
                 opacity: 1;
             }
         }
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1.0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1.0);
+            }
+        }
 
         .slide-in-left {
             opacity: 0;
@@ -261,4 +310,9 @@
         .value-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .transPic:hover{
+            transform: scale(1);
+            transition: transform 3s ease-in-out;
+            animation: zoomIn 3s forwards;
         }

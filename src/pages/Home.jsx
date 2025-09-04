@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
 import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
+import { FaChevronDown } from "react-icons/fa6";
+import { FaAngleUp } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import useRevealOnScroll from "../components/RevealnScroll";
@@ -29,6 +31,8 @@ import professionalism from "../assets/images/professionals.png"
 import projectImg from '../assets/images/drone-2879538_1280.jpg';
 import environmentImg from '../assets/images/environment-7412967_1280.jpg';
 import partnershipImg from '../assets/images/pbusiness-7768170_1280.jpg';
+
+import nasrdaImg from "../assets/images/NASRDA-Logo_N2.png"
 
 import {departmentsDetails, homeImages} from '../utils/images';
 // import { set } from "react-datepicker/dist/date_utils";
@@ -417,14 +421,14 @@ const StatNumber = ({ target }) => {
             {departments.map((dept, index) => (
               <div key={index} className={`relative bg-white text-black rounded-lg shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
                 {/* Image Div */}
+                  <h3 className="lg:hidden text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
                   <img
                     src={dept.image}
                     alt={dept.title}
-                    className="w-full h-[45%] rounded-t-lg object-cover"
+                    className="w-full lg:h-[65%] rounded-b-lg lg:rounded-t-lg object-cover"
                   />
                 {/* Title */}
-                <h3 className="text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
-
+                <h3 className="hidden lg:block text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
               </div>
             ))}
           </div>
@@ -437,14 +441,15 @@ const StatNumber = ({ target }) => {
           <h2 className="text-4xl font-bold text-center mb-20 header">
             Our Key Initiatives
           </h2>
-          <div className="max-w-7xl mx-auto grid grid-cols-1 px-20 md:grid-cols-3 gap-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:px-20 px-6 md:grid-cols-3 lg:h-[50vh] gap-8 relative">
             {/* Project 1 */}
-            <div className="flex flex-col items-center text-center">
-              <img
-                src={projectImg}
-                alt="Our Projects"
-                className="rounded-lg shadow-md mb-4"
-              />
+            <div className="flex flex-col items-center text-center lg:absolute lg:w-[25%] rounded-lg lg:left-10 top-30vh">
+              <div className="rounded overflow-hidden h-full w-full border">
+                <img
+                  src={projectImg}
+                  alt="Our Projects"
+                  className="shadow-md w-full h-full transPic"/>
+              </div>
               <h3 className="text-xl font-semibold text-black">Our Projects</h3>
               <p className="text-sm mt-2 text-black">
                 Advancing satellite platforms, remote sensing, and mission operations.
@@ -452,12 +457,13 @@ const StatNumber = ({ target }) => {
             </div>
 
             {/* Project 2 */}
-            <div className="flex flex-col items-center text-center">
-              <img
-                src={environmentImg}
-                alt="Research on Sustainable Energy Systems"
-                className="rounded-lg shadow-md mb-4"
-              />
+            <div className="flex flex-col items-center text-center lg:absolute lg:w-[25%] rounded-lg lg:right-[29rem] top-30vh">
+              <div className="rounded overflow-hidden h-full w-full border">
+                <img
+                  src={environmentImg}
+                  alt="Research on Sustainable Energy Systems"
+                  className="shadow-md w-full h-full transPic"/>
+              </div>
               <h3 className="text-xl font-semibold text-black">Research on Sustainable Energy Systems</h3>
               <p className="text-sm mt-2 text-black ">
                 Exploring renewable energy through satellite-enabled technologies.
@@ -465,12 +471,13 @@ const StatNumber = ({ target }) => {
             </div>
 
             {/* Project 3 */}
-            <div className="flex flex-col items-center text-center">
-              <img
-                src={partnershipImg}
-                alt="Global Partnerships"
-                className="rounded-lg shadow-md mb-4"
-              />
+            <div className="flex flex-col items-center text-center lg:absolute lg:w-[25%] rounded-lg lg:right-10">
+              <div className="rounded overflow-hidden h-full w-full border">
+                <img
+                  src={partnershipImg}
+                  alt="Global Partnerships"
+                  className="shadow-md w-full h-full transPic"/>
+              </div>
               <h3 className="text-xl font-semibold text-black">Global Partnerships</h3>
               <p className="text-sm mt-2 text-black">
                 Collaborating with international agencies to expand innovation and impact.
@@ -543,79 +550,52 @@ const StatNumber = ({ target }) => {
      
       <section>
         <div id="latest-news">
-          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50  py-16 px-4">
+          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50  lg:py-16 px-4">
             <h2 className="text-4xl text-center header font-bold  mb-12">Latest News</h2>
 
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* News Item 1 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative bg-gradient-to-t from-blue-100 to-blue-50">
                 <img
                   src="https://cdn.pixabay.com/photo/2015/10/28/16/36/raisting-satellite-1010862_1280.jpg"
                   alt="Satellite Launch"
-                  className="w-full h-48 object-cover"
+                  className="w-full h-[50%] object-cover"
                 />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">New Satellite Launch Announced</h3>
-                  <p className="text-sm text-black">The agency confirms the launch date for its newest Earth observation satellite.</p>
+                <div className="p-4 text-black mb-10">
+                  <h3 className="text-xl font-semibold mb-2 underline">New Satellite Launch Announced</h3>
+                  <p className="text-sm">The agency confirms the launch date for its newest Earth observation satellite.</p>
+                  <p className="rounded-lg bg-gradient-to-b from-blue-950 to-blue-600 text-white cursor-pointer my-3 border p-2 text-sm w-fit mx-auto hover:animate-pulse shadow-lg">Read More</p>
+                  <p className="roboto font-extrabold text-sm my-5 absolute bottom-5">1 August 2015</p>
                 </div>
               </div>
 
               {/* News Item 2 */}
-              <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold mb-2">CSTD Hosts Innovation Workshop</h3>
-                <p className="text-sm text-black">
-                  Researchers gathered to explore future technologies in climate monitoring, AI, and nanosatellite systems.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet porro temporibus debitis quos ratione ex, sapiente aspernatur nemo dignissimos esse, alias culpa veritatis officia obcaecati molestias non reiciendis quam repudiandae.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vitae, dicta sint aliquam quam neque ipsum fugiat eos commodi ratione, veritatis provident voluptatem placeat molestiae consectetur odio aliquid quae suscipit?
-                </p>
+              <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition text-black relative bg-gradient-to-t from-blue-100 to-blue-50">
+                <img
+                  src={nasrdaImg}
+                  alt="Satellite Launch"
+                  className="w-full h-[50%] bg-blue-950 object-contain"
+                />
+                <div className="p-4 mb-10">
+                  <h3 className="text-xl font-semibold mb-2 underline">CSTD Hosts Innovation Workshop</h3>
+                  <p className="text-sm">Researchers gathered to explore future technologies in climate monitoring, AI, and nanosatellite systems.</p>
+                  <p className="rounded-lg bg-gradient-to-b from-blue-950 to-blue-600 text-white cursor-pointer my-3 border p-2 text-sm w-fit mx-auto hover:animate-pulse shadow-lg">Read More</p>
+                  <p className="roboto font-extrabold text-sm my-5 absolute bottom-5">1 August 2015</p>
+                </div>
               </div>
 
               {/* News Item 3 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition text-black relative bg-gradient-to-t from-blue-100 to-blue-50">
                 <img
                   src="https://cdn.pixabay.com/photo/2012/11/28/09/08/mars-67522_1280.jpg"
                   alt="Research Collaboration"
-                  className="w-full h-48 object-cover"
+                  className="w-full h-[50%] object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">Nigeria Partners with EU on Space Tech</h3>
+                  <h3 className="text-xl font-semibold mb-2 underline">Nigeria Partners with EU on Space Tech</h3>
                   <p className="text-sm text-black">A new partnership with the European Union aims to boost R&D in sustainable satellite systems.</p>
-                </div>
-              </div>
-
-              {/* News Item 4 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                <img
-                  src="https://cdn.pixabay.com/photo/2022/01/09/10/19/satellite-6925679_1280.jpg"
-                  alt="Tech Demo"
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">Technology Demonstration in Abuja</h3>
-                  <p className="text-sm text-black">Live demo of unmanned aerial systems for disaster response and agriculture mapping.</p>
-                </div>
-              </div>
-
-              {/* News Item 5 */}
-              <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold mb-2">CSTD Scientist Wins Award</h3>
-                <p className="text-sm text-black">
-                  Dr. Adewale received the KARI innovation medal for outstanding contributions in nanosatellite development.
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni facilis facere natus quae. Perspiciatis, ea blanditiis amet nihil eius qui rerum aut ad illum doloremque quisquam quae quam iure suscipit.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores obcaecati ea ipsam voluptates consectetur minima repudiandae facere, explicabo, enim reiciendis deleniti vitae totam. Ducimus recusandae ipsam, iusto veniam quisquam incidunt.
-                </p>
-              </div>
-
-              {/* News Item 6 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                <img
-                  src="https://cdn.pixabay.com/photo/2012/11/28/11/25/satellite-67718_1280.jpg"
-                  alt="STEM Outreach"
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">STEM Outreach Hits 50 Schools</h3>
-                  <p className="text-sm text-black">The space center reaches students nationwide with its science and satellite education campaign.</p>
+                  <p className="rounded-lg bg-gradient-to-b from-blue-950 to-blue-600 text-white cursor-pointer my-3 border p-2 text-sm w-fit mx-auto hover:animate-pulse shadow-lg">Read More</p>
+                  <p className="roboto font-extrabold text-sm my-5 absolute bottom-5">1 August 2015</p>
                 </div>
               </div>
             </div>
@@ -635,8 +615,8 @@ const StatNumber = ({ target }) => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex justify-between items-center">
-                    <h3 className="font-bold text-lg">{faq.question}</h3>
-                    <span className="text-xl">{openIndex === index ? "▲" : "▼"}</span>
+                    <h3 className="font-semibold text-lg w-[80%]">{faq.question}</h3>
+                    <span className="text-xl">{openIndex === index ? (<FaAngleUp />) : (<FaChevronDown />)}</span>
                   </div>
                   {openIndex === index && (
                     <p className="mt-2 text-gray-700">{faq.answer}</p>
