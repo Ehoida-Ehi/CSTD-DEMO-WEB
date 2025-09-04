@@ -1,11 +1,30 @@
 import { Link, useLocation } from "react-router-dom";
 import cstdImg from '../assets/images/cstd logoogo.png';
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 
 export default function Navbar() {
   const [isSmallScreen, setSmallScreen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+        setSmallScreen(false)
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
  
   return (
     <nav className="fixed top-0 left-0 w-full bg-slate-950 z-50">
@@ -55,9 +74,39 @@ export default function Navbar() {
           </div>
 
           <div className="lg:hidden flex">
-            <RxHamburgerMenu className="text-3xl" />
+            <RxHamburgerMenu className="text-xl z-50" onClick={()=>{setSmallScreen(true); setIsOpen(true)}}/>
             {isSmallScreen ? (
-              <div></div>
+              <div>
+                {isOpen && (<div className="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>)}
+                <div className="lg:hidden text-md bg-white fixed z-30 left-32 text-black top-[4rem]">
+                  <div className="relative">
+                    <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
+                        {/** Navigation Items with Dropdown */}
+                      <Link to="/" className="">
+                        Home
+                        <span className=""></span>
+                      </Link>
+                      <Link to="/About" className="">
+                        About Us
+                        <span className=""></span>
+                      </Link>
+                      <Link to="/RnI" className="">
+                        Research & Innovation
+                        <span className=""></span>
+                      </Link>
+                      <a href="#departments" className="">
+                        Departments
+                        <span className=""></span>
+                      </a>
+                      <Link to="/Contact" className="">
+                        Contact Us
+                        <span className=""></span>
+                      </Link>  
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
             ) : null}
           </div>
           
