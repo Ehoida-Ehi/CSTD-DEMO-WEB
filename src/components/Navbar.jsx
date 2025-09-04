@@ -78,7 +78,7 @@ export default function Navbar() {
             {isSmallScreen ? (
               <div>
                 {isOpen && (<div className="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>)}
-                <div className="lg:hidden text-md bg-white fixed z-30 left-32 text-black top-[4rem]">
+                <div className="lg:hidden text-md bg-white fixed z-30 right-0 w-[55%] text-black top-[4rem]">
                   <div className="relative">
                     <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
                         {/** Navigation Items with Dropdown */}
