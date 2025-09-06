@@ -2,12 +2,15 @@ import { Link, useLocation } from "react-router-dom";
 import cstdImg from '../assets/images/cstd logoogo.png';
 import { useEffect, useRef, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import axios from "axios";
 
 
 export default function Navbar() {
   const [isSmallScreen, setSmallScreen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null);
+
+  // const BASEURL = "https://cstd-backend-server.onrender.com/api/CSTDsite"
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -25,6 +28,19 @@ export default function Navbar() {
 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
+
+  // useEffect(()=>{
+  //   const getNavPages = async(e)=>{
+  //     try {
+  //       const resp = await axios.get(`${BASEURL}/pages/links`)
+  //       setNavPages(resp.data)
+  //       console.log(resp.data)
+  //     } catch (error) {
+  //       console.error("Failed to fetch: ", error)
+  //     }
+  //   }
+  //   getNavPages()
+  // },[])
  
   return (
     <nav className="fixed top-0 left-0 w-full bg-slate-950 z-50">
@@ -78,7 +94,7 @@ export default function Navbar() {
             {isSmallScreen ? (
               <div>
                 {isOpen && (<div className="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>)}
-                <div className="lg:hidden text-md bg-white fixed z-30 right-0 w-[55%] text-black top-[4rem]">
+                <div className="lg:hidden text-md bg-gradient-to-bl from-blue-50 via-blue-300 to-blue-900 rounded-bl-lg fixed z-30 right-0 w-[55%] h-[65%] text-black top-[4rem]">
                   <div className="relative">
                     <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
                         {/** Navigation Items with Dropdown */}
