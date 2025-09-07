@@ -10,7 +10,7 @@ import SatX from './pages/SatX';
 import Media from './pages/Media';
 import RnI from './pages/RnI';
 
-import { NavPageContext } from './context/NavPageContext';
+import { NavPageContext, NavPageProvider } from './context/NavPageContext';
 import { useContext } from 'react';
 import DynamicPage from './pages/DynamicPage';
 const Content = () => {
@@ -18,34 +18,20 @@ const Content = () => {
   
   return (
     <>
-
-      <Navbar />
+      <Navbar navPages={navPages}/>
       <Routes>
-        {/* Home Page */}
         <Route path="/" element={<Home />} />
-        {/* <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Media" element={<Media />} />
-        <Route path="/Sat1" element={<Sat1 />} />
-        <Route path="/Sat2" element={<Sat2 />} />
-        <Route path="/SatX" element={<SatX />} />
-        <Route path="/RnI" element={<RnI />} /> */}
         {navPages ? (
           navPages.map((navPage)=>{
-            <Route key={navPage._id} path={`/${navPage.pageId}`} element={<DynamicPage />}  />
+            return(
+            <Route key={navPage._id} path={`${navPage.path}`} element={<DynamicPage page={navPage} />}  />  
+            )
+            
           })
-        ) : (<p>Unable to Load Pages</p>)}
-
+          ) : (<p>Unable to Load Pages</p>)
+        }
       </Routes>
       <Footer />
-
-
-
-
-
-
-
-
     </>
   );
 };
@@ -53,7 +39,9 @@ const Content = () => {
 const App = () => {
   return (
     <Router>
-      <Content />
+      <NavPageProvider>
+        <Content />
+      </NavPageProvider>
     </Router>
   );
 };

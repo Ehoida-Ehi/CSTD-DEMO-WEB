@@ -1,14 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
 import cstdImg from '../assets/images/cstd logoogo.png';
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import axios from "axios";
+import { NavPageContext } from "../context/NavPageContext";
 
 
-export default function Navbar() {
+export default function Navbar({navPages}) {
   const [isSmallScreen, setSmallScreen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null);
+
+  // const {navPages, setNavPages} = useContext(NavPageContext)
 
   // const BASEURL = "https://cstd-backend-server.onrender.com/api/CSTDsite"
 
@@ -62,24 +65,19 @@ export default function Navbar() {
               Home
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link to="/About" className="text-white hover:text-green-600 relative group">
-              About Us
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <SatelliteDropdown />
-            <Link to="/RnI" className="text-white hover:text-green-600 relative group">
-              Research & Innovation
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <a href="#departments" className="text-white hover:text-green-600 relative group">
-              Departments
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <Dropdown label="Media" items={["News", "Gallery", "Videos"]} />
-            <Link to="/Contact" className="text-white hover:text-green-600 relative group">
-              Contact Us
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            {navPages ? (
+              navPages.map((navPage)=>(
+                <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
+                    {/** Navigation Items with Dropdown */}
+                  <Link key={navPage._id} to={`/${navPage.pageId}`} className="">
+                    {navPage.pageName}
+                    <span className=""></span>
+                  </Link>    
+                </div>
+                ))) 
+                :
+                (<div>No Pages Found</div>)
+            }
           </div>
 
           {/* Right Side - News/Events */}
@@ -96,29 +94,40 @@ export default function Navbar() {
                 {isOpen && (<div className="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>)}
                 <div className="lg:hidden text-md bg-gradient-to-bl from-blue-50 via-blue-300 to-blue-900 rounded-bl-lg fixed z-30 right-0 w-[55%] h-[65%] text-black top-[4rem]">
                   <div className="relative">
-                    <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
+                     <Link to="/" className="">
+                      Home
+                      <span className=""></span>
+                    </Link>
+                    {navPages ? (
+                      navPages.map((navPage)=>(
+                        <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
                         {/** Navigation Items with Dropdown */}
-                      <Link to="/" className="">
-                        Home
-                        <span className=""></span>
-                      </Link>
-                      <Link to="/About" className="">
-                        About Us
-                        <span className=""></span>
-                      </Link>
-                      <Link to="/RnI" className="">
-                        Research & Innovation
-                        <span className=""></span>
-                      </Link>
-                      <a href="#departments" className="">
-                        Departments
-                        <span className=""></span>
-                      </a>
-                      <Link to="/Contact" className="">
-                        Contact Us
-                        <span className=""></span>
-                      </Link>  
-                    </div>
+                          <Link key={navPage._id} to={`/${navPage.pageId}`} className="">
+                            {navPage.pageName}
+                            <span className=""></span>
+                          </Link>    
+                          {/* 
+                          <Link to="/About" className="">
+                            About Us
+                            <span className=""></span>
+                          </Link>
+                          <Link to="/RnI" className="">
+                            Research & Innovation
+                            <span className=""></span>
+                          </Link>
+                          <a href="#departments" className="">
+                            Departments
+                            <span className=""></span>
+                          </a>
+                          <Link to="/Contact" className="">
+                            Contact Us
+                            <span className=""></span>
+                          </Link>   */}
+                        </div>
+                      ))
+                      
+                    ) : (<p>Unable to load pages</p>)}
+                    
                   </div>
                   
                 </div>
