@@ -31,7 +31,7 @@ const DynamicPage =({page}) =>{
               {section.images.map((img, i) => (
                 <img
                   key={i}
-                  src={img}
+                  src={img.url}
                   alt={`${section.title} ${i + 1}`}
                   className="rounded-lg shadow-md"
                 />
