@@ -24,7 +24,7 @@ const Content = () => {
         {navPages ? (
           navPages.map((navPage)=>{
             return(
-            <Route key={navPage._id} path={`${navPage.path}`} element={<DynamicPage page={navPage} />}  />  
+            <Route key={navPage._id} path={navPage.path} element={<DynamicPage page={navPage} />}  />  
             )
             
           })

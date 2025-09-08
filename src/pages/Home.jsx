@@ -316,7 +316,7 @@ const StatNumber = ({ target }) => {
                       
                       <p className="stat-label">Satellite Projects</p>
                   </div>
-                  <div class="stat-item">
+                  <div className="stat-item">
                     <div className="flex items-center justify-center space-x-5">
                       <StatNumber target={50} />
                       <img src={partners} width={40} alt="" />

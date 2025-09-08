@@ -69,7 +69,7 @@ export default function Navbar({navPages}) {
               navPages.map((navPage)=>(
                 <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
                     {/** Navigation Items with Dropdown */}
-                  <Link key={navPage._id} to={`/${navPage.pageId}`} className="">
+                  <Link key={navPage._id} to={navPage.path} className="">
                     {navPage.pageName}
                     <span className=""></span>
                   </Link>    

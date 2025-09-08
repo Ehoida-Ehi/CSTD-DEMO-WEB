@@ -14,7 +14,6 @@ export function NavPageProvider({children}){
         const resp = await axios.get(`${BASEURL}/pages/links`)
         setNavPages(resp.data.data)
         console.log(resp.data.data)
-        
       } catch (error) {
         console.error("Failed to fetch: ", error)
       }
