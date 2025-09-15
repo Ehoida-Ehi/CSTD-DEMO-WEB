@@ -9,6 +9,7 @@ import Sat2 from './pages/Sat2';
 import SatX from './pages/SatX';
 import Media from './pages/Media';
 import RnI from './pages/RnI';
+import Gallery from './pages/Gallery';
 
 
 const Content = () => {
@@ -29,10 +30,10 @@ const Content = () => {
         <Route path="/Sat2" element={<Sat2 />} />
         <Route path="/SatX" element={<SatX />} />
         <Route path="/RnI" element={<RnI />} />
+        <Route path="/Gallery" element={<Gallery />} />
 
       </Routes>
       <Footer />
-
 
 
 
