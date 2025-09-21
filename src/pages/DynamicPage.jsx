@@ -30,19 +30,7 @@ const DynamicPage =({page}) =>{
       {/* Loop through each section dynamically */}
       {Object.entries(content, pageName, path).map(([key, section]) => (
         <div key={key} className="space-y-4">
-          {/* <h2 className="text-2xl font-bold text-blue-950">{section.title}</h2> */}      
-          {(section.images?.length > 0 && section.title !== "Hero") && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {section.images.map((img, i) => (
-                <img
-                  key={i}
-                  src={img.url}
-                  alt={`${section.title} ${i + 1}`}
-                  className="rounded-lg shadow-md"
-                />
-              ))}
-            </div>
-          )}
+          {section.title !== "Hero" && <h2 className="text-2xl font-bold text-center text-blue-950">{section.title}</h2>}
           {(section.title === "Hero" && pageName === "Home Page") && (
             <div className="w-full h-full relative">
               {section.images.map((img, i) => (
@@ -65,12 +53,43 @@ const DynamicPage =({page}) =>{
               </div>
             </div>
           )}
-          <div className="text-black max-w-none" dangerouslySetInnerHTML={{ __html: section.details }} />  
-          {(pageName === "About Page") && (
-            <div>
-
+          {/* {Object.entries(content, pageName, path).map(([key, section]) => {
+            if (section.title === "Our Values" && section.details) {
+              const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
+              const firstLine = match ? match[1] : "";
+              return (
+                <div key={key} className="text-black">
+                  {firstLine && (
+                    <h1
+                      className="lg:text-3xl text-2xl md:text-5xl font-bold text-center"
+                      dangerouslySetInnerHTML={{ __html: firstLine }}
+                    />
+                  )}
+                </div>
+              );
+            }
+            else{
+              return null
+            }
+          })} */}
+          {(section.images?.length > 0 && section.title !== "Hero") && (
+            <div className="text-black">
+              {section.title === "Our Values" ? <div className="text-black max-w-none text-center" dangerouslySetInnerHTML={{ __html: section.details }} /> : null}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-20 gap-5">
+                {section.images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img.url}
+                    alt={`${section.title} ${i + 1}`}
+                    className={`rounded-lg shadow-md ${section.title === "Our Values" ? 'p-10' : ''}`}
+                  />
+                ))}
+              </div>
             </div>
           )}
+          
+          {/* <div className="text-black max-w-none" dangerouslySetInnerHTML={{ __html: section.details }} />   */}
+         
         </div>
       ))}
     </div>
