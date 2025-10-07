@@ -21,7 +21,7 @@ export function NavPageProvider({children}){
     getNavPages()
   },[])
   return(
-    <NavPageContext.Provider value={{navPages, setNavPages}}>
+    <NavPageContext.Provider value={{navPages, setNavPages, BASEURL}}>
         {children}
     </NavPageContext.Provider>
     )

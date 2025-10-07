@@ -1,0 +1,72 @@
+"
+<p>
+	<span style="background-color: rgb(255, 255, 255);">
+		We operate under these set of core values to guide us on our mission and activities.
+	</span>
+</p>
+<p>
+	<br>
+</p>
+<ol>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+		Excellence: 
+		<span style="background-color: rgb(255, 255, 255);">We pursue the highest standards in all we do.</span>
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+		Innovation: 
+		<span style="background-color: rgb(255, 255, 255);">We foster creativity to solve real-world problems.</span>
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+		Team Work: 
+		<span style="background-color: rgb(255, 255, 255);">We work with others to achieve greater impact.</span>
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+		Purpose: 
+		<span style="background-color: rgb(255, 255, 255);">Empowering the Future Through Knowledge and Research.</span>
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+		Integrity: 
+		<span style="background-color: rgb(255, 255, 255);">Guided by Principles, Accountability, Transparency and Trustworthy.</span>
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+		Professionalism: 
+		<span style="background-color: rgb(255, 255, 255);">Standard, Precision and Poise. Committed to Quality, Driven by Ethics.</span>
+	</li>
+</ol>
+<p>
+	<br>
+</p>
+"
+
+"
+<h3 class="ql-align-center">
+	<strong style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</strong>
+</h3>
+<p class="ql-align-center">
+	<br>
+</p>
+<p class="ql-align-center">
+	<span style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD</span>
+</p>
+<p class="ql-align-center">
+	<br>
+</p>
+<p class="ql-align-center">
+	<span style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+			Under the visionary leadership of Dr. Sadiq Umar, the director of CSTD, 
+			the centre is repositioning itself as an engine of national development. The centre has prioritised community outreach to address
+			grassroots challenges and stimulate the academic interest in satellite systems. Dr. Umar’s key focus is incentivising research 
+			activities that accelerate sustainable national development. Hence, the management and staff of CSTD emphasise the importance of research, 
+			innovation, and partnerships with universities and research institutions to deepen its culture of research and innovation.
+	</span>
+</p>
+<p>
+	<br>
+</p>
+"
