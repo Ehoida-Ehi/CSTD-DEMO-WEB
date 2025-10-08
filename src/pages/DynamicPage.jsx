@@ -6,7 +6,7 @@ import { PageDetailsContext } from "../context/PageDetailContext";
 const DynamicPage =({page}) =>{
     const {navPages, setNavPages} = useContext(NavPageContext)
     const [open, setOpen] = useState(null);
-    const [seeText, setSeeText] = useState(false)
+    const [seeText, setSeeText] = useState(null)
     
     if(!page){
         return <p className="my-20">Page Could Not Be Found</p>
@@ -17,9 +17,10 @@ const DynamicPage =({page}) =>{
     const toggle = (i) => {
       setOpen(open === i ? null : i);
     };
-    const toggleText = ()=>{
-      setSeeText((prev) => !prev)
+    const toggleText = (i)=>{
+      setSeeText(prev => (prev === i ? null : i))
     }
+
      
   return (
     <div className="mt-10 space-y-10">
@@ -54,9 +55,13 @@ const DynamicPage =({page}) =>{
         }
 
         const html = section.details;
+        const departmentHtml = section.details
 
         const labelRegex = /<li[^>]*>\s*(?:<span[^>]*><\/span>)?\s*([^:<]+):/gi;
         const labels = [...html.matchAll(labelRegex)].map(m => m[1].trim());
+
+        const plainText = departmentHtml.replace(/<[^>]+>/g, '').trim();
+        const parts = plainText.split(/\s*;\s*/).filter(Boolean);
 
         const descRegex = /<li[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/li>/gi;
         const descriptions = [...html.matchAll(descRegex)].map(m => m[1].trim());
@@ -66,7 +71,9 @@ const DynamicPage =({page}) =>{
           description: descriptions[i] || ""
         }));
 
-        console.log("Here we are:", valueContent);
+        const departmentContent = parts.map((label, i) => ({
+          label
+        }))
        
         return (
           <div key={key} className="mb-4">
@@ -126,15 +133,14 @@ const DynamicPage =({page}) =>{
                     />
                   )}
                   {section.title === "Our Values" && (
-                    <div className="grid lg:grid-cols-3 gap-6 px-10 lg:py-10 py-5">
+                    <div className="grid lg:grid-cols-3 gap-6 w-full px-10 lg:px-40 lg:py-10 py-5">
                       {section.images.map((img, i) => (
-                        <>
-                        
-                          <div key={i} onClick={()=>{toggleText(i)}} className="value-card text-black rounded-lg col-span-1 py-10 lg:px-24 items-center flex flex-col space-y-4 transition-all duration-300">
+                        <>                        
+                          <div key={i} onClick={()=>{toggleText(i)}} className={`value-card text-black rounded-lg col-span-1 py-10 px-4 items-center flex flex-col space-y-4 transition-all duration-300 `}>
                             <img
                               src={img.url}
                               alt={`${section.title} ${i + 1}`}
-                              className={`w-36 ${
+                              className={`w-28 ${
                                 section.title === "Our Values" ? "p-1" : ""
                               }`}
                             />
@@ -143,11 +149,14 @@ const DynamicPage =({page}) =>{
                                 {valueContent[i].label}
                               </p>
                             )}
-                            { seeText &&
-                              (<div className={`transition-all duration-300 overflow-hidden`}>
-                                <div className="text-sm text-gray-700">{valueContent[i].description}</div>
+                            {/* { seeText === i &&
+                              (<div className={`transition-all duration-200 overflow-x-hidden ${seeText === i ? "max-h-60 max-w-full" : "max-h-0 max-w-0"}`}>
+                                <div className="text-sm w-full text-gray-700">{valueContent[i].description}</div>
                               </div>)
-                            }
+                            } */}
+                            <div className={`transition-all duration-300 overflow-x-hidden ${seeText === i ? "max-h-20" : "max-h-0 max-w-0"}`}>
+                                <div className="text-sm w-full text-gray-700">{valueContent[i].description}</div>
+                              </div>
                           </div>
                         </>                      
                       ))}
@@ -164,11 +173,11 @@ const DynamicPage =({page}) =>{
                   dangerouslySetInnerHTML={{ __html: firstLineLeadership }}
                 />
                 {section.images?.length > 0 && section.title === "Our Leadership" && (
-                  <div className="p-20">
+                  <div className="lg:p-20 p-4">
                     <div className="grid grid-cols-1 md:grid-cols-5 border rounded-lg lg:p-6 p-2 shadow-lg bg-gradient-to-b lg:bg-gradient-to-r from-blue-950 via-transparent to-blue-50">
                       <div className="flex items-center justify-center col-span-2">
                         {section.images.map((img)=>(
-                          <img src={img.url} className="w-" alt="" />
+                          <img src={img.url} className="lg:h-[300px] h-[200px] object-cover" alt="" />
                         ))}
                       </div>
                       <div className="flex flex-col justify-center lg:px-8 md:px-16 col-span-3">                
@@ -176,9 +185,9 @@ const DynamicPage =({page}) =>{
                           <h1 className="text-lg font-bold text-black mb-4" dangerouslySetInnerHTML={{ __html: secondLineLeadership }} />
                           <p className="lg:text-lg text-sm text-black mb-6" dangerouslySetInnerHTML={{ __html: firstLineLeadership }} />
                         </div>
-                        <p className="hidden lg:block text-black font-semibold lg:text-lg text-sm p-2 bg-none" dangerouslySetInnerHTML={{ __html: mainBodyLeadership }} />
-                        <div className="lg:hidden space-y-5 text-black font-semibold lg:text-lg text-sm p-2 bg-none">
-                          <p dangerouslySetInnerHTML={{ __html: mainBodyLeadership }} />
+                        <p className="hidden lg:block font-semibold lg:text-lg text-sm p-2 bg-transparent" dangerouslySetInnerHTML={{ __html: mainBodyLeadership }} />
+                        <div className="lg:hidden space-y-5 text-black font-semibold lg:text-lg text-sm p-2 bg-transparent">
+                          <p className="" dangerouslySetInnerHTML={{ __html: mainBodyLeadership }} />
                         </div>
                       </div>
 
@@ -188,10 +197,32 @@ const DynamicPage =({page}) =>{
               </>
             )}
             {section.title === "Our Departments" && firstLineDepartment && (
-              <h1
+              <>
+                {/* <h1
                 className="text-xl font-bold text-black text-center mt-6"
                 dangerouslySetInnerHTML={{ __html: firstLineDepartment }}
-              />
+              /> */}
+              {section.title === "Our Departments" && (
+                <div className="grid lg:grid-cols-3 gap-6 w-full py-10 px-10 lg:px-40">
+                  {section.images.map((img, i) => (
+                    <>                        
+                      <div key={i} className={`value-card text-black rounded-lg col-span-1 items-center space-y-4 transition-all duration-300 grid grid-rows-4`}>
+                        <img
+                          src={img.url}
+                          alt={`${section.title} ${i + 1}`}
+                          className={`w-full h-full object-cover row-span-3`}
+                        />
+                        {section.title === "Our Departments" && departmentContent[i] && (
+                          <p className="text-sm lg:text-lg font-semibold text-gray-700">
+                            {departmentContent[i].label}
+                          </p>
+                        )}
+                      </div>
+                    </>
+                  ))}
+                </div>
+              )}
+              </>
             )}
             {section.title === "Our Key Initiatives" && firstLineInitiatives && (
               <h1
