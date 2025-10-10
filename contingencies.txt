@@ -70,3 +70,33 @@
 	<br>
 </p>
 "
+"
+<h3>
+	<span style="color: rgb(0, 0, 0);">
+		Satellite Systems; Research, Development and Innovation; Satellite Missions &amp; Data Communication; Finance and Account; ICT; Spacecraft Structure &amp; Mechanisms; Spacecraft Aerodynamics and Control; Administration; Ground Segment; Directorate
+	</span>
+</h3>
+"
+"
+<p>
+	<span style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+		Our Projects: Advancing satellite platforms, remote sensing, and mission operations
+	</span>
+</p>
+<p>
+	<span style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+		Research on Sustainable Energy Systems: Exploring renewable energy through satellite-enabled technologies.
+	</span>
+</p>
+<p>
+	<span style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+		Global Partnerships: Collaborating with international agencies to expand innovation and impact.
+	</span>
+</p>
+<p class="ql-align-center">
+	<br>
+</p>
+<p>
+	<br>
+</p>
+"

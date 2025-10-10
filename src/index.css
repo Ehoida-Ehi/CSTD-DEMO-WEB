@@ -280,6 +280,7 @@
             --glass-bg: rgba(255, 255, 255, 0.1);
             --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #10b981 100%);
             --gradient-secondary: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+            --gradient-gold: linear-gradient(135deg, #352811 0%, #855b12 50%, rgb(236, 145, 7) 100%);
         }
         .value-card {
             background: white;
@@ -308,6 +309,34 @@
         }
 
         .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .value-card2 {
+            background: white;
+            border: 1px solid var(--gradient-secondary);
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+         .value-card2::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .value-card2:hover::before {
+            transform: scaleX(1);
+        }
+        .value-card2:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }

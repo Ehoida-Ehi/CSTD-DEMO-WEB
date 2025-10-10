@@ -54,26 +54,41 @@ const DynamicPage =({page}) =>{
           firstLineInitiatives = match ? match[1] : "";
         }
 
-        const html = section.details;
-        const departmentHtml = section.details
+        const html = section.details
+        const title = section.title
 
-        const labelRegex = /<li[^>]*>\s*(?:<span[^>]*><\/span>)?\s*([^:<]+):/gi;
-        const labels = [...html.matchAll(labelRegex)].map(m => m[1].trim());
+        const valDescRegex = /<li[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/li>/gi;
+        const valDescriptions = [...html.matchAll(valDescRegex)].map(m => m[1].trim());        
 
-        const plainText = departmentHtml.replace(/<[^>]+>/g, '').trim();
-        const parts = plainText.split(/\s*;\s*/).filter(Boolean);
+        const initDescRegex = /<p[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/p>/gi;
+        const initDescriptions = [...html.matchAll(initDescRegex)].map(m => m[1].trim());        
 
-        const descRegex = /<li[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/li>/gi;
-        const descriptions = [...html.matchAll(descRegex)].map(m => m[1].trim());
-
-        const valueContent = labels.map((label, i) => ({
+        const valueRegex = /<li[^>]*>\s*(?:<span[^>]*><\/span>)?\s*([^:<]+):/gi;
+        const valueLabels = [...html.matchAll(valueRegex)].map(m => m[1].trim());      
+        const valueContent = valueLabels.map((label, i) => ({
           label,
-          description: descriptions[i] || ""
+          description: valDescriptions[i] || ""
         }));
 
+        const plainText = html.replace(/<[^>]+>/g, '').trim();
+        const parts = plainText.split(/\s*;\s*/).filter(Boolean);
         const departmentContent = parts.map((label, i) => ({
           label
         }))
+        
+        const initiateRegex = /<p[^>]*>\s*<span[^>]*>([^<]+)<\/span>\s*<\/p>/gi;
+        // const result = [...html.matchAll(regex)].map(match => {
+        //   const [label, value] = match[1].split(':').map(s => s.trim());
+        //   return { label, value };
+        // });
+
+        const initiateContent = [...html.matchAll(initiateRegex)].map(match => {
+          const [label, description] = match[1].split(":").map(m => m.trim());
+          return {
+            label,
+            description
+          }
+        });
        
         return (
           <div key={key} className="mb-4">
@@ -149,14 +164,9 @@ const DynamicPage =({page}) =>{
                                 {valueContent[i].label}
                               </p>
                             )}
-                            {/* { seeText === i &&
-                              (<div className={`transition-all duration-200 overflow-x-hidden ${seeText === i ? "max-h-60 max-w-full" : "max-h-0 max-w-0"}`}>
-                                <div className="text-sm w-full text-gray-700">{valueContent[i].description}</div>
-                              </div>)
-                            } */}
-                            <div className={`transition-all duration-300 overflow-x-hidden ${seeText === i ? "max-h-20" : "max-h-0 max-w-0"}`}>
-                                <div className="text-sm w-full text-gray-700">{valueContent[i].description}</div>
-                              </div>
+                            <div className={`transition-all duration-300 overflow-hidden ${seeText === i ? "max-h-20" : "max-h-0 max-w-0"}`}>
+                              <div className="text-sm w-full text-gray-700">{valueContent[i].description}</div>
+                            </div>
                           </div>
                         </>                      
                       ))}
@@ -206,7 +216,7 @@ const DynamicPage =({page}) =>{
                 <div className="grid lg:grid-cols-3 gap-6 w-full py-10 px-10 lg:px-40">
                   {section.images.map((img, i) => (
                     <>                        
-                      <div key={i} className={`value-card text-black rounded-lg col-span-1 items-center space-y-4 transition-all duration-300 grid grid-rows-4`}>
+                      <div key={i} className={`value-card2 text-black rounded-lg col-span-1 items-center space-y-4 transition-all duration-300 grid grid-rows-4`}>
                         <img
                           src={img.url}
                           alt={`${section.title} ${i + 1}`}
@@ -225,10 +235,28 @@ const DynamicPage =({page}) =>{
               </>
             )}
             {section.title === "Our Key Initiatives" && firstLineInitiatives && (
-              <h1
-                className="text-xl font-bold text-black text-center mt-6"
-                dangerouslySetInnerHTML={{ __html: firstLineInitiatives }}
-              />
+              <>                        
+               {/* <h1
+                 className="text-xl font-bold text-black text-center mt-6"
+                 dangerouslySetInnerHTML={{ __html: firstLineInitiatives }}
+               /> */}
+              <div className="grid lg:grid-cols-3 gap-6 w-full py-10 px-10 lg:px-40">
+                {section.images.map((img, i) => (
+                    <div key={i} className={`value-card2 text-black rounded-lg col-span-1 items-center space-y-4 transition-all duration-300 grid grid-rows-4`}>
+                      <img
+                        src={img.url}
+                        alt={`${section.title} ${i + 1}`}
+                        className={`w-full h-full object-cover row-span-3 border-b`}
+                      />
+                      {section.title === "Our Key Initiatives" && initiateContent[i] && (
+                        <p className="text-sm lg:text-lg font-semibold text-gray-700">
+                          {initiateContent[i].label} 
+                        </p>
+                      )}
+                    </div> 
+                ))}
+                </div>
+              </>
             )}
 
             {/* Images */}
