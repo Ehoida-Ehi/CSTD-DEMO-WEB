@@ -13,6 +13,7 @@ import RnI from './pages/RnI';
 import { NavPageContext, NavPageProvider } from './context/NavPageContext';
 import { useContext } from 'react';
 import DynamicPage from './pages/DynamicPage';
+import { AboutProvider } from './context/AboutContext';
 const Content = () => {
   const {navPages, setNavPages, pages, setPages} = useContext(NavPageContext)  
   
@@ -40,7 +41,9 @@ const App = () => {
   return (
     <Router>
       <NavPageProvider>
-        <Content />
+        <AboutProvider>
+          <Content />
+        </AboutProvider>
       </NavPageProvider>
     </Router>
   );

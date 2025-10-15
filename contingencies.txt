@@ -100,3 +100,72 @@
 	<br>
 </p>
 "
+"
+<h3>
+	<span style="color: rgb(22, 101, 52);">Establishment</span>
+</h3>
+<p>
+	<span style="color: rgb(55, 65, 81);">
+		The Centre for Satellite Technology Development (CSTD) is the heartbeat of NASRDA, established under Nigeria's National Space Policy. It focuses on designing, developing, and testing satellite systems for missions like Earth Observation and Communication.;</span>
+</p>
+<p>
+	<br>
+</p>
+<h3>
+	<span style="color: rgb(22, 101, 52);">Milestones</span>
+</h3>
+<p>
+	<span style="color: rgb(55, 65, 81);">Since 2001, CSTD has led satellite missions like NigeriaSat-1, NigeriaSat-2, and NigComSat-1R, working with foreign experts to strengthen Nigeria’s space capacity.;</span>
+</p>
+<p>
+	<br>
+</p>
+<h3>
+	<span style="color: rgb(22, 101, 52);">Development Impact</span>
+</h3>
+<p>
+	<span style="color: rgb(55, 65, 81);">CSTD’s satellites serve diverse sectors: defense, agriculture, education, disaster management, and navigation — aiding national development efforts.;</span>
+</p>
+<p>
+	<br>
+</p>
+<h3>
+	<span style="color: rgb(22, 101, 52);">Global Outlook</span>
+</h3>
+<p>
+	<span style="color: rgb(55, 65, 81);">The space economy is expected to reach £490 billion by 2030. CSTD aims to position Nigeria for leadership in satellite-driven solutions across Africa.;</span>
+</p>
+<p>
+	<br>
+</p>
+<h3>
+	<span style="color: rgb(22, 101, 52);">Strategic Planning</span>
+</h3>
+<p>
+	<span style="color: rgb(55, 65, 81);">The 2022–2026 Strategic and Implementation Plan (SIP) outlines objectives to help CSTD align with NASRDA’s continental vision.;</span>
+</p>
+<p>
+	<br>
+</p>
+<ol>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+			Years of Excellence
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+			Engineers Trained
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+			Satellite Projects
+	</li>
+	<li data-list="bullet">
+		<span class="ql-ui" contenteditable="false"></span>
+			International Partners
+	</li>
+</ol>
+<p>
+	<br>
+</p>
+"

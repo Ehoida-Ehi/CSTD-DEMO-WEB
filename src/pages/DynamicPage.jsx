@@ -1,99 +1,161 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { NavPageContext } from "../context/NavPageContext";
 import striptags from "striptags"
 import { PageDetailsContext } from "../context/PageDetailContext";
+import { AboutContext } from "../context/AboutContext";
 
 const DynamicPage =({page}) =>{
     const {navPages, setNavPages} = useContext(NavPageContext)
     const [open, setOpen] = useState(null);
     const [seeText, setSeeText] = useState(null)
+    const { activeImage, setActiveImage } = useContext(AboutContext)
     
     if(!page){
-        return <p className="my-20">Page Could Not Be Found</p>
+        return <p className="my-20">Page Could Not Be Found</p> 
     }
 
     const { content, pageName, path } = page;
       
-    const toggle = (i) => {
-      setOpen(open === i ? null : i);
-    };
     const toggleText = (i)=>{
       setSeeText(prev => (prev === i ? null : i))
     }
 
-     
-  return (
-    <div className="mt-10 space-y-10">
-      {Object.entries(content).map(([key, section]) => {
-        // only for "Our Values"
-        let firstLineValues = "";
-        let firstLineLeadership = "";
-        let secondLineLeadership = "";
-        let mainBodyLeadership = "";
-        let firstLineDepartment = "";
-        let firstLineInitiatives = "";
-        
-        if (section.title === "Our Values" && section.details) {
-          const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
-          firstLineValues = match ? match[1] : "";
-        }
-        if (section.title === "Our Leadership" && section.details) {
-          const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
-          const match2 = section.details.match(/<strong[^>]*>(.*?)<\/strong>/);
-          const match3 = section.details.match(/<p[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/p>/gi);
-          firstLineLeadership = match ? match[1] : "";
-          secondLineLeadership = match ? match2[1] : "";
-          mainBodyLeadership = match ? match3[1] : "";
-        }
-        if (section.title === "Our Departments" && section.details) {
-          const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
-          firstLineDepartment = match ? match[1] : "";
-        }
-        if (section.title === "Our Key Initiatives" && section.details) {
-          const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
-          firstLineInitiatives = match ? match[1] : "";
-        }
+    const StatNumber = ({ target }) => {
+      const [count, setCount] = useState(0);
+      const ref = useRef(null);
+      const delayBetweenCycles = 10000; // 3 seconds pause before restarting
 
-        const html = section.details
-        const title = section.title
+      useEffect(() => {
+        let observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const startCounting = () => {
+                  let current = 0;
+                  const increment = target / 50;
 
-        const valDescRegex = /<li[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/li>/gi;
-        const valDescriptions = [...html.matchAll(valDescRegex)].map(m => m[1].trim());        
+                  const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                      current = target;
+                      clearInterval(timer);
 
-        const initDescRegex = /<p[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/p>/gi;
-        const initDescriptions = [...html.matchAll(initDescRegex)].map(m => m[1].trim());        
+                      // ⏸️ Wait before restarting the count
+                      setTimeout(() => {
+                        setCount(0); // Reset
+                        startCounting(); // Restart
+                      }, delayBetweenCycles);
+                    }
+                    setCount(Math.floor(current));
+                  }, 30);
+                };
 
-        const valueRegex = /<li[^>]*>\s*(?:<span[^>]*><\/span>)?\s*([^:<]+):/gi;
-        const valueLabels = [...html.matchAll(valueRegex)].map(m => m[1].trim());      
-        const valueContent = valueLabels.map((label, i) => ({
-          label,
-          description: valDescriptions[i] || ""
-        }));
+                startCounting();
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 1 } // fully visible before triggering
+        );
 
-        const plainText = html.replace(/<[^>]+>/g, '').trim();
-        const parts = plainText.split(/\s*;\s*/).filter(Boolean);
-        const departmentContent = parts.map((label, i) => ({
-          label
-        }))
-        
-        const initiateRegex = /<p[^>]*>\s*<span[^>]*>([^<]+)<\/span>\s*<\/p>/gi;
-        // const result = [...html.matchAll(regex)].map(match => {
-        //   const [label, value] = match[1].split(':').map(s => s.trim());
-        //   return { label, value };
-        // });
+        if (ref.current) observer.observe(ref.current);
 
-        const initiateContent = [...html.matchAll(initiateRegex)].map(match => {
-          const [label, description] = match[1].split(":").map(m => m.trim());
-          return {
-            label,
-            description
+        return () => {
+          if (ref.current) observer.unobserve(ref.current);
+        };
+      }, [target]);
+
+      return (
+        <div ref={ref} className="stat-number text-4xl font-bold text-blue-600">
+          {count}
+        </div>
+      );
+    };
+    return (
+      <div className="mt-16 space-y-10">
+        {Object.entries(content).map(([key, section]) => {
+          // only for "Our Values"
+          let firstLineValues = "";
+          let firstLineLeadership = "";
+          let secondLineLeadership = "";
+          let mainBodyLeadership = "";
+          let firstLineDepartment = "";
+          let firstLineInitiatives = "";
+          
+          if (section.title === "Our Values" && section.details) {
+            const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
+            firstLineValues = match ? match[1] : "";
           }
-        });
-       
+          if (section.title === "Our Leadership" && section.details) {
+            const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
+            const match2 = section.details.match(/<strong[^>]*>(.*?)<\/strong>/);
+            const match3 = section.details.match(/<p[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/p>/gi);
+            firstLineLeadership = match ? match[1] : "";
+            secondLineLeadership = match ? match2[1] : "";
+            mainBodyLeadership = match ? match3[1] : "";
+          }
+          if (section.title === "Our Departments" && section.details) {
+            const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
+            firstLineDepartment = match ? match[1] : "";
+          }
+          if (section.title === "Our Key Initiatives" && section.details) {
+            const match = section.details.match(/<span[^>]*>(.*?)<\/span>/);
+            firstLineInitiatives = match ? match[1] : "";
+          }
+
+          const html = section.details
+          const numbers = []
+          const html2 =  html.replace(
+            /(<li[^>]*>\s*(?:<span[^>]*><\/span>)?[^<]*?)\b(\d+)\b([^<]*<\/li>)/gi,
+            (match, before, num, after) => {
+              numbers.push(num.trim());
+              return `${before}${after}`; // Rebuild <li> without the digits
+            }
+          )
+          
+          const title = section.title
+
+          const valDescRegex = /<li[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/li>/gi;
+          const valDescriptions = [...html.matchAll(valDescRegex)].map(m => m[1].trim());        
+
+          const initDescRegex = /<p[^>]*>[\s\S]*?<span[^>]*>\s*([^<]+?)\s*<\/span>\s*<\/p>/gi;
+          const initDescriptions = [...html.matchAll(initDescRegex)].map(m => m[1].trim());        
+
+          const valueRegex = /<li[^>]*>\s*(?:<span[^>]*><\/span>)?\s*([^:<]+):/gi;
+          const valueLabels = [...html.matchAll(valueRegex)].map(m => m[1].trim());      
+          const valueContent = valueLabels.map((label, i) => ({
+            label,
+            description: valDescriptions[i] || ""
+          }));
+
+          const aboutRegex = /<li[^>]*>\s*(?:<span[^>]*><\/span>)?\s*([^<]+)<\/li>/gi;
+          const aboutLabels = [...html.matchAll(aboutRegex)].map(m => m[1].trim());      
+          const aboutContent = aboutLabels.map((label, i) => ({
+            label,
+            // description: valDescriptions[i] || ""
+          }));
+
+          console.log("About me: ", aboutContent)
+
+          const plainText = html.replace(/<[^>]+>/g, '').trim();
+          const parts = plainText.split(/\s*;\s*/).filter(Boolean);
+          const departmentContent = parts.map((label, i) => ({
+            label
+          }))
+          
+          const initiateRegex = /<p[^>]*>\s*<span[^>]*>([^<]+)<\/span>\s*<\/p>/gi;
+          const initiateContent = [...html.matchAll(initiateRegex)].map(match => {
+            const [label, description] = match[1].split(":").map(m => m.trim());
+            return {
+              label,
+              description
+            }
+          });
+                 
         return (
           <div key={key} className="mb-4">
             {/* Normal title (except Hero) */}
-            {section.title !== "Hero" && (
+            {(key === "hero" || key === "banner") ? null : (
               <h2 className="text-3xl font-bold text-center text-blue-950">
                 {section.title}
               </h2>
@@ -208,10 +270,6 @@ const DynamicPage =({page}) =>{
             )}
             {section.title === "Our Departments" && firstLineDepartment && (
               <>
-                {/* <h1
-                className="text-xl font-bold text-black text-center mt-6"
-                dangerouslySetInnerHTML={{ __html: firstLineDepartment }}
-              /> */}
               {section.title === "Our Departments" && (
                 <div className="grid lg:grid-cols-3 gap-6 w-full py-10 px-10 lg:px-40">
                   {section.images.map((img, i) => (
@@ -223,7 +281,7 @@ const DynamicPage =({page}) =>{
                           className={`w-full h-full object-cover row-span-3`}
                         />
                         {section.title === "Our Departments" && departmentContent[i] && (
-                          <p className="text-sm lg:text-lg font-semibold text-gray-700">
+                          <p className="text-sm lg:text-lg p-1 font-semibold text-gray-700">
                             {departmentContent[i].label}
                           </p>
                         )}
@@ -235,21 +293,17 @@ const DynamicPage =({page}) =>{
               </>
             )}
             {section.title === "Our Key Initiatives" && firstLineInitiatives && (
-              <>                        
-               {/* <h1
-                 className="text-xl font-bold text-black text-center mt-6"
-                 dangerouslySetInnerHTML={{ __html: firstLineInitiatives }}
-               /> */}
+              <>                                    
               <div className="grid lg:grid-cols-3 gap-6 w-full py-10 px-10 lg:px-40">
                 {section.images.map((img, i) => (
-                    <div key={i} className={`value-card2 text-black rounded-lg col-span-1 items-center space-y-4 transition-all duration-300 grid grid-rows-4`}>
+                    <div key={i} className={`text-black rounded-lg col-span-1 items-center space-y-4 transition-all duration-300 grid grid-rows-4`}>
                       <img
                         src={img.url}
                         alt={`${section.title} ${i + 1}`}
-                        className={`w-full h-full object-cover row-span-3 border-b`}
+                        className={`w-full h-full object-cover row-span-3 border-b transPic`}
                       />
                       {section.title === "Our Key Initiatives" && initiateContent[i] && (
-                        <p className="text-sm lg:text-lg font-semibold text-gray-700">
+                        <p className="text-sm lg:text-lg text-center font-semibold text-gray-700">
                           {initiateContent[i].label} 
                         </p>
                       )}
@@ -260,8 +314,62 @@ const DynamicPage =({page}) =>{
             )}
 
             {/* Images */}
-            
+            {section.title === "About Us" && pageName === "About Page" && (
+              
+              <div className="">
+                <div className="w-full h-screen relative overflow-hidden">
+                  {section.images.map((img, i) => (                  
+                    <img
+                      src={img.url}
+                      alt="Image 1"
+                      className={`w-full h-full object-cover object-center absolute top-0 left-0 transition-opacity duration-1000 ${activeImage === i ? "opacity-100" : "opacity-0"} `}
+                    />
+                ))}
+                </div>
+              </div>
+            )}
+              <div>
+                  {section.title === "History of CSTD" && (
+                    <div className="grid lg:grid-cols-5 px-10 py-5 gap-5 bg-blue-50 text-black">
+                      <div className="col-span-3">
+                        <p dangerouslySetInnerHTML={{ __html: html2.replace(/<ol[^>]*>[\s\S]*?<\/ol>/gi, '')}} />
+                        <div className="grid lg:grid-cols-2 grid-cols-1 px-10 gap-[2rem] mt-[2rem]">
+                          {section.images.slice(1).map((img, i) => (
+                            <div className="stat-item" key={i}>
+                              <div className="flex items-center justify-center space-x-5">  
+                                <div className="text-black">
+                                  {aboutContent[i] && (
+                                    <>
+                                      <div className="flex items-center justify-center space-x-5">
+                                        {numbers && numbers[i] && (
+                                          <StatNumber key={i} target={parseInt(numbers[i], 10)} />
+                                        )}
+                                        <img src={img.url} width={40} alt="Image Not Found" />
+                                      </div>
+                                      <p>{aboutContent[i].label}</p>
+                                    </>
+                                  )}                                      
+                                </div>                       
+                              </div>
+                            </div>
+                          ))}
+
+                        </div>
+                      </div>
+                      <div className="col-span-2">
+                        {section.images.map((img, i) => (
+                          ( i === 0 ? (
+                            <div className="about-visual my-auto align-middle bg-blue-50">
+                              <img src={img.url} className="flex icon lg:w-[24rem] w-[16rem]" />
+                            </div>
+                          ) : null)
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
           </div>
+
         );
       })}
     </div>
