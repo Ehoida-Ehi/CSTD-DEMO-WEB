@@ -5,6 +5,18 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import axios from "axios";
 import { NavPageContext } from "../context/NavPageContext";
 
+function NavMenuItem({ to, children, className = "", onClick }) {
+  return (
+    <Link
+      to={to}
+      onClick={onClick}
+      className={`text-white hover:text-green-600 relative group ${className}`.trim()}
+    >
+      {children}
+      <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+    </Link>
+  );
+}
 
 export default function Navbar({navPages}) {
   const [isSmallScreen, setSmallScreen] = useState(false)
@@ -61,29 +73,43 @@ export default function Navbar({navPages}) {
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8 items-center text-md">
             {/** Navigation Items with Dropdown */}
-            <Link to="/" className="text-white hover:text-green-600 relative group">
-              Home
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            <NavMenuItem to="/">Home</NavMenuItem>
             {navPages ? (
-              navPages.map((navPage)=>(
-                <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
-                    {/** Navigation Items with Dropdown */}
-                  <Link key={navPage._id} to={navPage.path} className="">
-                    {navPage.pageName}
-                  </Link>    
-                </div>
-                ))) 
-                :
-                (<div>No Pages Found</div>)
-            }
+              navPages.map((navPage) => {
+                const isRni =
+                  navPage.pageName === "Research and Innovation" ||
+                  navPage.pageName === "Research & Innovation" ||
+                  navPage.pageName === "R&I";
+                return (
+                  <NavMenuItem
+                    key={navPage._id}
+                    to={navPage.path}
+                  >
+                    {isRni ? (
+                      <span className="relative inline-block">
+                        <span className="block group-hover:hidden transition-all duration-700">
+                          R and I
+                        </span>
+                        <span className="hidden group-hover:inline transition-all duration-700 whitespace-nowrap">
+                          Research and Innovation
+                        </span>
+                      </span>
+                    ) : (
+                      navPage.pageName
+                    )}
+                  </NavMenuItem>
+                );
+              })
+            ) : (
+              <div>No Pages Found</div>
+            )}
           </div>
 
           {/* Right Side - News/Events */}
           <div className="text-white hidden md:flex space-x-2 items-center">
-            <Link to="/#latest-news" className="hover:text-green-600">News</Link>
+            <NavMenuItem to="/#latest-news">News</NavMenuItem>
             <span>|</span>
-            <Link to="/#events" className="hover:text-green-600">Events</Link>
+            <NavMenuItem to="/#events">Events</NavMenuItem>
           </div>
 
           <div className="lg:hidden flex">
@@ -93,38 +119,50 @@ export default function Navbar({navPages}) {
                 {isOpen && (<div className="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>)}
                 <div className="lg:hidden text-md bg-gradient-to-bl from-blue-50 via-blue-300 to-blue-900 rounded-bl-lg fixed z-30 right-0 w-[55%] h-[65%] text-black top-[4rem]">
                   <div className="relative">
-                     <Link to="/" className="">
+                    <NavMenuItem
+                      to="/"
+                      className="block p-3"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setSmallScreen(false);
+                      }}
+                    >
                       Home
-                      <span className=""></span>
-                    </Link>
+                    </NavMenuItem>
                     {navPages ? (
-                      navPages.map((navPage)=>(
-                        <div className="flex flex-col gap-4 items-start p-3" ref={menuRef} onClick={()=>{setIsOpen(false); setSmallScreen(false)}}>
-                        {/** Navigation Items with Dropdown */}
-                          <Link key={navPage._id} to={`/${navPage.pageId}`} className="">
-                            <span className="">{navPage.pageName}</span>
-                          </Link>    
-                          {/* 
-                          <Link to="/About" className="">
-                            About Us
-                            <span className=""></span>
-                          </Link>
-                          <Link to="/RnI" className="">
-                            Research & Innovation
-                            <span className=""></span>
-                          </Link>
-                          <a href="#departments" className="">
-                            Departments
-                            <span className=""></span>
-                          </a>
-                          <Link to="/Contact" className="">
-                            Contact Us
-                            <span className=""></span>
-                          </Link>   */}
-                        </div>
-                      ))
-                      
-                    ) : (<p>Unable to load pages</p>)}
+                      navPages.map((navPage) => {
+                        const isRni =
+                          navPage.pageName === "Research and Innovation" ||
+                          navPage.pageName === "Research & Innovation" ||
+                          navPage.pageName === "R&I";
+                        return (
+                          <NavMenuItem
+                            key={navPage._id}
+                            to={navPage.path ?? `/${navPage.pageId}`}
+                            className="block p-3"
+                            onClick={() => {
+                              setIsOpen(false);
+                              setSmallScreen(false);
+                            }}
+                          >
+                            {isRni ? (
+                              <span className="relative inline-block">
+                                <span className="block group-hover:hidden transition-all duration-200">
+                                  R and I
+                                </span>
+                                <span className="hidden group-hover:inline transition-all duration-200 whitespace-nowrap">
+                                  Research and Innovation
+                                </span>
+                              </span>
+                            ) : (
+                              <span>{navPage.pageName}</span>
+                            )}
+                          </NavMenuItem>
+                        );
+                      })
+                    ) : (
+                      <p>Unable to load pages</p>
+                    )}
                     
                   </div>
                   

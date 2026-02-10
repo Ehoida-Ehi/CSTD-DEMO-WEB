@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
 import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
@@ -13,13 +13,14 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import sadqUmarImg from '../assets/images/Eng-Sadq-Umar.jpg';
 import nigImg from "../assets/images/earth-africa2.png"
 import partners from "../assets/images/partnership.png"
 import engineers from "../assets/images/graduates.png"
 import projects from "../assets/images/satellite.png"
-import years from "../assets/images/2025.png"
+import years from "../assets/images/2026.png"
 
 import excellence from "../assets/images/excellence.png"
 import innovation from "../assets/images/innovation.png"
@@ -35,10 +36,12 @@ import partnershipImg from '../assets/images/pbusiness-7768170_1280.jpg';
 import nasrdaImg from "../assets/images/NASRDA-Logo_N2.png"
 
 import {departmentsDetails, homeImages} from '../utils/images';
+import { NavPageContext } from "../context/NavPageContext";
 // import { set } from "react-datepicker/dist/date_utils";
 
 const Home = () => {
   const videoRef = useRef(null);
+  const { BASEURL } = useContext(NavPageContext);
   const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
@@ -63,6 +66,40 @@ const Home = () => {
   };
 
   const images = homeImages
+
+  // Latest news pulled from the same backend the CMS News page manages
+  const [latestNewsItems, setLatestNewsItems] = useState([]);
+
+  // Fetch latest news from backend (same source as CMS News.jsx)
+  useEffect(() => {
+    const fetchLatestNews = async () => {
+      try {
+        const resp = await axios.get(`${BASEURL}/news/fetchnews`);
+        const data = resp.data?.data || [];
+
+        // Normalize into a simple card structure
+        const normalized = data.map((item) => ({
+          id: item._id,
+          title: item.title,
+          brief: item.brief,
+          date: item.date,
+          thumbnail: item.media?.[0]?.thumbnail || "",
+          type: "dynamic",
+        }));
+
+        // Sort newest first
+        normalized.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+
+        setLatestNewsItems(normalized);
+      } catch (error) {
+        console.error("Failed to fetch latest news:", error);
+      }
+    };
+
+    fetchLatestNews();
+  }, [BASEURL]);
 
   const [open, setOpen] = useState(null);
 
@@ -287,7 +324,7 @@ const StatNumber = ({ target }) => {
       <section>
         <div className={`w-full text-black bg-blue-50 p-6 lg:p-8`} id="about-section">
           <div className="grid lg:grid-cols-2 gap-5">
-            <div className={`about-content lg:col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
+            <div className={`about-content lg:col-span-1  lg:pl-20 lg:pt-10 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
               <h2 className="header">About CSTD</h2>
              <div className="text-sm lg:text-lg">
               <p>The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
@@ -296,21 +333,21 @@ const StatNumber = ({ target }) => {
               <div className="grid lg:grid-cols-2 grid-cols-1 gap-[2rem] mt-[2rem]">
                   <div className="stat-item">
                     <div className="flex items-center justify-center space-x-5">
-                      <StatNumber target={20} />
+                      <span className="flex items-center  justify-center"><StatNumber target={20} /> <div className="pt-5 text-2xl h-24 font-bold">+</div></span>
                       <img src={years} width={40} alt="" />
                     </div>
                       <p className="stat-label">Years of Excellence</p>
                   </div>
                   <div className="stat-item">
                     <div className="flex items-center justify-center space-x-5">
-                      <StatNumber target={500} />
+                      <span className="flex items-center justify-center"><StatNumber target={500} /> <div className="pt-5 text-2xl h-24 font-bold">+</div></span>
                       <img src={engineers} width={40} alt="" />
                     </div>
                       <p className="stat-label">Engineers Trained</p>
                   </div>
                   <div className="stat-item">
                     <div className="flex items-center justify-center space-x-5">
-                      <StatNumber target={15} />
+                      <span className="flex items-center justify-center"><StatNumber target={15} /> <div className="pt-5 text-2xl h-24 font-bold text-white">+</div></span>
                       <img src={projects} width={40} alt="" />
                     </div>
                       
@@ -318,7 +355,7 @@ const StatNumber = ({ target }) => {
                   </div>
                   <div className="stat-item">
                     <div className="flex items-center justify-center space-x-5">
-                      <StatNumber target={50} />
+                      <span className="flex items-center justify-center"><StatNumber target={50} /> <div className="pt-5 text-2xl h-24 font-bold">+</div></span>
                       <img src={partners} width={40} alt="" />
                     </div>
                       <p className="stat-label">International Partners</p>
@@ -333,15 +370,15 @@ const StatNumber = ({ target }) => {
           </div>                
         </div>
       </section>
-
       <section>
-        <div className="space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 p-2" id={"value-section"}>
+        <div className="pt-20 space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 p-2" id={"value-section"}>
+          <hr className="w-[70%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold header text-center">OUR VALUES</h2>
           <p className="text-gray-800 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
           <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 px-10 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
              {values.map((val, index) => (
               <div key={index} className="value-card text-black rounded-lg col-span-1 items-center flex flex-col space-y-4">
-                <div className="border rounded-lg p-10">
+                <div className="rounded-lg p-10">
                   {open === index ? (
                   <button onClick={()=>toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
                     <div className="flex flex-col space-y-5">
@@ -375,9 +412,10 @@ const StatNumber = ({ target }) => {
       <section>
         <div id="leadership" className="space-y-10 lg:p-8 p-4 bg-blue-50">
           <div  className="py-10 bg-blue-50 px-4">
-            <div className="mb-10 text-black flex flex-col gap-5">
+            <hr className="w-[70%] mx-auto border border-b-blue-700"/>
+            <div className="mb-10 pt-10 text-black flex flex-col gap-5">
               <h1 className="text-4xl text-center header font-bold">Our Leadership</h1>
-              <p className="lg:p-12 lg:text-lg text-sm text-center">Visionary leadership driving Nigeria's space technology advancement</p>
+              <p className="lg:p-12 lg:text-lg text-sm text-center">Visionary leadership driving Nigeria's space technology advancement.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-5 border rounded-lg lg:p-6 p-2 shadow-lg bg-gradient-to-b lg:bg-gradient-to-r from-blue-950 via-transparent to-blue-50">   
               <div className="flex items-center justify-center col-span-2">
@@ -416,6 +454,7 @@ const StatNumber = ({ target }) => {
       
       <section  className="bg-blue-50 py-4 px-4 text-white" id="departments">
         <div className="my-10" id="dept-section">
+        <hr className="w-[70%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold text-center header">Our Departments</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 p-6 lg:px-32">
             {departments.map((dept, index) => (
@@ -438,6 +477,7 @@ const StatNumber = ({ target }) => {
      <section>
       <div id="key-initiatives">
         <div  className="bg-blue-50 px-4 text-white">
+        <hr className="w-[70%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold text-center mb-20 header">
             Our Key Initiatives
           </h2>
@@ -489,7 +529,7 @@ const StatNumber = ({ target }) => {
      </section>
 
       <section>
-        <div id="gallery">
+      <div id="gallery">
           <div  className="py-16 bg-gradient-to-b from-blue-50 via-transparent to-blue-50  flex justify-center">
             <div className="w-full max-w-6xl px-4">
               <h2 className="text-4xl header font-bold text-center mb-10">Gallery</h2>
@@ -534,10 +574,12 @@ const StatNumber = ({ target }) => {
               width: 12px;
               height: 12px;
               opacity: 0.6;
+              border: 2px solid #1d4ed8; /* blue-700 border for inactive bullets */
               transition: opacity 0.3s ease, transform 0.3s ease;
             }
             .swiper-pagination-bullet-active {
               background-color: #3b82f6; /* Tailwind's blue-500 */
+              border:transparent;
               opacity: 1;
               transform: scale(1.2);
             }
@@ -550,55 +592,104 @@ const StatNumber = ({ target }) => {
      
       <section>
         <div id="latest-news">
-          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50  lg:py-16 px-4">
-            <h2 className="text-4xl text-center header font-bold  mb-12">Latest News</h2>
+          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 lg:py-16 px-4">
+            <h2 className="text-4xl text-center header font-bold mb-12">
+              Latest News
+            </h2>
 
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* News Item 1 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative bg-gradient-to-t from-blue-100 to-blue-50">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/10/28/16/36/raisting-satellite-1010862_1280.jpg"
-                  alt="Satellite Launch"
-                  className="w-full h-[50%] object-cover"
-                />
-                <div className="p-4 text-black mb-10">
-                  <h3 className="text-xl font-semibold mb-2 underline">New Satellite Launch Announced</h3>
-                  <p className="text-sm">The agency confirms the launch date for its newest Earth observation satellite.</p>
-                  <p className="rounded-lg bg-gradient-to-b from-blue-950 to-blue-600 text-white cursor-pointer my-3 border p-2 text-sm w-fit mx-auto hover:animate-pulse shadow-lg">Read More</p>
-                  <p className="roboto font-extrabold text-sm my-5 absolute bottom-5">1 August 2015</p>
-                </div>
-              </div>
+            {/* Combine dynamic news with hardcoded entries, newest first */}
+            {(() => {
+              const staticNews = [
+                {
+                  id: "static-1",
+                  title: "New Satellite Launch Announced",
+                  brief:
+                    "The agency confirms the launch date for its newest Earth observation satellite.",
+                  date: "2015-08-01",
+                  thumbnail:
+                    "https://cdn.pixabay.com/photo/2015/10/28/16/36/raisting-satellite-1010862_1280.jpg",
+                },
+                {
+                  id: "static-2",
+                  title: "CSTD Hosts Innovation Workshop",
+                  brief:
+                    "Researchers gathered to explore future technologies in climate monitoring, AI, and nanosatellite systems.",
+                  date: "2015-08-01",
+                  thumbnail: nasrdaImg,
+                },
+                {
+                  id: "static-3",
+                  title: "Nigeria Partners with EU on Space Tech",
+                  brief:
+                    "A new partnership with the European Union aims to boost R&D in sustainable satellite systems.",
+                  date: "2015-08-01",
+                  thumbnail:
+                    "https://cdn.pixabay.com/photo/2012/11/28/09/08/mars-67522_1280.jpg",
+                },
+              ];
 
-              {/* News Item 2 */}
-              <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition text-black relative bg-gradient-to-t from-blue-100 to-blue-50">
-                <img
-                  src={nasrdaImg}
-                  alt="Satellite Launch"
-                  className="w-full h-[50%] bg-blue-950 object-contain"
-                />
-                <div className="p-4 mb-10">
-                  <h3 className="text-xl font-semibold mb-2 underline">CSTD Hosts Innovation Workshop</h3>
-                  <p className="text-sm">Researchers gathered to explore future technologies in climate monitoring, AI, and nanosatellite systems.</p>
-                  <p className="rounded-lg bg-gradient-to-b from-blue-950 to-blue-600 text-white cursor-pointer my-3 border p-2 text-sm w-fit mx-auto hover:animate-pulse shadow-lg">Read More</p>
-                  <p className="roboto font-extrabold text-sm my-5 absolute bottom-5">1 August 2015</p>
-                </div>
-              </div>
+              const combined = [...latestNewsItems, ...staticNews].sort(
+                (a, b) =>
+                  new Date(b.date).getTime() - new Date(a.date).getTime()
+              );
 
-              {/* News Item 3 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition text-black relative bg-gradient-to-t from-blue-100 to-blue-50">
-                <img
-                  src="https://cdn.pixabay.com/photo/2012/11/28/09/08/mars-67522_1280.jpg"
-                  alt="Research Collaboration"
-                  className="w-full h-[50%] object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2 underline">Nigeria Partners with EU on Space Tech</h3>
-                  <p className="text-sm text-black">A new partnership with the European Union aims to boost R&D in sustainable satellite systems.</p>
-                  <p className="rounded-lg bg-gradient-to-b from-blue-950 to-blue-600 text-white cursor-pointer my-3 border p-2 text-sm w-fit mx-auto hover:animate-pulse shadow-lg">Read More</p>
-                  <p className="roboto font-extrabold text-sm my-5 absolute bottom-5">1 August 2015</p>
+              if (combined.length === 0) {
+                return (
+                  <p className="text-center text-gray-500">
+                    No news available at the moment.
+                  </p>
+                );
+              }
+
+              return (
+                <div className="lg:w-[90%] mx-auto">
+                  <Swiper
+                    spaceBetween={24}
+                    slidesPerView={1}
+                    breakpoints={{
+                      768: { slidesPerView: 2 },
+                      1024: { slidesPerView: 3 },
+                    }}
+                    pagination={{ clickable: true }}
+                    modules={[Pagination]}
+                  >
+                    {combined.map((item) => (
+                      <SwiperSlide key={item.id}>
+                        <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative bg-gradient-to-t from-blue-100 to-blue-50 h-full flex flex-col">
+                          {item.thumbnail && (
+                            <img
+                              src={item.thumbnail}
+                              alt={item.title}
+                              className="w-full h-40 object-cover"
+                            />
+                          )}
+                          <div className="p-4 text-black flex-1 pb-10">
+                            <h3 className="text-lg font-semibold mb-2 underline line-clamp-2">
+                              {item.title}
+                            </h3>
+                            <p className="text-sm line-clamp-3">
+                              {item.brief}
+                            </p>
+                            {item.date && (
+                              <p className="roboto font-extrabold text-xs mt-3">
+                                {new Date(item.date).toLocaleDateString(
+                                  "en-US",
+                                  {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                  }
+                                )}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                 </div>
-              </div>
-            </div>
+              );
+            })()}
           </div>
         </div>
       </section>
