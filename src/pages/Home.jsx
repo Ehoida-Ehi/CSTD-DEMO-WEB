@@ -338,7 +338,7 @@ const StatNumber = ({ target }) => {
                     </div>
                       <p className="stat-label">Years of Excellence</p>
                   </div>
-                  <div className="stat-item">
+                  <div className="stat-item ">
                     <div className="flex items-center justify-center space-x-5">
                       <span className="flex items-center justify-center"><StatNumber target={500} /> <div className="pt-5 text-2xl h-24 font-bold">+</div></span>
                       <img src={engineers} width={40} alt="" />
@@ -477,8 +477,8 @@ const StatNumber = ({ target }) => {
      <section>
       <div id="key-initiatives">
         <div  className="bg-blue-50 px-4 text-white">
-        <hr className="w-[70%] mx-auto border border-b-blue-700"/>
-          <h2 className="text-4xl font-bold text-center mb-20 header">
+        <hr className="w-[80%] mx-auto border border-b-blue-700"/>
+          <h2 className="text-4xl font-bold text-center mt-10 mb-20 header">
             Our Key Initiatives
           </h2>
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:px-20 px-6 md:grid-cols-3 lg:h-[50vh] gap-8 relative">
@@ -532,7 +532,8 @@ const StatNumber = ({ target }) => {
       <div id="gallery">
           <div  className="py-16 bg-gradient-to-b from-blue-50 via-transparent to-blue-50  flex justify-center">
             <div className="w-full max-w-6xl px-4">
-              <h2 className="text-4xl header font-bold text-center mb-10">Gallery</h2>
+             <hr className="w-full mx-auto border border-b-blue-700"/>
+              <h2 className="text-4xl header font-bold text-center mt-10 mb-10">Gallery</h2>
 
               <Swiper
                 effect="coverflow"
@@ -593,7 +594,8 @@ const StatNumber = ({ target }) => {
       <section>
         <div id="latest-news">
           <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 lg:py-16 px-4">
-            <h2 className="text-4xl text-center header font-bold mb-12">
+          <hr className="w-[80%] mx-auto border border-b-blue-700"/>
+            <h2 className="text-4xl text-center header font-bold mt-10 mb-12">
               Latest News
             </h2>
 
@@ -660,7 +662,7 @@ const StatNumber = ({ target }) => {
                             <img
                               src={item.thumbnail}
                               alt={item.title}
-                              className="w-full h-40 object-cover"
+                              className="w-full h-80 object-cover"
                             />
                           )}
                           <div className="p-4 text-black flex-1 pb-10">
