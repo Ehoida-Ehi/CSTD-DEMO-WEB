@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import SatelliteMission from './pages/SatelliteMission';
 import Sat1 from './pages/Sat1';
 import Sat2 from './pages/Sat2';
 import SatX from './pages/SatX';
@@ -35,6 +36,8 @@ const Content = () => {
         <Route path="/RnI" element={<RnI />} />
         <Route path="/about" element={<About />} />
         <Route path="/researchandinnovation" element={<RnI />} />
+        <Route path="/satellitemissions" element={<SatelliteMission />} />
+        
 
         {/* CMS-driven dynamic pages */}
         {dynamicPages.length > 0 ? (
