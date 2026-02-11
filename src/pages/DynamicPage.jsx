@@ -15,6 +15,8 @@ const DynamicPage =({page}) =>{
     }
 
     const { content, pageName, path } = page;
+    const safeContent =
+      content && typeof content === "object" ? content : {};
       
     const toggleText = (i)=>{
       setSeeText(prev => (prev === i ? null : i))
@@ -73,7 +75,13 @@ const DynamicPage =({page}) =>{
     };
     return (
       <div className="mt-16 space-y-10">
-        {Object.entries(content).map(([key, section]) => {
+        {/* Gracefully handle pages that don't have structured content yet (e.g. newly created R&I page) */}
+        {Object.keys(safeContent).length === 0 && (
+          <p className="px-4 py-10 text-center text-gray-600">
+            This page is currently being updated. Please check back later.
+          </p>
+        )}
+        {Object.entries(safeContent).map(([key, section]) => {
           // only for "Our Values"
           let firstLineValues = "";
           let firstLineLeadership = "";

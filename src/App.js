@@ -15,22 +15,37 @@ import { useContext } from 'react';
 import DynamicPage from './pages/DynamicPage';
 import { AboutProvider } from './context/AboutContext';
 const Content = () => {
-  const {navPages, setNavPages, pages, setPages} = useContext(NavPageContext)  
-  
+  const { navPages } = useContext(NavPageContext);
+
+  // Ensure "Research and Innovation" uses the dedicated RnI page component,
+  // similar to how Home is wired as a static route.
+  const dynamicPages =
+    navPages?.filter(
+      (navPage) => navPage.path?.toLowerCase() !== "/rni"
+    ) || [];
+
   return (
     <>
-      <Navbar navPages={navPages}/>
+      <Navbar navPages={navPages} />
       <Routes>
+        {/* Static pages */}
         <Route path="/" element={<Home />} />
-        {navPages ? (
-          navPages.map((navPage)=>{
-            return(
-            <Route key={navPage._id} path={navPage.path} element={<DynamicPage page={navPage} />}  />  
-            )
-            
-          })
-          ) : (<p>Unable to Load Pages</p>)
-        }
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/rni" element={<RnI />} />
+        <Route path="/RnI" element={<RnI />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/researchandinnovation" element={<RnI />} />
+
+        {/* CMS-driven dynamic pages */}
+        {dynamicPages.length > 0 ? (
+          dynamicPages.map((navPage) => (
+            <Route
+              key={navPage._id}
+              path={navPage.path}
+              element={<DynamicPage page={navPage} />}
+            />
+          ))
+        ) : null}
       </Routes>
       <Footer />
     </>

@@ -372,7 +372,7 @@ const StatNumber = ({ target }) => {
       </section>
       <section>
         <div className="pt-20 space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 p-2" id={"value-section"}>
-          <hr className="w-[70%] mx-auto border border-b-blue-700"/>
+          <hr className="w-[80%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold header text-center">OUR VALUES</h2>
           <p className="text-gray-800 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
           <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 px-10 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
@@ -412,7 +412,7 @@ const StatNumber = ({ target }) => {
       <section>
         <div id="leadership" className="space-y-10 lg:p-8 p-4 bg-blue-50">
           <div  className="py-10 bg-blue-50 px-4">
-            <hr className="w-[70%] mx-auto border border-b-blue-700"/>
+            <hr className="w-[85%] mx-auto border border-b-blue-700"/>
             <div className="mb-10 pt-10 text-black flex flex-col gap-5">
               <h1 className="text-4xl text-center header font-bold">Our Leadership</h1>
               <p className="lg:p-12 lg:text-lg text-sm text-center">Visionary leadership driving Nigeria's space technology advancement.</p>
@@ -454,7 +454,7 @@ const StatNumber = ({ target }) => {
       
       <section  className="bg-blue-50 py-4 px-4 text-white" id="departments">
         <div className="my-10" id="dept-section">
-        <hr className="w-[70%] mx-auto border border-b-blue-700"/>
+        <hr className="w-[82%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold text-center header">Our Departments</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 p-6 lg:px-32">
             {departments.map((dept, index) => (
@@ -477,7 +477,7 @@ const StatNumber = ({ target }) => {
      <section>
       <div id="key-initiatives">
         <div  className="bg-blue-50 px-4 text-white">
-        <hr className="w-[80%] mx-auto border border-b-blue-700"/>
+        <hr className="w-[82%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold text-center mt-10 mb-20 header">
             Our Key Initiatives
           </h2>
@@ -531,8 +531,8 @@ const StatNumber = ({ target }) => {
       <section>
       <div id="gallery">
           <div  className="py-16 bg-gradient-to-b from-blue-50 via-transparent to-blue-50  flex justify-center">
-            <div className="w-full max-w-6xl px-4">
-             <hr className="w-full mx-auto border border-b-blue-700"/>
+            <div className="w-full px-4">
+             <hr className="w-[100%] mx-auto border border-b-blue-700"/>
               <h2 className="text-4xl header font-bold text-center mt-10 mb-10">Gallery</h2>
 
               <Swiper
@@ -551,7 +551,7 @@ const StatNumber = ({ target }) => {
                   clickable: true,
                 }}
                 modules={[EffectCoverflow, Pagination]}
-                className="rounded-lg"
+                className="rounded-lg max-w-4xl"
               >
                 {images.map((image, index) => (
                   <SwiperSlide

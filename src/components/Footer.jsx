@@ -105,11 +105,11 @@ const Footer = () => {
              <a href="#">Contact CSTD</a>
              <a href="#">Accessibility</a>
            </div>
-           <div className="mt-4">
-             Page Last Updated: <span className="text-white font-medium">May 19, 2025</span><br />
-             Page Editor: <span className="font-semibold text-white">Ehi Jennifer Ehoida</span><br />
-             Responsible CSTD Official:{" "}
-             <span className="font-semibold text-white">Omotayo Maryam</span>
+           <div className="">
+             Page Last Updated: <span className="text-white font-medium">Feb 11, 2026</span><br />
+             {/* Page Editor: <span className="font-semibold text-white">Ehi Jennifer Ehoida</span><br /> */}
+             {/* Responsible CSTD Official:{" "} */}
+             {/* <span className="font-semibold text-white">Omotayo Maryam</span> */}
            </div>
          </div>
        </footer> 
