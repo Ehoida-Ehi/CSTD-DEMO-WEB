@@ -175,7 +175,7 @@ useEffect(() => {
       {/* Modal Component */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden">
+          <div className="relative max-w-4xl w-full bg-white dark:bg-slate-900 rounded-lg overflow-hidden">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 z-10"
@@ -244,9 +244,9 @@ useEffect(() => {
       )}
 
       {/* Gallery Section */}
-      <div id="gallery" className="py-16 bg-white flex justify-center">
+      <div id="gallery" className="py-16 bg-white dark:bg-slate-900 flex justify-center">
         <div className="w-full max-w-6xl px-4">
-          <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Gallery</h2>
+          <h2 className="text-4xl text-green-700 dark:text-green-400 font-bold text-center mb-10">Gallery</h2>
 
       <Swiper
         effect="coverflow"
@@ -305,9 +305,9 @@ useEffect(() => {
       </div>
 
       {/* Masonry Grid Gallery */}
-      <div className="py-16 bg-gray-50">
+      <div className="py-16 bg-gray-50 dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl text-green-700 font-bold text-center mb-10">Photo Gallery</h2>
+          <h2 className="text-4xl text-green-700 dark:text-green-400 font-bold text-center mb-10">Photo Gallery</h2>
           <div id='gallery'>
              <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Large Image */}
@@ -381,7 +381,7 @@ useEffect(() => {
 
       {/* Header Section */}
       <div id='news'>
-      <div className="bg-slate-950 text-white py-16">
+      <div className="bg-slate-950 dark:bg-slate-950 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-center mb-4">Latest News</h1>
           <p className="text-center text-gray-300">Stay updated with the latest developments in space technology and research</p>
@@ -390,13 +390,13 @@ useEffect(() => {
 
 
 
-<div className=' my-5 shadow-lg p-2'>
+<div className=' my-5 shadow-lg p-2 bg-white dark:bg-slate-900 rounded-lg'>
   <div className='w-[90%] mx-auto flex justify-end items-center gap-5'>
-  <div className='text-gray-600'>
+  <div className='text-gray-600 dark:text-slate-300'>
     <p className='font-semibold'>Filter:</p>
   </div>
   <div className='flex gap-3 items-center ps-3'> 
-    <select onChange={(e)=> setAsc(e.target.value)} value={asc} className='rounded-md p-2 shadow-md border-gray-400 text-gray-600'>
+    <select onChange={(e)=> setAsc(e.target.value)} value={asc} className='rounded-md p-2 shadow-md border-gray-400 dark:border-slate-600 text-gray-600 dark:text-slate-200 bg-white dark:bg-slate-800'>
       
       <option value="" disabled>Sort By</option>
       <option value="latest">Latest</option>
@@ -411,13 +411,13 @@ useEffect(() => {
         type="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        className="rounded-md p-2 shadow-md border-gray-400 text-gray-600" 
+        className="rounded-md p-2 shadow-md border-gray-400 dark:border-slate-600 text-gray-600 dark:text-slate-200 bg-white dark:bg-slate-800" 
       />
     </div> 
 
     <button 
     onClick={clearFilter}
-    className='text-gray-700 rounded-md bg-gray-100 py-2 px-3 text-sm shadow-md'>Clear filter</button>
+    className='text-gray-700 dark:text-slate-200 rounded-md bg-gray-100 dark:bg-slate-700 py-2 px-3 text-sm shadow-md'>Clear filter</button>
     
   </div>
   </div>
@@ -431,7 +431,7 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="space-y-8">
           {newsItems && newsItems.length > 0? newsItems.map((news, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div key={index} className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 {/* Thumbnail */}
                 <div className="md:w-1/3 relative">
@@ -447,8 +447,8 @@ useEffect(() => {
 
                 {/* Content */}
                 <div className="md:w-2/3 p-6">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">{news.title}</h2>
-                  <p className="text-gray-600 mb-6">{news.brief}</p>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">{news.title}</h2>
+                  <p className="text-gray-600 dark:text-slate-300 mb-6">{news.brief}</p>
                   <button
                     onClick={() => toggleNews(index)}
                     className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
@@ -461,7 +461,7 @@ useEffect(() => {
                     <div className="mt-6 border-t pt-6">
                       <div className="prose max-w-none">
                         {news.content.split('\n\n').map((paragraph, pIndex) => (
-                          <p key={pIndex} className="mb-4 text-gray-700">
+                          <p key={pIndex} className="mb-4 text-gray-700 dark:text-slate-300">
                             {paragraph}
                           </p>
                         ))}

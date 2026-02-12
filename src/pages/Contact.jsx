@@ -52,7 +52,7 @@ const Contact = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8">
             <div className="relative w-full h-80 mb-8 rounded-lg overflow-hidden">
               <img
                 src={CareImage}
@@ -66,8 +66,8 @@ const Contact = () => {
                 }}
               />
             </div>
-            <h2 className="text-3xl font-bold text-green-800 mb-8">Contact Information</h2>
-            <p className="text-gray-600 mb-8">
+            <h2 className="text-3xl font-bold text-green-800 dark:text-green-400 mb-8">Contact Information</h2>
+            <p className="text-gray-600 dark:text-slate-300 mb-8">
               Thank you for visiting our website. We are here to assist you with any inquiries you may have.
             </p>
 
@@ -126,7 +126,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div id='partner'>
-              <div className="bg-white rounded-xl shadow-lg p-8">
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-green-800 mb-8">Ask a Question</h2>
             <p className="text-gray-600 mb-8">
               If you have any questions, you can contact us. Please, fill out the form below.

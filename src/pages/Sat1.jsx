@@ -6,10 +6,10 @@ const Sat1 = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-slate-100 mb-4">
             NigeriaSAT-1
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto">
             Nigeria's first Earth observation satellite for disaster monitoring and environmental management
           </p>
           <div className="mt-6">
@@ -28,21 +28,21 @@ const Sat1 = () => {
         </div>
 
         {/* Mission Overview */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Mission Overview</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Mission Overview</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Launch Details</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-3">Launch Details</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><span className="font-medium">Launch Date:</span> September 2003</li>
-                <li><span className="font-medium">Launch Site:</span> Plesetsk, Russia</li>
-                <li><span className="font-medium">Cost:</span> $13 million</li>
-                <li><span className="font-medium">Design Life:</span> 5 years</li>
-                <li><span className="font-medium">Orbit:</span> 700km Low Earth Orbit</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Launch Date:</span> September 2003</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Launch Site:</span> Plesetsk, Russia</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Cost:</span> $13 million</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Design Life:</span> 5 years</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Orbit:</span> 700km Low Earth Orbit</li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Constellation</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-3">Constellation</h3>
               <p className="text-gray-600 mb-3">
                 NigeriaSAT-1 is part of the Disaster Monitoring Constellation (DMC), a seven-nation network including:
               </p>
@@ -59,37 +59,37 @@ const Sat1 = () => {
         </div>
 
         {/* Technical Specifications */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Technical Specifications</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Spectral Bands</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-3">Spectral Bands</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><span className="font-medium">Green:</span> 0.52-0.62µm</li>
-                <li><span className="font-medium">Red:</span> 0.63-0.69µm</li>
-                <li><span className="font-medium">NIR:</span> 0.76-0.9µm</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Green:</span> 0.52-0.62µm</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Red:</span> 0.63-0.69µm</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">NIR:</span> 0.76-0.9µm</li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Imaging Capabilities</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-3">Imaging Capabilities</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><span className="font-medium">Spatial Resolution:</span> 32m</li>
-                <li><span className="font-medium">Swath Width:</span> 600km</li>
-                <li><span className="font-medium">Revisit Cycle:</span> 3-5 days</li>
-                <li><span className="font-medium">Camera Operation:</span> Two banks</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Spatial Resolution:</span> 32m</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Swath Width:</span> 600km</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Revisit Cycle:</span> 3-5 days</li>
+                <li className="text-gray-600 dark:text-slate-300"><span className="font-medium">Camera Operation:</span> Two banks</li>
               </ul>
             </div>
           </div>
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-blue-800">
+          <div className="mt-6 p-4 bg-blue-50 dark:bg-slate-700 rounded-lg">
+            <p className="text-blue-800 dark:text-blue-200">
               <strong>Note:</strong> NigeriaSAT-1 has spectral resolution comparable to SPOT XS and spatial resolution comparable to Landsat TM, making it highly suitable for forestry monitoring and natural resource management.
             </p>
           </div>
         </div>
 
         {/* Applications and Uses */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Applications and Uses</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Applications and Uses</h2>
           
           <h3 className="text-lg font-semibold text-gray-800 mb-4">National Applications</h3>
           <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -128,8 +128,8 @@ const Sat1 = () => {
         </div>
 
         {/* Development and Training */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Development and Training</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Development and Training</h2>
           <div className="space-y-4 text-gray-600">
             <p>
               NigeriaSAT-1 was built by Surrey Satellite Technology (SSTL), a British-based company, which also provided comprehensive training to Nigerian technicians and engineers. This collaboration has helped build indigenous competence in satellite technology development.

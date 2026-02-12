@@ -85,29 +85,29 @@ const [
         </div>
       </div>
 
-      <div className="bg-white py-16 px-4 lg:px-20 text-white">
+      <div className="bg-white dark:bg-slate-900 py-16 px-4 lg:px-20 text-slate-900 dark:text-slate-100">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-5 grid-cols-1 md:grid-cols-3 gap-8 h-[70vh] my-2 p-4">
           <div className="lg:col-span-2">
-              <h1 className="text-xl font-semibold text-green-600 lg:text-3xl font-serif">Pioneering the Future of Satellite Research and Technology</h1>
-              <p className="text-sm mt-2 text-black pe-10">
+              <h1 className="text-xl font-semibold text-green-600 dark:text-green-400 lg:text-3xl font-serif">Pioneering the Future of Satellite Research and Technology</h1>
+              <p className="text-sm mt-2 text-slate-800 dark:text-slate-200 pe-10">
                 At CSTD, our commitment to cutting-edge research and innovation fuels the advancement of satellite technology, space applications, and national development goals. Our scientists, engineers, and partners work collaboratively to turn ideas into practical solutions for Earth observation, communication, navigation, and environmental monitoring.
               </p>
           </div>
           <img src={pic5} alt="IMAGES" className="lg:col-span-3 h-[50%] w-full object-cover" />
         </div>  
-        <div className="flex space-x-3 items-center text-black mt-20 mb-5 lg:my-12">
-          <HiMiniWrenchScrewdriver className="text-3xl text-green-900" />
-          <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800">Upcoming Projects</h1>
-          <FaGears className="text-3xl text-green-900" />
+        <div className="flex space-x-3 items-center text-slate-900 dark:text-slate-100 mt-20 mb-5 lg:my-12">
+          <HiMiniWrenchScrewdriver className="text-3xl text-green-900 dark:text-green-400" />
+          <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800 dark:text-green-400">Upcoming Projects</h1>
+          <FaGears className="text-3xl text-green-900 dark:text-green-400" />
         </div>
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 grid-cols-1 md:grid-cols-3 gap-3 h-fit my-2 p-8 border text-black bg-blue-950">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 grid-cols-1 md:grid-cols-3 gap-3 h-fit my-2 p-8 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 bg-blue-50 dark:bg-slate-800">
           {/* <img src="" alt="" /> */}
-          <div className="border-2 border-gray-400 py-2 px-4 space-y-2 bg-white shadow-lg shadow-gray-800">
+          <div className="border-2 border-gray-400 dark:border-slate-600 py-2 px-4 space-y-2 bg-white dark:bg-slate-900 shadow-lg shadow-gray-800 dark:shadow-slate-950">
             <img src={pic6} alt="IMAGES" className="w-16 mx-auto"/>
             <h1 className="text-center font-extrabold uppercase">AI-Powered Satellite Image Analytics for National Security</h1>
             <h1 className="text-sm">Objective: Train an AI model on satellite imagery to automatically detect suspicious patterns such as illegal mining, deforestation, or unusual maritime activity.</h1>
             <div className="grid grid-cols-2 gap-1 ">
-              <ul className="text-xs space-y-2 list-disc p-4 border-r border-black">
+              <ul className="text-xs space-y-2 list-disc p-4 border-r border-black dark:border-slate-600">
                 <li><b>Why It Matters:</b> Enables proactive defense and anti-smuggling efforts across borders and forests.</li>
                 <li><b>Technologies Involved:</b> Satellite imagery, computer vision, deep learning, secured data pipelines.</li>
               </ul>
@@ -117,12 +117,12 @@ const [
               </ul>
             </div>
           </div>
-          <div className="border-2 border-gray-400 py-2 px-4 space-y-2 bg-white shadow-lg shadow-gray-800">
+          <div className="border-2 border-gray-400 dark:border-slate-600 py-2 px-4 space-y-2 bg-white dark:bg-slate-900 shadow-lg shadow-gray-800 dark:shadow-slate-950">
             <img src={pic6} alt="IMAGES" className="w-16 mx-auto"/>
             <h1 className="text-center font-extrabold uppercase">Passive Radar CubeSat Demonstrator</h1>
             <h1 className="text-sm">Objective: Build a CubeSat that uses existing radio and TV broadcasts as illumination sources for Earth observation</h1>
             <div className="grid grid-cols-2 gap-1 ">
-              <ul className="text-xs space-y-2 list-disc p-4 border-r border-black">
+              <ul className="text-xs space-y-2 list-disc p-4 border-r border-black dark:border-slate-600">
                 <li><b>Why It Matters:</b> Enables continuous Earth monitoring without power-hungry active radar systems.</li>
                 <li><b>Technologies Involved:</b> Software-defined radio, signal processing algorithms, passive radar techniques.</li>
               </ul>
@@ -132,12 +132,12 @@ const [
               </ul>
             </div>
           </div>
-          <div className="border-2 border-gray-400 py-2 px-4 space-y-2 bg-white shadow-lg shadow-gray-800">
+          <div className="border-2 border-gray-400 dark:border-slate-600 py-2 px-4 space-y-2 bg-white dark:bg-slate-900 shadow-lg shadow-gray-800 dark:shadow-slate-950">
             <img src={pic6} alt="IMAGES" className="w-16 mx-auto"/>
             <h1 className="text-center font-extrabold uppercase">CubeSat-Based Ionosphere Monitoring System</h1>
             <h1 className="text-sm">Objective: RF sensors to collect real-time data on ionospheric conditions affecting satellite communications and GPS accuracy.</h1>
             <div className="grid grid-cols-2 gap-1 ">
-              <ul className="text-xs space-y-2 list-disc p-4 border-r border-black">
+              <ul className="text-xs space-y-2 list-disc p-4 border-r border-black dark:border-slate-600">
                 <li><b>Why It Matters:</b> Provides crucial data for predicting communication disruptions and improving satellite navigation precision.</li>
                 <li><b>Technologies Involved:</b> RF sensors, low-power microcontrollers, miniaturized antennas, open-source data processing.</li>
               </ul>
@@ -151,16 +151,16 @@ const [
         </div>
         <div className="flex flex-col">
           <div id="projects">
-    <div className="flex space-x-3 items-center text-black mt-12 mb-5 lg:mt-20">
-            <HiMiniWrenchScrewdriver className="text-3xl text-green-900" />
-            <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800">Past Projects</h1>
-            <FaGears className="text-3xl text-green-900" />
+    <div className="flex space-x-3 items-center text-slate-900 dark:text-slate-100 mt-12 mb-5 lg:mt-20">
+            <HiMiniWrenchScrewdriver className="text-3xl text-green-900 dark:text-green-400" />
+            <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800 dark:text-green-400">Past Projects</h1>
+            <FaGears className="text-3xl text-green-900 dark:text-green-400" />
           </div>
-          <div className="p-2 border">
-            <div className="grid grid-cols-5 h-fit w-full text-black space-y-10 items-center p-8 my-10 border-b-2 border-b-black">
+          <div className="p-2 border border-slate-300 dark:border-slate-600">
+            <div className="grid grid-cols-5 h-fit w-full text-slate-900 dark:text-slate-100 space-y-10 items-center p-8 my-10 border-b-2 border-b-slate-800 dark:border-b-slate-600">
               <img src={pic7} alt="IMAGES" className="col-span-3 object-cover lg:w-[80%] w-full" />
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md lg:text-3xl text-center font-extrabold text-green-800">Unmanned Ground Vehicle (UGV)</h1>
+                <h1 className="text-md lg:text-3xl text-center font-extrabold text-green-800 dark:text-green-400">Unmanned Ground Vehicle (UGV)</h1>
                 <div className="hidden lg:block space-y-2">
                 <h1>CSTD designed and developed an Unmanned Ground Vehicle (UGV). The UGV is designed as a fit-for-purpose robot, capable of deployment in potentially hazardous environments.</h1>
                 <p><b>Specific Capabilities:</b></p>
@@ -174,9 +174,9 @@ const [
                 </div>
               </div>
             </div>      
-            <div className="grid grid-cols-5 h-fit w-full text-black space-y-10 p-8 items-center gap-3 my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-fit w-full text-slate-900 dark:text-slate-100 space-y-10 p-8 items-center gap-3 my-2 border-b-2 border-slate-800 dark:border-slate-600">
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md lg:text-3xl text-center font-extrabold text-green-800">CSTD Tubesat Project </h1>
+                <h1 className="text-md lg:text-3xl text-center font-extrabold text-green-800 dark:text-green-400">CSTD Tubesat Project </h1>
                 <div className="hidden lg:block space-y-2">
                 <h1>CSTD developed a TubeSat, a lightweight, inexpensive pico-satellite to demonstrate technical capacity to build larger and more sophisticated satellites for national development.</h1>
                 <p><b>Project Justification:</b></p>
@@ -190,10 +190,10 @@ const [
               </div>
               <img src={pic8} alt="IMAGES" className="col-span-3 object-cover w-full lg:w-[60%]" />
             </div>      
-            <div className="grid grid-cols-5 h-full w-full text-black space-y-2 p-8 items-center gap-3 my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-full w-full text-slate-900 dark:text-slate-100 space-y-2 p-8 items-center gap-3 my-2 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic9} alt="IMAGES" className="col-span-3 object-fit w-full lg:w-[60%] lg:h-fit flex mx-auto" />
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md text-center font-extrabold text-green-800 lg:text-3xl">Greenhouse Gas Measurement and Data Retrieval System</h1>
+                <h1 className="text-md text-center font-extrabold text-green-800 dark:text-green-400 lg:text-3xl">Greenhouse Gas Measurement and Data Retrieval System</h1>
                 <div className="hidden lg:block space-y-2">
                 <h1>CSTD developed a greenhouse gas measurement and data retrieval system. The project aligns with Nigeria's commitments to the United Nations Framework Convention on Climate Change and showcases CSTD's progress towards achieving satellite technology competence.</h1>
                 <p><b>Significance:</b></p>
@@ -207,9 +207,9 @@ const [
                 </div>
               </div>
             </div>      
-            <div className="grid grid-cols-5 h-full w-full text-black space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-full w-full text-black dark:text-slate-100 space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black dark:border-slate-600">
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md text-center font-extrabold text-green-800 lg:text-3xl">3-axis Fluxgate Magnetometer Project </h1>
+                <h1 className="text-md text-center font-extrabold text-green-800 dark:text-green-400 lg:text-3xl">3-axis Fluxgate Magnetometer Project </h1>
                 <div className="hidden lg:block space-y-2">
                   <h1>CSTD developed a high-quality, low-noise ring core fluxgate magnetometer for measuring magnetic fields in space and on Earth.</h1>
                   <p><b>Project Justification:</b></p>
@@ -223,19 +223,19 @@ const [
               </div>
               <img src={pic11} alt="IMAGES" className="col-span-3 object-fit w-full lg:w-[60%] lg:h-fit flex mx-auto" />
             </div>      
-            <div className="grid grid-cols-5 h-full w-full text-black space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-full w-full text-black dark:text-slate-100 space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black dark:border-slate-600">
               <img src={pic12} alt="IMAGES" className="col-span-3 object-fit w-full lg:w-[60%] lg:h-fit flex mx-auto" />
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md text-center font-extrabold text-green-800 lg:text-3xl">Attitude Determination and Control System (ADCS) Project</h1>
+                <h1 className="text-md text-center font-extrabold text-green-800 dark:text-green-400 lg:text-3xl">Attitude Determination and Control System (ADCS) Project</h1>
                 <div className="hidden lg:block space-y-2">
                   <p>Environmental tests must be conducted to ensure that a satellite can operate within the harsh conditions of space such as gravity gradient, aerodynamic torques and solar radiations.</p>
                   <p> Attitude Determination and Control Subsystem (ADCS) software and hardware tests must be carried out on a test bed. CSTD developed an ADCS prototype.</p>
                 </div>
               </div>
             </div>      
-            <div className="grid grid-cols-5 h-full w-full text-black space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-full w-full text-black dark:text-slate-100 space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black dark:border-slate-600">
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md text-center font-extrabold text-green-800 lg:text-3xl">S-band Filtration Project For a Leo Satellite Ground Station</h1>
+                <h1 className="text-md text-center font-extrabold text-green-800 dark:text-green-400 lg:text-3xl">S-band Filtration Project For a Leo Satellite Ground Station</h1>
                 <div className="hidden lg:block space-y-2">
                   <h1>An in-house designed S-band Band-pass filter modeled after the filter used for the NigeriaSat-2 satellite Ground Station.</h1>
                   <h1><b>Significance:</b></h1>
@@ -248,10 +248,10 @@ const [
               </div>
               <img src={pic13} alt="IMAGES" className="col-span-3 object-fit w-full lg:w-[80%] lg:h-[120%] lg:p-10 h-[100%] flex mx-auto" />
             </div>      
-            <div className="grid grid-cols-5 h-full w-full text-black space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-full w-full text-black dark:text-slate-100 space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black dark:border-slate-600">
               <img src={pic14} alt="IMAGES" className="col-span-3 object-fit w-full lg:w-[80%] lg:h-[100%] h-[100%] flex mx-auto" />
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md text-center font-extrabold text-green-800 lg:text-3xl">Development Of A Low Frequency Satellite Receiver</h1>
+                <h1 className="text-md text-center font-extrabold text-green-800 dark:text-green-400 lg:text-3xl">Development Of A Low Frequency Satellite Receiver</h1>
                 <div className="hidden lg:block space-y-2">
                   <h1>Software-based radio frequency (RF) is used to minimize the size of the radio transceiver and to provide a larger bandwidth spectrum at higher operating frequencies and higher data rates.</h1>
                   <h1>Miniturized transceiver circuit reduces production costs and maximizes flexibility</h1>
@@ -260,9 +260,9 @@ const [
                 </div>
               </div>
             </div>      
-            <div className="grid grid-cols-5 h-full w-full text-black space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-full w-full text-black dark:text-slate-100 space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black dark:border-slate-600">
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md text-center font-extrabold text-green-800 lg:text-3xl">Fabrication of 2 Meter Parabolic Dish Using Natural Fibre And Polyester Resin</h1>
+                <h1 className="text-md text-center font-extrabold text-green-800 dark:text-green-400 lg:text-3xl">Fabrication of 2 Meter Parabolic Dish Using Natural Fibre And Polyester Resin</h1>
                 <div className="hidden lg:block space-y-2">
                   <h1>CSTD developed a 2-meter parabolic dish using natural fiber composites, specifically Banana Empty Fruit Bunch (BEFB) fibers and polyester resin.</h1>
                   <h1><b>Significance:</b></h1>
@@ -275,10 +275,10 @@ const [
               </div>
               <img src={pic15} alt="IMAGES" className="col-span-3 object-fit w-full lg:w-[80%] lg:h-[100%] h-[100%] flex mx-auto" />
             </div>      
-            <div className="grid grid-cols-5 h-full w-full text-black space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black">
+            <div className="grid grid-cols-5 h-full w-full text-black dark:text-slate-100 space-y-2 p-8 gap-3 items-center my-2 border-b-2 border-black dark:border-slate-600">
               <img src={pic16} alt="IMAGES" className="col-span-3 object-fit w-full lg:w-[90%] lg:h-[100%] h-[100%] flex mx-auto" />
               <div className="col-span-2 space-y-2">
-                <h1 className="text-md text-center font-extrabold text-green-800 lg:text-3xl">Green Synthesis Of Silver Nanoparticles And Its Application In Carbon Quantum Dots Sensitized Solar Cells For Enhanced Photovoltaic Performance</h1>
+                <h1 className="text-md text-center font-extrabold text-green-800 dark:text-green-400 lg:text-3xl">Green Synthesis Of Silver Nanoparticles And Its Application In Carbon Quantum Dots Sensitized Solar Cells For Enhanced Photovoltaic Performance</h1>
                 <div className="hidden lg:block space-y-2">
                   <h1>Project focuses on developing a smart design strategy to enhance the performance of Carbon Quantum Dot Sensitized Solar Cells (CQDSSC) by introducing in-plane surface plasmon (SP) nanoparticles.</h1>
                   <h1><b>Significance:</b></h1>
@@ -294,8 +294,8 @@ const [
           </div>
           </div>
           <div id="publications" >
-            <div className="text-black p-3">
-            <p className="items-center flex gap-2 my-10"><h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800">Publications & White Papers</h1><HiOutlineNewspaper className="lg:text-3xl text-green-800" /></p>
+            <div className="text-slate-900 dark:text-slate-100 p-3">
+            <p className="items-center flex gap-2 my-10"><h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800 dark:text-green-400">Publications & White Papers</h1><HiOutlineNewspaper className="lg:text-3xl text-green-800 dark:text-green-400" /></p>
             <div className="grid sm:grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-2">
               <img src="https://d2rty5wuu5bi5t.cloudfront.net/eyJidWNrZXQiOiJyc24tYnVja2V0Iiwia2V5IjoicHJvZHVjdGlvbi90ZWFzZXJzL21hdGhzLWJsb2cuanBnIiwiZWRpdHMiOnsianBlZyI6eyJxdWFsaXR5Ijo4MiwicHJvZ3Jlc3NpdmUiOnRydWUsInRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pemVTY2FucyI6dHJ1ZX0sInJlc2l6ZSI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NjgsImZpdCI6ImNvdmVyIn0sInNoYXJwZW4iOnRydWV9fQ==" alt="IMAGES" className="lg:hidden rows-span-1 lg:col-span-1 w-full object-cover mx-auto justify-center flex h-full"/>
               <div className="flex flex-col sm:row-span-1 lg:col-span-1 items-center my-auto">

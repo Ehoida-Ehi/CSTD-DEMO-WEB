@@ -22,31 +22,40 @@ function NavMenuItem({ to, children, className = "", onClick }) {
 function ThemeToggle() {
   const { theme, setTheme, themes } = useTheme();
 
-  const buttons = [
-    { key: themes.light, icon: FaSun, label: "Light mode" },
-    { key: themes.dark, icon: FaMoon, label: "Dark mode" },
-    { key: themes.system, icon: FaDesktop, label: "System default" },
-  ];
+  const cycle = [themes.light, themes.dark, themes.system];
+  const currentIndex = cycle.indexOf(theme);
+  const nextIndex = (currentIndex + 1) % cycle.length;
+  const nextTheme = cycle[nextIndex];
+
+  const icons = {
+    [themes.light]: FaSun,
+    [themes.dark]: FaMoon,
+    [themes.system]: FaDesktop,
+  };
+  const labels = {
+    [themes.light]: "Light mode",
+    [themes.dark]: "Dark mode",
+    [themes.system]: "System default",
+  };
+  const iconColors = {
+    [themes.light]: "text-amber-100",
+    [themes.dark]: "text-indigo-300",
+    [themes.system]: "text-green-300",
+  };
+
+  const Icon = icons[theme];
+  const nextLabel = labels[nextTheme];
 
   return (
-    <div className="flex items-center gap-2" role="group" aria-label="Theme switcher">
-      {buttons.map(({ key, icon: Icon, label }) => (
-        <button
-          key={key}
-          type="button"
-          onClick={() => setTheme(key)}
-          title={label}
-          aria-label={label}
-          className={`p-2 rounded-lg transition-colors ${
-            theme === key
-              ? "text-green-400 bg-green-400/20"
-              : "text-white/80 hover:text-white hover:bg-white/10"
-          }`}
-        >
-          <Icon className="w-5 h-5" aria-hidden />
-        </button>
-      ))}
-    </div>
+    <button
+      type="button"
+      onClick={() => setTheme(nextTheme)}
+      title={`${labels[theme]} (click for ${nextLabel})`}
+      aria-label={`Switch to ${nextLabel}`}
+      className={`p-2 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95 hover:bg-white/10 ${iconColors[theme]}`}
+    >
+      <Icon className="w-5 h-5" aria-hidden />
+    </button>
   );
 }
 

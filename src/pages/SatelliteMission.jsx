@@ -80,25 +80,25 @@ const SatelliteMission = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-24 pb-16 text-slate-100">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 pt-24 pb-16 text-slate-900 dark:text-slate-100">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-slate-900 to-slate-950 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/80 via-gray-50 to-blue-50 dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-950 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-2 items-center">
             <div>
-              <p className="text-sm font-semibold tracking-[0.25em] text-blue-400 uppercase mb-4">
+              <p className="text-sm font-semibold tracking-[0.25em] text-blue-600 dark:text-blue-400 uppercase mb-4">
                 Nigerian Satellite Missions
               </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-50 mb-5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 mb-5">
                 Imaging Nigeria from Space,
-                <span className="block text-blue-400">
+                <span className="block text-blue-600 dark:text-blue-400">
                   Empowering Decisions on Earth.
                 </span>
               </h1>
-              <p className="text-base sm:text-lg text-slate-300 max-w-xl mb-6">
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl mb-6">
                 Explore Nigeria&apos;s pioneering satellite missions –{" "}
-                <span className="font-semibold text-slate-100">
+                <span className="font-semibold text-slate-800 dark:text-slate-100">
                   Sat‑1, Sat‑2 and Sat‑X
                 </span>{" "}
                 – designed to support disaster management, environmental
@@ -114,34 +114,34 @@ const SatelliteMission = () => {
                 </a>
                 <a
                   href="#overview"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-slate-600/70 hover:border-blue-400/70 text-sm sm:text-base font-semibold text-slate-100 hover:text-blue-200 bg-slate-900/40 hover:bg-slate-800/70 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-slate-300 dark:border-slate-600/70 hover:border-blue-500 dark:hover:border-blue-400/70 text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-200 bg-white/80 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors"
                 >
                   Mission Overview
                 </a>
               </div>
 
-              <dl className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-slate-300">
-                <div className="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3">
-                  <dt className="text-xs uppercase tracking-wide text-slate-400">
+              <dl className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-slate-600 dark:text-slate-300">
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 px-4 py-3">
+                  <dt className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
                     Operational Missions
                   </dt>
-                  <dd className="mt-1 text-lg font-semibold text-slate-50">
+                  <dd className="mt-1 text-lg font-semibold text-slate-800 dark:text-slate-50">
                     3+
                   </dd>
                 </div>
-                <div className="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3">
-                  <dt className="text-xs uppercase tracking-wide text-slate-400">
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 px-4 py-3">
+                  <dt className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
                     Primary Payloads
                   </dt>
-                  <dd className="mt-1 text-lg font-semibold text-slate-50">
+                  <dd className="mt-1 text-lg font-semibold text-slate-800 dark:text-slate-50">
                     EO &amp; Tech Demo
                   </dd>
                 </div>
-                <div className="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3">
-                  <dt className="text-xs uppercase tracking-wide text-slate-400">
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 px-4 py-3">
+                  <dt className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
                     First Launch
                   </dt>
-                  <dd className="mt-1 text-lg font-semibold text-slate-50">
+                  <dd className="mt-1 text-lg font-semibold text-slate-800 dark:text-slate-50">
                     2003
                   </dd>
                 </div>
@@ -150,15 +150,15 @@ const SatelliteMission = () => {
 
             <div className="relative">
               <div className="absolute -inset-6 bg-blue-500/10 rounded-3xl blur-3xl" />
-              <div className="relative rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-6 sm:p-8 shadow-2xl shadow-blue-900/40">
-                <p className="text-xs font-semibold tracking-[0.25em] text-blue-400 uppercase mb-4">
+              <div className="relative rounded-3xl border border-slate-200 dark:border-slate-700/80 bg-gradient-to-br from-white via-gray-50 to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 p-6 sm:p-8 shadow-2xl shadow-slate-200/80 dark:shadow-blue-900/40">
+                <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 dark:text-blue-400 uppercase mb-4">
                   Mission Snapshot
                 </p>
-                <ul className="space-y-4 text-sm sm:text-base">
+                <ul className="space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300">
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-emerald-400" />
+                    <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
                     <p>
-                      <span className="font-semibold text-slate-50">
+                      <span className="font-semibold text-slate-800 dark:text-slate-50">
                         Sat‑1
                       </span>{" "}
                       kick‑started Nigeria&apos;s participation in the Disaster
@@ -167,9 +167,9 @@ const SatelliteMission = () => {
                     </p>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-blue-400" />
+                    <span className="mt-1 h-2 w-2 rounded-full bg-blue-500 dark:bg-blue-400" />
                     <p>
-                      <span className="font-semibold text-slate-50">
+                      <span className="font-semibold text-slate-800 dark:text-slate-50">
                         Sat‑2
                       </span>{" "}
                       brought high‑resolution mapping capabilities, enabling
@@ -177,9 +177,9 @@ const SatelliteMission = () => {
                     </p>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-violet-400" />
+                    <span className="mt-1 h-2 w-2 rounded-full bg-violet-500 dark:bg-violet-400" />
                     <p>
-                      <span className="font-semibold text-slate-50">
+                      <span className="font-semibold text-slate-800 dark:text-slate-50">
                         Sat‑X
                       </span>{" "}
                       marked a major technology transfer milestone, with
@@ -189,15 +189,15 @@ const SatelliteMission = () => {
                   </li>
                 </ul>
 
-                <div className="mt-6 grid grid-cols-2 gap-4 text-xs text-slate-300">
-                  <div className="rounded-2xl bg-slate-900/80 border border-slate-700/70 px-4 py-3">
-                    <p className="font-semibold text-slate-50 mb-1">
+                <div className="mt-6 grid grid-cols-2 gap-4 text-xs text-slate-600 dark:text-slate-300">
+                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700/70 px-4 py-3">
+                    <p className="font-semibold text-slate-800 dark:text-slate-50 mb-1">
                       Key Domains
                     </p>
                     <p>Disaster response, agriculture, urban planning.</p>
                   </div>
-                  <div className="rounded-2xl bg-slate-900/80 border border-slate-700/70 px-4 py-3">
-                    <p className="font-semibold text-slate-50 mb-1">
+                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700/70 px-4 py-3">
+                    <p className="font-semibold text-slate-800 dark:text-slate-50 mb-1">
                       Lead Agency
                     </p>
                     <p>CSTD / NASRDA in collaboration with global partners.</p>
@@ -212,31 +212,31 @@ const SatelliteMission = () => {
       {/* Overview Section */}
       <section
         id="overview"
-        className="border-t border-slate-800 bg-slate-950/60"
+        className="border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-950/60"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-50 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">
               Strategic Role of Nigerian Satellites
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mb-4">
+            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base mb-4">
               Nigeria&apos;s satellite missions are designed to address practical
               national needs:{" "}
-              <span className="font-semibold text-slate-100">
+              <span className="font-semibold text-slate-800 dark:text-slate-100">
                 disaster risk reduction, food security, environmental
                 stewardship, infrastructure planning and security support.
               </span>{" "}
               Each mission contributes unique imaging capabilities and technology
               insights that strengthen Nigeria&apos;s space programme.
             </p>
-            <p className="text-slate-300 text-sm sm:text-base">
+            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
               Through Sat‑1, Sat‑2 and Sat‑X, Nigeria has built a portfolio of
               missions that balance{" "}
-              <span className="font-semibold text-slate-100">
+              <span className="font-semibold text-slate-800 dark:text-slate-100">
                 operational Earth observation
               </span>{" "}
               with{" "}
-              <span className="font-semibold text-slate-100">
+              <span className="font-semibold text-slate-800 dark:text-slate-100">
                 indigenous capacity development
               </span>
               , ensuring that local engineers and institutions gain the skills
@@ -249,15 +249,15 @@ const SatelliteMission = () => {
       {/* Satellite Cards Section */}
       <section
         id="missions"
-        className="border-t border-slate-800 bg-gradient-to-b from-slate-950 via-slate-900/40 to-slate-950"
+        className="border-t border-slate-200 dark:border-slate-800 bg-gradient-to-b from-gray-50 via-white/60 to-gray-50 dark:from-slate-950 dark:via-slate-900/40 dark:to-slate-950"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-50">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-50">
                 Nigerian Satellite Missions
               </h2>
-              <p className="mt-2 text-sm sm:text-base text-slate-300 max-w-2xl">
+              <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl">
                 Explore the key characteristics of Sat‑1, Sat‑2 and Sat‑X –
                 their launch history, payloads and the national value they
                 deliver.
@@ -269,46 +269,46 @@ const SatelliteMission = () => {
             {satellites.map((sat) => (
               <article
                 key={sat.id}
-                className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-950/70 hover:bg-slate-900 transition-colors shadow-lg shadow-slate-950/40"
+                className="group flex flex-col rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/70 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors shadow-lg shadow-slate-200/60 dark:shadow-slate-950/40"
               >
-                <div className="border-b border-slate-800 px-5 pt-5 pb-4">
-                  <p className="text-xs font-semibold tracking-[0.25em] text-blue-400 uppercase mb-2">
+                <div className="border-b border-slate-200 dark:border-slate-800 px-5 pt-5 pb-4">
+                  <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 dark:text-blue-400 uppercase mb-2">
                     {sat.id === "satx" ? "Tech Demonstration" : "Earth Observation"}
                   </p>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-50">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-50">
                     {sat.name}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-slate-300">
+                  <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                     {sat.role}
                   </p>
                 </div>
 
-                <div className="flex-1 px-5 py-4 space-y-4 text-xs sm:text-sm text-slate-300">
+                <div className="flex-1 px-5 py-4 space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                   <div>
-                    <h4 className="font-semibold text-slate-100 mb-1">
+                    <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">
                       Launch &amp; Orbit
                     </h4>
-                    <dl className="grid grid-cols-1 gap-y-1 text-slate-300">
+                    <dl className="grid grid-cols-1 gap-y-1 text-slate-600 dark:text-slate-300">
                       <div className="flex justify-between gap-2">
-                        <dt className="text-slate-400">Launch date</dt>
-                        <dd className="font-medium text-slate-100">
+                        <dt className="text-slate-500 dark:text-slate-400">Launch date</dt>
+                        <dd className="font-medium text-slate-800 dark:text-slate-100">
                           {sat.launchDate}
                         </dd>
                       </div>
                       <div className="flex justify-between gap-2">
-                        <dt className="text-slate-400">Launch vehicle</dt>
+                        <dt className="text-slate-500 dark:text-slate-400">Launch vehicle</dt>
                         <dd className="font-medium text-slate-100 text-right">
                           {sat.launchVehicle}
                         </dd>
                       </div>
                       <div className="flex justify-between gap-2">
-                        <dt className="text-slate-400">Launch site</dt>
+                        <dt className="text-slate-500 dark:text-slate-400">Launch site</dt>
                         <dd className="font-medium text-slate-100 text-right">
                           {sat.launchSite}
                         </dd>
                       </div>
                       <div className="flex justify-between gap-2">
-                        <dt className="text-slate-400">Orbit</dt>
+                        <dt className="text-slate-500 dark:text-slate-400">Orbit</dt>
                         <dd className="font-medium text-slate-100 text-right">
                           {sat.orbit}
                         </dd>
@@ -317,7 +317,7 @@ const SatelliteMission = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-slate-100 mb-1">
+                    <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">
                       Payload Highlights
                     </h4>
                     <ul className="space-y-1 list-disc list-inside">
@@ -328,7 +328,7 @@ const SatelliteMission = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-slate-100 mb-1">
+                    <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">
                       Mission Features
                     </h4>
                     <ul className="space-y-1 list-disc list-inside">
@@ -339,7 +339,7 @@ const SatelliteMission = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-slate-100 mb-1">
+                    <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-1">
                       Key Applications
                     </h4>
                     <ul className="space-y-1 list-disc list-inside">
@@ -350,8 +350,8 @@ const SatelliteMission = () => {
                   </div>
                 </div>
 
-                <div className="border-t border-slate-800 px-5 py-4 flex items-center justify-between">
-                  <div className="text-[0.7rem] sm:text-xs text-slate-400">
+                <div className="border-t border-slate-200 dark:border-slate-800 px-5 py-4 flex items-center justify-between">
+                  <div className="text-[0.7rem] sm:text-xs text-slate-500 dark:text-slate-400">
                     <span className="inline-flex items-center gap-1">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                       Part of Nigeria&apos;s national space programme
@@ -359,7 +359,7 @@ const SatelliteMission = () => {
                   </div>
                   <a
                     href={sat.ctaHref}
-                    className="inline-flex items-center text-xs sm:text-sm font-semibold text-blue-400 hover:text-blue-300"
+                    className="inline-flex items-center text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
                   >
                     View detailed page
                     <svg
