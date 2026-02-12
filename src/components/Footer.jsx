@@ -9,7 +9,7 @@ import cstdImg from '../assets/images/cstd logoogo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-950 text-white px-6 py-12">
+    <footer className="bg-slate-950 dark:bg-slate-950 text-white px-6 py-12">
          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
            {/* Logo and Mission */}
            <div className="md:col-span-2">

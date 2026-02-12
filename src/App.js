@@ -10,8 +10,10 @@ import Sat2 from './pages/Sat2';
 import SatX from './pages/SatX';
 import Media from './pages/Media';
 import RnI from './pages/RnI';
+import Publications from './pages/Publications';
 
 import { NavPageContext, NavPageProvider } from './context/NavPageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { useContext } from 'react';
 import DynamicPage from './pages/DynamicPage';
 import { AboutProvider } from './context/AboutContext';
@@ -37,9 +39,15 @@ const Content = () => {
         <Route path="/about" element={<About />} />
         <Route path="/researchandinnovation" element={<RnI />} />
         <Route path="/satellitemissions" element={<SatelliteMission />} />
+        <Route path="/publications" element={<Publications />} />
+        <Route path="/sat1" element={<Sat1 />} />
+        <Route path="/sat2" element={<Sat2 />} />
+        <Route path="/satx" element={<SatX />} />
         
 
         {/* CMS-driven dynamic pages */}
+        {/* Created to know it can be done, but not utilized rn */}
+        {/* Used for test DynamicPage in the navbar as Home Page */}
         {dynamicPages.length > 0 ? (
           dynamicPages.map((navPage) => (
             <Route
@@ -58,11 +66,13 @@ const Content = () => {
 const App = () => {
   return (
     <Router>
-      <NavPageProvider>
-        <AboutProvider>
-          <Content />
-        </AboutProvider>
-      </NavPageProvider>
+      <ThemeProvider>
+        <NavPageProvider>
+          <AboutProvider>
+            <Content />
+          </AboutProvider>
+        </NavPageProvider>
+      </ThemeProvider>
     </Router>
   );
 };

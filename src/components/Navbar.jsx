@@ -2,19 +2,51 @@ import { Link, useLocation } from "react-router-dom";
 import cstdImg from '../assets/images/cstd logoogo.png';
 import { useContext, useEffect, useRef, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
-import axios from "axios";
+import { FaSun, FaMoon, FaDesktop } from "react-icons/fa6";
 import { NavPageContext } from "../context/NavPageContext";
+import { useTheme } from "../context/ThemeContext";
 
 function NavMenuItem({ to, children, className = "", onClick }) {
   return (
     <Link
       to={to}
       onClick={onClick}
-      className={`text-white hover:text-green-600 relative group ${className}`.trim()}
+      className={`text-white dark:text-white hover:text-green-400 dark:hover:text-green-400 relative group ${className}`.trim()}
     >
       {children}
       <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
     </Link>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, setTheme, themes } = useTheme();
+
+  const buttons = [
+    { key: themes.light, icon: FaSun, label: "Light mode" },
+    { key: themes.dark, icon: FaMoon, label: "Dark mode" },
+    { key: themes.system, icon: FaDesktop, label: "System default" },
+  ];
+
+  return (
+    <div className="flex items-center gap-2" role="group" aria-label="Theme switcher">
+      {buttons.map(({ key, icon: Icon, label }) => (
+        <button
+          key={key}
+          type="button"
+          onClick={() => setTheme(key)}
+          title={label}
+          aria-label={label}
+          className={`p-2 rounded-lg transition-colors ${
+            theme === key
+              ? "text-green-400 bg-green-400/20"
+              : "text-white/80 hover:text-white hover:bg-white/10"
+          }`}
+        >
+          <Icon className="w-5 h-5" aria-hidden />
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -58,7 +90,7 @@ export default function Navbar({navPages}) {
   // },[])
  
   return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-950 z-50">
+    <nav className="fixed top-0 left-0 w-full bg-slate-950 z-50 border-b border-slate-800">
       <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -71,7 +103,7 @@ export default function Navbar({navPages}) {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex space-x-8 items-center text-md">
+          <div className="hidden lg:flex space-x-8 items-center text-md">
             {/** Navigation Items with Dropdown */}
             <NavMenuItem to="/">Home</NavMenuItem>
             {navPages ? (
@@ -105,23 +137,35 @@ export default function Navbar({navPages}) {
             )}
           </div>
 
-          {/* Right Side - News/Events */}
-          <div className="text-white hidden md:flex space-x-2 items-center">
-            <NavMenuItem to="/#latest-news">News</NavMenuItem>
-            <span>|</span>
-            <NavMenuItem to="/#events">Events</NavMenuItem>
+          {/* Right Side (lg) - News/Events + Theme Toggle */}
+          <div className="hidden lg:flex items-center gap-6">
+            <div className="text-white flex space-x-2 items-center">
+              <NavMenuItem to="/#latest-news">News</NavMenuItem>
+              <span>|</span>
+              <NavMenuItem to="/#events">Events</NavMenuItem>
+            </div>
+            <ThemeToggle />
           </div>
 
-          <div className="lg:hidden flex">
-            <RxHamburgerMenu className="text-xl z-50" onClick={()=>{setSmallScreen(true); setIsOpen(true)}}/>
+          {/* Mobile/Tablet - Theme Toggle (left) + Burger (right) */}
+          <div className="lg:hidden flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              type="button"
+              className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors z-50"
+              onClick={() => { setSmallScreen(true); setIsOpen(true); }}
+              aria-label="Open menu"
+            >
+              <RxHamburgerMenu className="text-xl" />
+            </button>
             {isSmallScreen ? (
               <div>
                 {isOpen && (<div className="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>)}
-                <div className="lg:hidden text-md bg-gradient-to-bl from-blue-50 via-blue-300 to-blue-900 rounded-bl-lg fixed z-30 right-0 w-[55%] h-[65%] text-black top-[4rem]">
+                <div className="lg:hidden text-md bg-gradient-to-bl from-blue-50 via-blue-300 to-blue-900 dark:from-slate-900 dark:via-slate-800 dark:to-slate-950 rounded-bl-lg fixed z-30 right-0 w-[55%] h-[65%] text-black dark:text-slate-100 top-[4rem]">
                   <div className="relative">
                     <NavMenuItem
                       to="/"
-                      className="block p-3"
+                      className="block p-3 !text-inherit hover:!text-green-400"
                       onClick={() => {
                         setIsOpen(false);
                         setSmallScreen(false);
@@ -139,7 +183,7 @@ export default function Navbar({navPages}) {
                           <NavMenuItem
                             key={navPage._id}
                             to={navPage.path ?? `/${navPage.pageId}`}
-                            className="block p-3"
+                            className="block p-3 !text-inherit hover:!text-green-400"
                             onClick={() => {
                               setIsOpen(false);
                               setSmallScreen(false);

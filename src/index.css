@@ -10,8 +10,8 @@
 
    body {
             font-family: 'Exo 2', sans-serif;
-            background: var(--dark-bg);
-            color: #ffffff;
+            background: var(--page-bg);
+            color: var(--page-text);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -88,6 +88,9 @@
         .header {
           color: #15008b;        
           padding: 1rem 0;
+        }
+        .dark .header {
+          color: #60a5fa;
         }
         .about-grid {
             display: grid;
@@ -266,7 +269,10 @@
             animation: slideInFromBottom .8s ease-out forwards;
             animation-delay: 0s;
         }
-        :root {
+        :root,
+        .light {
+            --page-bg: #f8fafc;
+            --page-text: #1f2937;
             --primary-blue: #1e40af;
             --secondary-blue: #3b82f6;
             --accent-green: #10b981;
@@ -281,6 +287,16 @@
             --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #10b981 100%);
             --gradient-secondary: linear-gradient(135deg, #065f46 0%, #10b981 100%);
             --gradient-gold: linear-gradient(135deg, #352811 0%, #855b12 50%, rgb(236, 145, 7) 100%);
+        }
+
+        .dark {
+            --page-bg: #0f172a;
+            --page-text: #f1f5f9;
+            --text-dark: #f1f5f9;
+            --text-light: #94a3b8;
+            --bg-light: #1e293b;
+            --bg-white: #1e293b;
+            --border-color: #334155;
         }
         .value-card {
             background: white;

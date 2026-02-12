@@ -322,7 +322,7 @@ const StatNumber = ({ target }) => {
       </div>      
       
       <section>
-        <div className={`w-full text-black bg-blue-50 p-6 lg:p-8`} id="about-section">
+        <div className={`w-full text-black dark:text-slate-100 bg-blue-50 dark:bg-slate-900 p-6 lg:p-8`} id="about-section">
           <div className="grid lg:grid-cols-2 gap-5">
             <div className={`about-content lg:col-span-1  lg:pl-20 lg:pt-10 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
               <h2 className="header">About CSTD</h2>
@@ -362,8 +362,8 @@ const StatNumber = ({ target }) => {
                   </div>
               </div>
           </div>
-          <div className={`about-content bg-blue-50 lg:col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-right overflow-hidden"}`}>
-            <div className="about-visual my-auto align-middle bg-blue-50">
+          <div className={`about-content bg-blue-50 dark:bg-slate-900 lg:col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-right overflow-hidden"}`}>
+            <div className="about-visual my-auto align-middle bg-blue-50 dark:bg-slate-900">
               <img src={nigImg} className="flex icon lg:w-[24rem] w-[16rem]" alt="Image not Available" />
             </div>
           </div>
@@ -371,13 +371,13 @@ const StatNumber = ({ target }) => {
         </div>
       </section>
       <section>
-        <div className="pt-20 space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 p-2" id={"value-section"}>
+        <div className="pt-20 space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 p-2" id={"value-section"}>
           <hr className="w-[80%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold header text-center">OUR VALUES</h2>
-          <p className="text-gray-800 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
+          <p className="text-gray-800 dark:text-slate-300 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
           <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 px-10 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
              {values.map((val, index) => (
-              <div key={index} className="value-card text-black rounded-lg col-span-1 items-center flex flex-col space-y-4">
+              <div key={index} className="value-card text-black dark:text-slate-100 bg-white dark:bg-slate-800 rounded-lg col-span-1 items-center flex flex-col space-y-4">
                 <div className="rounded-lg p-10">
                   {open === index ? (
                   <button onClick={()=>toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
@@ -400,7 +400,7 @@ const StatNumber = ({ target }) => {
                   )}
                 
                 <div className={`transition-all duration-300 overflow-hidden ${open === index ? "max-h-40" : "max-h-0"}`}>
-                  <div className="px-4 pb-4 text-sm text-gray-700">{val.content}</div>
+                  <div className="px-4 pb-4 text-sm text-gray-700 dark:text-slate-300">{val.content}</div>
                 </div>
                 </div>
               </div>
@@ -410,8 +410,8 @@ const StatNumber = ({ target }) => {
       </section>
       
       <section>
-        <div id="leadership" className="space-y-10 lg:p-8 p-4 bg-blue-50">
-          <div  className="py-10 bg-blue-50 px-4">
+        <div id="leadership" className="space-y-10 lg:p-8 p-4 bg-blue-50 dark:bg-slate-900">
+          <div  className="py-10 bg-blue-50 dark:bg-slate-900 px-4">
             <hr className="w-[85%] mx-auto border border-b-blue-700"/>
             <div className="mb-10 pt-10 text-black flex flex-col gap-5">
               <h1 className="text-4xl text-center header font-bold">Our Leadership</h1>
@@ -452,13 +452,13 @@ const StatNumber = ({ target }) => {
         </div>
       </section>
       
-      <section  className="bg-blue-50 py-4 px-4 text-white" id="departments">
+      <section  className="bg-blue-50 dark:bg-slate-900 py-4 px-4 text-white dark:text-slate-100" id="departments">
         <div className="my-10" id="dept-section">
         <hr className="w-[82%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold text-center header">Our Departments</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 p-6 lg:px-32">
             {departments.map((dept, index) => (
-              <div key={index} className={`relative bg-white text-black rounded-lg shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+              <div key={index} className={`relative bg-white dark:bg-slate-800 text-black dark:text-slate-100 rounded-lg shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
                 {/* Image Div */}
                   <h3 className="lg:hidden text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
                   <img
@@ -476,7 +476,7 @@ const StatNumber = ({ target }) => {
       
      <section>
       <div id="key-initiatives">
-        <div  className="bg-blue-50 px-4 text-white">
+        <div  className="bg-blue-50 dark:bg-slate-900 px-4 text-white dark:text-slate-100">
         <hr className="w-[82%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold text-center mt-10 mb-20 header">
             Our Key Initiatives
@@ -490,7 +490,7 @@ const StatNumber = ({ target }) => {
                   alt="Our Projects"
                   className="shadow-md w-full h-full transPic"/>
               </div>
-              <h3 className="text-xl font-semibold text-black">Our Projects</h3>
+              <h3 className="text-xl font-semibold text-black dark:text-slate-100">Our Projects</h3>
               <p className="text-sm mt-2 text-black">
                 Advancing satellite platforms, remote sensing, and mission operations.
               </p>
@@ -504,8 +504,8 @@ const StatNumber = ({ target }) => {
                   alt="Research on Sustainable Energy Systems"
                   className="shadow-md w-full h-full transPic"/>
               </div>
-              <h3 className="text-xl font-semibold text-black">Research on Sustainable Energy Systems</h3>
-              <p className="text-sm mt-2 text-black ">
+              <h3 className="text-xl font-semibold text-black dark:text-slate-100">Research on Sustainable Energy Systems</h3>
+              <p className="text-sm mt-2 text-black dark:text-slate-300 ">
                 Exploring renewable energy through satellite-enabled technologies.
               </p>
             </div>
@@ -518,8 +518,8 @@ const StatNumber = ({ target }) => {
                   alt="Global Partnerships"
                   className="shadow-md w-full h-full transPic"/>
               </div>
-              <h3 className="text-xl font-semibold text-black">Global Partnerships</h3>
-              <p className="text-sm mt-2 text-black">
+              <h3 className="text-xl font-semibold text-black dark:text-slate-100">Global Partnerships</h3>
+              <p className="text-sm mt-2 text-black dark:text-slate-300">
                 Collaborating with international agencies to expand innovation and impact.
               </p>
             </div>
@@ -530,7 +530,7 @@ const StatNumber = ({ target }) => {
 
       <section>
       <div id="gallery">
-          <div  className="py-16 bg-gradient-to-b from-blue-50 via-transparent to-blue-50  flex justify-center">
+          <div  className="py-16 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 flex justify-center">
             <div className="w-full px-4">
              <hr className="w-[100%] mx-auto border border-b-blue-700"/>
               <h2 className="text-4xl header font-bold text-center mt-10 mb-10">Gallery</h2>
@@ -593,7 +593,7 @@ const StatNumber = ({ target }) => {
      
       <section>
         <div id="latest-news">
-          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 lg:py-16 px-4">
+          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 lg:py-16 px-4">
           <hr className="w-[80%] mx-auto border border-b-blue-700"/>
             <h2 className="text-4xl text-center header font-bold mt-10 mb-12">
               Latest News
@@ -657,7 +657,7 @@ const StatNumber = ({ target }) => {
                   >
                     {combined.map((item) => (
                       <SwiperSlide key={item.id}>
-                        <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative bg-gradient-to-t from-blue-100 to-blue-50 h-full flex flex-col">
+                        <div className="bg-white dark:bg-slate-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative bg-gradient-to-t from-blue-100 to-blue-50 dark:from-slate-800 dark:to-slate-800 h-full flex flex-col">
                           {item.thumbnail && (
                             <img
                               src={item.thumbnail}
@@ -665,7 +665,7 @@ const StatNumber = ({ target }) => {
                               className="w-full h-80 object-cover"
                             />
                           )}
-                          <div className="p-4 text-black flex-1 pb-10">
+                          <div className="p-4 text-black dark:text-slate-100 flex-1 pb-10">
                             <h3 className="text-lg font-semibold mb-2 underline line-clamp-2">
                               {item.title}
                             </h3>
@@ -698,13 +698,13 @@ const StatNumber = ({ target }) => {
 
       <section>
         <div id="FAQ-section">
-          <div  className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50  py-16 px-4 lg:px-20 grid grid-cols-1 text-black lg:grid-cols-2 gap-10">
+          <div  className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 py-16 px-4 lg:px-20 grid grid-cols-1 text-black dark:text-slate-100 lg:grid-cols-2 gap-10">
             <div className={`col-span-1 ${!isRevealFAQ ? "hidden" : "slide-in-left overflow-hidden"}`}>
               <h2 className="text-2xl font-bold text-center header mb-6">FAQS</h2>
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="border border-gray-300 mb-4 p-4 rounded-md cursor-pointer bg-white shadow"
+                  className="border border-gray-300 dark:border-slate-600 mb-4 p-4 rounded-md cursor-pointer bg-white dark:bg-slate-800 shadow"
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex justify-between items-center">

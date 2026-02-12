@@ -4,7 +4,7 @@ const Sip = () => {
     <>
     <div 
     id='sip'
-    className='flex justify-center items-center p-4 bg--gray-100 rounded-lg **shadow-md** **shadow-2xl**'>
+    className='flex justify-center items-center p-4 bg-gray-100 dark:bg-slate-800 rounded-lg **shadow-md** **shadow-2xl**'>
       <img 
       src={sipImage} 
       alt="SIP"

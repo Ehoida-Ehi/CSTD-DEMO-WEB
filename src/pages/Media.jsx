@@ -171,7 +171,7 @@ useEffect(() => {
   }, [hash]);
   return (
     <>
-    <div className="mt-16 bg-white">
+    <div className="mt-16 bg-white dark:bg-slate-900">
       {/* Modal Component */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
