@@ -7,16 +7,16 @@ import newStory5 from "../assets/images/slidepix.jpg";
 import newStory7 from "../assets/images/New-Story-3.jpg";
 
 // department images
-import satelliteImg from '../assets/images/astronaaut-7550543_1280.png';
-import researchImg from '../assets/images/business-6614313_1280.webp';
-import spacemissionsImg from '../assets/images/datA.jpg';
-import financeImg from '../assets/images/financial-4560047_1280.webp';
-import ictImg from '../assets/images/cloud-3998880_1280.webp';
-import spacecraftImg from '../assets/images/machine-8012596_1280.jpg';
-import droneImg from '../assets/images/drone-4256093_1280.webp';
-import adminImg from '../assets/images/work-8396635_1280.jpg';
-import groundsegmentImg from '../assets/images/ai-generated-8910182_1280.png';
-import directorateImg from '../assets/images/computer-3241350_1280.webp';
+import satelliteImg from '../assets/images/satDev/naija sat.jpg';
+import researchImg from '../assets/images/satDev/presentationsession.jpg';
+import spacemissionsImg from '../assets/images/satDev/SatDish.png';
+import financeImg from '../assets/images/satDev/wemeninspace.jpg';
+import ictImg from '../assets/images/satDev/cstdSectionExpo.jpg';
+import spacecraftImg from '../assets/images/satDev/LadyScientist.jpg';
+import droneImg from '../assets/images/satDev/InRussianFaring.jpg';
+import adminImg from '../assets/images/satDev/woman-tracking-vessels-coast-line-territory.jpg';
+import groundsegmentImg from '../assets/images/satDev/lab_test.jpg';
+import directorateImg from '../assets/images/satDev/directorate.jpg';
 
 // about hero images
 import pic1 from '../assets/images/science-lab-7445779_1280.jpg';

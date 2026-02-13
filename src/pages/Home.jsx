@@ -30,8 +30,8 @@ import integrity from "../assets/images/integrity.png"
 import professionalism from "../assets/images/professionals.png"
 
 import projectImg from '../assets/images/drone-2879538_1280.jpg';
-import environmentImg from '../assets/images/environment-7412967_1280.jpg';
-import partnershipImg from '../assets/images/pbusiness-7768170_1280.jpg';
+import environmentImg from '../assets/images/satDev/tubeSat.jpg';
+import partnershipImg from '../assets/images/satDev/globalcollabo.jpg';
 
 import nasrdaImg from "../assets/images/NASRDA-Logo_N2.png"
 
@@ -458,13 +458,13 @@ const StatNumber = ({ target }) => {
           <h2 className="text-4xl font-bold text-center header">Our Departments</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 p-6 lg:px-32">
             {departments.map((dept, index) => (
-              <div key={index} className={`relative bg-white dark:bg-slate-800 text-black dark:text-slate-100 rounded-lg shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+              <div key={index} className={`relative bg-white dark:bg-slate-800 text-black dark:text-slate-100 rounded-md shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
                 {/* Image Div */}
                   <h3 className="lg:hidden text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
                   <img
                     src={dept.image}
                     alt={dept.title}
-                    className="w-full lg:h-[65%] rounded-b-lg lg:rounded-t-lg object-cover"
+                    className="w-full lg:h-[65%] rounded-b-md lg:rounded-t-lg object-cover"
                   />
                 {/* Title */}
                 <h3 className="hidden lg:block text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>

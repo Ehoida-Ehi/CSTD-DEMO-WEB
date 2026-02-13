@@ -80,7 +80,7 @@ const SatelliteMission = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 pt-24 pb-16 text-slate-900 dark:text-slate-100">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 pt-16 pb-16 text-slate-900 dark:text-slate-100">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100/80 via-gray-50 to-blue-50 dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-950 pointer-events-none" />
