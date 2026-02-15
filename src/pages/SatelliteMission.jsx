@@ -297,19 +297,19 @@ const SatelliteMission = () => {
                       </div>
                       <div className="flex justify-between gap-2">
                         <dt className="text-slate-500 dark:text-slate-400">Launch vehicle</dt>
-                        <dd className="font-medium text-slate-100 text-right">
+                        <dd className="font-medium text-slate-800 dark:text-slate-100 text-right">
                           {sat.launchVehicle}
                         </dd>
                       </div>
                       <div className="flex justify-between gap-2">
                         <dt className="text-slate-500 dark:text-slate-400">Launch site</dt>
-                        <dd className="font-medium text-slate-100 text-right">
+                        <dd className="font-medium text-slate-800 dark:text-slate-100 text-right">
                           {sat.launchSite}
                         </dd>
                       </div>
                       <div className="flex justify-between gap-2">
                         <dt className="text-slate-500 dark:text-slate-400">Orbit</dt>
-                        <dd className="font-medium text-slate-100 text-right">
+                        <dd className="font-medium text-slate-800 dark:text-slate-100 text-right">
                           {sat.orbit}
                         </dd>
                       </div>
@@ -361,7 +361,7 @@ const SatelliteMission = () => {
                     href={sat.ctaHref}
                     className="inline-flex items-center text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
                   >
-                    View detailed page
+                    View details
                     <svg
                       className="ml-1 h-3 w-3"
                       viewBox="0 0 20 20"

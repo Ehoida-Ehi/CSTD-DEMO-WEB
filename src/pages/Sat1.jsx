@@ -1,18 +1,33 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { FaArrowLeft } from 'react-icons/fa'
 
 const Sat1 = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900 pt-24 pb-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-slate-100 mb-4">
-            NigeriaSAT-1
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto">
+        <div className="mb-12">
+          {/* Back arrow and title row */}
+          <div className="flex items-center justify-between mb-4">
+            <Link
+              to="/satellitemissions"
+              className="text-gray-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              aria-label="Back to satellite missions"
+            >
+              <FaArrowLeft size={24} />
+            </Link>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-slate-100 flex-1 text-center">
+              NigeriaSAT-1
+            </h1>
+            <div className="w-6" /> {/* Spacer for symmetry */}
+          </div>
+
+          <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto text-center">
             Nigeria's first Earth observation satellite for disaster monitoring and environmental management
           </p>
-          <div className="mt-6">
+
+          <div className="mt-6 text-center">
             <a
               href="https://central.nasrda.gov.ng/space-missions/nigeriasat-1/"
               target="_blank"
@@ -27,6 +42,7 @@ const Sat1 = () => {
           </div>
         </div>
 
+        {/* Rest of the component remains unchanged */}
         {/* Mission Overview */}
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Mission Overview</h2>
@@ -43,10 +59,10 @@ const Sat1 = () => {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-3">Constellation</h3>
-              <p className="text-gray-600 mb-3">
+              <p className="text-gray-600 dark:text-slate-300 mb-3">
                 NigeriaSAT-1 is part of the Disaster Monitoring Constellation (DMC), a seven-nation network including:
               </p>
-              <ul className="text-gray-600 space-y-1">
+              <ul className="text-gray-600 dark:text-slate-300 space-y-1">
                 <li>• United Kingdom</li>
                 <li>• China</li>
                 <li>• Algeria</li>
@@ -91,15 +107,15 @@ const Sat1 = () => {
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Applications and Uses</h2>
           
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">National Applications</h3>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-300 mb-4">National Applications</h3>
           <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <ul className="space-y-2 text-gray-600">
+            <ul className="space-y-2 text-gray-600 dark:text-slate-300">
               <li>• Land Use/Land Cover revision</li>
               <li>• Environmental change research in Niger-Delta</li>
               <li>• Desertification early warning models</li>
               <li>• Gully erosion monitoring</li>
             </ul>
-            <ul className="space-y-2 text-gray-600">
+            <ul className="space-y-2 text-gray-600 dark:text-slate-300">
               <li>• Settlements and major roads mapping</li>
               <li>• Flood mapping in Kainji Lake area</li>
               <li>• Deforestation monitoring</li>
@@ -107,18 +123,18 @@ const Sat1 = () => {
             </ul>
           </div>
 
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">International Disaster Response</h3>
-          <p className="text-gray-600 mb-4">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-300 mb-4">International Disaster Response</h3>
+          <p className="text-gray-600 dark:text-slate-300 mb-4">
             As part of the DMC, NigeriaSAT-1 has contributed to global disaster management efforts:
           </p>
           <div className="grid md:grid-cols-2 gap-6">
-            <ul className="space-y-2 text-gray-600">
+            <ul className="space-y-2 text-gray-600 dark:text-slate-300">
               <li>• Asian Tsunami disaster (2004)</li>
               <li>• Hurricane Katrina response</li>
               <li>• Flood monitoring in multiple countries</li>
               <li>• Volcanic eruption monitoring</li>
             </ul>
-            <ul className="space-y-2 text-gray-600">
+            <ul className="space-y-2 text-gray-600 dark:text-slate-300">
               <li>• Oil spill detection</li>
               <li>• Wildfire monitoring</li>
               <li>• Locust threat assessment</li>
@@ -130,7 +146,7 @@ const Sat1 = () => {
         {/* Development and Training */}
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Development and Training</h2>
-          <div className="space-y-4 text-gray-600">
+          <div className="space-y-4 text-gray-600 dark:text-slate-300">
             <p>
               NigeriaSAT-1 was built by Surrey Satellite Technology (SSTL), a British-based company, which also provided comprehensive training to Nigerian technicians and engineers. This collaboration has helped build indigenous competence in satellite technology development.
             </p>

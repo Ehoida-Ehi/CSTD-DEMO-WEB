@@ -94,7 +94,7 @@ const Publications = () => {
               >
                 {/* Header: title + date */}
                 <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-3">
-                  <div>
+                  <div className="lg:w-[80%]">
                     <h2 className="text-lg sm:text-xl font-semibold text-slate-800 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-200 transition-colors">
                       {pub.title}
                     </h2>

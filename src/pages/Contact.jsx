@@ -66,7 +66,7 @@ const Contact = () => {
                 }}
               />
             </div>
-            <h2 className="text-3xl font-bold text-green-800 dark:text-green-400 mb-8">Contact Information</h2>
+            <h2 className="text-3xl font-bold text-slate-600 dark:text-blue-500 mb-8">Contact Information</h2>
             <p className="text-gray-600 dark:text-slate-300 mb-8">
               Thank you for visiting our website. We are here to assist you with any inquiries you may have.
             </p>
@@ -80,8 +80,8 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Address</h3>
-                  <p className="text-gray-600">Obasanjo Space Centre, <br/> Umaru Musa Ydar'adua express way, P.M.B. 437, <br/>Lugbe, F.C.T</p>
+                  <h3 className="text-lg font-semibold text-gray-400 mb-2">Address</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Obasanjo Space Centre, <br/> Umaru Musa Ydar'adua express way, P.M.B. 437, <br/>Lugbe, F.C.T</p>
                 </div>
               </div>
 
@@ -92,8 +92,8 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Service Hours</h3>
-                  <p className="text-gray-600">Monday - Friday: 8:30 AM - 5:00 PM<br />Saturday - Sunday: Closed</p>
+                  <h3 className="text-lg font-semibold text-gray-400 mb-2">Service Hours</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Monday - Friday: 8:30 AM - 5:00 PM<br />Saturday - Sunday: Closed</p>
                 </div>
               </div>
 
@@ -104,8 +104,8 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Phone</h3>
-                  <p className="text-gray-600">+234-803-000-0000</p>
+                  <h3 className="text-lg font-semibold text-gray-400 mb-2">Phone</h3>
+                  <p className="text-gray-600 dark:text-gray-300">+234-803-000-0000</p>
                 </div>
               </div>
 
@@ -116,9 +116,9 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Email</h3>
+                  <h3 className="text-lg font-semibold text-gray-400 mb-2">Email</h3>
                   
-                  <p onClick={() => window.location = 'mailto:cstdinfo@cstd.nasrda.gov.ng'} className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-600">cstdinfo@cstd.nasrda.gov.ng</p>
+                  <p onClick={() => window.location = 'mailto:cstdinfo@cstd.nasrda.gov.ng'} className="text-gray-600 dark:text-gray-300 hover:underline hover:cursor-pointer hover:text-blue-600">cstdinfo@cstd.nasrda.gov.ng</p>
                 </div>
               </div>
             </div>
@@ -127,14 +127,14 @@ const Contact = () => {
           {/* Contact Form */}
           <div id='partner'>
               <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-green-800 mb-8">Ask a Question</h2>
-            <p className="text-gray-600 mb-8">
+            <h2 className="text-3xl font-bold text-slate-600 dark:text-blue-500 mb-8">Ask a Question</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-8">
               If you have any questions, you can contact us. Please, fill out the form below.
             </p>
 
             <form className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Full Name</label>
                 <input
                   type="text"
                   id="name"
@@ -144,7 +144,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Email Address</label>
                 <input
                   type="email"
                   id="email"
@@ -154,7 +154,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Phone Number</label>
                 <input
                   type="tel"
                   id="phone"
@@ -164,7 +164,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Message</label>
                 <textarea
                   id="message"
                   rows="4"

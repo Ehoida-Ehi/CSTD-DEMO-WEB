@@ -8,10 +8,9 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { rniImages } from "../utils/images";
-import image4 from "../assets/images/satDev/tubeSat.jpg"
 
 const RnI = () => {
-  const image1 = "https://d2rty5wuu5bi5t.cloudfront.net/eyJidWNrZXQiOiJyc24tYnVja2V0Iiwia2V5IjoicHJvZHVjdGlvbi90ZWFzZXJzL21hdGhzLWJsb2cuanBnIiwiZWRpdHMiOnsianBlZyI6eyJxdWFsaXR5Ijo4MiwicHJvZ3Jlc3NpdmUiOnRydWUsInRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pemVTY2FucyI6dHJ1ZX0sInJlc2l6ZSI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NjgsImZpdCI6ImNvdmVyIn0sInNoYXJwZW4iOnRydWV9fQ==";
+  const image1 = "https://cdn.pixabay.com/photo/2024/01/10/16/22/woman-8499959_1280.jpg";
   const image2 = "https://cdn.pixabay.com/photo/2015/08/25/00/01/drone-905955_1280.jpg";
   const image3 = "https://cdn.pixabay.com/photo/2017/09/10/02/58/drone-asperjando-2734242_1280.jpg";
 
@@ -42,7 +41,7 @@ const RnI = () => {
       {/* Hero Carousel */}
       <div className="w-full h-screen relative overflow-hidden">
         <img
-          src={image1}
+          src={image3}
           alt="Drone landscape"
           className={`w-full h-full object-cover object-center absolute top-0 left-0 transition-opacity duration-1000 ${
             activeImage === 0 ? "opacity-100" : "opacity-0"
@@ -56,24 +55,10 @@ const RnI = () => {
           }`}
         />
         <img
-          src={image2}
+          src={image1}
           alt="Woman with drone"
           className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ${
             activeImage === 2 ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <img
-          src={image3}
-          alt="Woman with drone"
-          className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ${
-            activeImage === 2 ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <img
-          src={image4}
-          alt="TubeSat PID"
-          className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ${
-            activeImage === 1 ? "opacity-100" : "opacity-0"
           }`}
         />
 
@@ -100,17 +85,17 @@ const RnI = () => {
           <img
             src={pic5}
             alt="Research team"
-            className="lg:col-span-3 w-full h-[400px] object-cover rounded-lg"
+            className="lg:col-span-3 w-full h-auto object-cover rounded-lg"
           />
         </div>
 
         {/* Upcoming Projects */}
         <div className="flex space-x-3 items-center text-slate-900 dark:text-slate-100 mt-20 mb-5 lg:my-12">
-          <HiMiniWrenchScrewdriver className="text-3xl text-slate-600 dark:text-blue-400" />
-          <h1 className="lg:text-3xl text-2xl font-semibold text-slate-600 dark:text-blue-400">
+          <HiMiniWrenchScrewdriver className="text-3xl text-green-900 dark:text-green-400" />
+          <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800 dark:text-green-400">
             Upcoming Projects
           </h1>
-          <FaGears className="text-3xl text-slate-600 dark:text-blue-400" />
+          <FaGears className="text-3xl text-green-900 dark:text-green-400" />
         </div>
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-2 p-8 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 bg-blue-50 dark:bg-slate-800">
@@ -174,11 +159,11 @@ const RnI = () => {
         {/* Past Projects */}
         <div id="projects">
           <div className="flex space-x-3 items-center text-slate-900 dark:text-slate-100 mt-12 mb-5 lg:mt-20">
-            <HiMiniWrenchScrewdriver className="text-3xl text-slate-600 dark:text-blue-400" />
-            <h1 className="lg:text-3xl text-2xl font-semibold text-slate-600 dark:text-blue-400">
+            <HiMiniWrenchScrewdriver className="text-3xl text-green-900 dark:text-green-400" />
+            <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800 dark:text-green-400">
               Past Projects
             </h1>
-            <FaGears className="text-3xl text-slate-600 dark:text-blue-400" />
+            <FaGears className="text-3xl text-green-900 dark:text-green-400" />
           </div>
 
           <div className="p-2 border border-slate-300 dark:border-slate-600 space-y-8">
@@ -186,7 +171,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic7} alt="UGV" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   Unmanned Ground Vehicle (UGV)
                 </h2>
                 <div className="space-y-2">
@@ -209,7 +194,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row-reverse items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic8} alt="Tubesat" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   CSTD Tubesat Project
                 </h2>
                 <div className="space-y-2">
@@ -231,7 +216,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic9} alt="Greenhouse Gas" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   Greenhouse Gas Measurement and Data Retrieval System
                 </h2>
                 <div className="space-y-2">
@@ -254,7 +239,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row-reverse items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic11} alt="Magnetometer" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   3-axis Fluxgate Magnetometer Project
                 </h2>
                 <div className="space-y-2">
@@ -276,7 +261,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic12} alt="ADCS" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   Attitude Determination and Control System (ADCS) Project
                 </h2>
                 <div className="space-y-2">
@@ -289,9 +274,9 @@ const RnI = () => {
 
             {/* Project 6: S-band Filter */}
             <div className="flex flex-col lg:flex-row-reverse items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
-              <img src={pic13} alt="S-band filter" className="w-full h-[200px] lg:h-[500px] lg:w-1/2 object-cover rounded-lg" />
+              <img src={pic13} alt="S-band filter" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   S-band Filtration Project For a Leo Satellite Ground Station
                 </h2>
                 <div className="space-y-2">
@@ -312,7 +297,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic14} alt="Low frequency receiver" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   Development Of A Low Frequency Satellite Receiver
                 </h2>
                 <div className="space-y-2">
@@ -331,7 +316,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row-reverse items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic15} alt="Parabolic dish" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   Fabrication of 2 Meter Parabolic Dish Using Natural Fibre And Polyester Resin
                 </h2>
                 <div className="space-y-2">
@@ -352,7 +337,7 @@ const RnI = () => {
             <div className="flex flex-col lg:flex-row items-center gap-6 p-8 border-b-2 border-slate-800 dark:border-slate-600">
               <img src={pic16} alt="Solar cells" className="w-full lg:w-1/2 object-cover rounded-lg" />
               <div className="lg:w-1/2 space-y-3">
-                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-slate-600 dark:text-blue-400">
+                <h2 className="text-xl lg:text-3xl text-center lg:text-left font-extrabold text-green-800 dark:text-green-400">
                   Green Synthesis Of Silver Nanoparticles And Its Application In Carbon Quantum Dots Sensitized Solar Cells For Enhanced Photovoltaic Performance
                 </h2>
                 <div className="space-y-2">
@@ -375,15 +360,14 @@ const RnI = () => {
         {/* Publications */}
         <div id="publications" className="text-slate-900 dark:text-slate-100 p-3">
           <p className="items-center flex gap-2 my-10">
-            <h1 className="lg:text-3xl text-2xl font-semibold text-slate-600 dark:text-blue-400">
+            <h1 className="font-serif lg:text-3xl text-2xl font-semibold text-green-800 dark:text-green-400">
               Publications & White Papers
             </h1>
-            <HiOutlineNewspaper className="text-3xl text-slate-600 dark:text-blue-400" />
+            <HiOutlineNewspaper className="lg:text-3xl text-green-800 dark:text-green-400" />
           </p>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 items-center">
             <img
-              src={pic17}
-              // src="https://d2rty5wuu5bi5t.cloudfront.net/eyJidWNrZXQiOiJyc24tYnVja2V0Iiwia2V5IjoicHJvZHVjdGlvbi90ZWFzZXJzL21hdGhzLWJsb2cuanBnIiwiZWRpdHMiOnsianBlZyI6eyJxdWFsaXR5Ijo4MiwicHJvZ3Jlc3NpdmUiOnRydWUsInRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pemVTY2FucyI6dHJ1ZX0sInJlc2l6ZSI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NjgsImZpdCI6ImNvdmVyIn0sInNoYXJwZW4iOnRydWV9fQ=="
+              src="https://d2rty5wuu5bi5t.cloudfront.net/eyJidWNrZXQiOiJyc24tYnVja2V0Iiwia2V5IjoicHJvZHVjdGlvbi90ZWFzZXJzL21hdGhzLWJsb2cuanBnIiwiZWRpdHMiOnsianBlZyI6eyJxdWFsaXR5Ijo4MiwicHJvZ3Jlc3NpdmUiOnRydWUsInRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pemVTY2FucyI6dHJ1ZX0sInJlc2l6ZSI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NjgsImZpdCI6ImNvdmVyIn0sInNoYXJwZW4iOnRydWV9fQ=="
               alt="Publications"
               className="w-full h-auto object-cover rounded-lg lg:order-1 order-2"
             />
@@ -396,9 +380,9 @@ const RnI = () => {
                 <p>“Utilizing CubeSats for Flood Prediction in Sub-Saharan Africa” – 2023</p>
                 <p>“Challenges in Indigenous Satellite Assembly” – 2022</p>
               </div>
-              <button className="bg-blue-600 text-white w-fit p-3 rounded-lg cursor-pointer flex items-center gap-2 hover:bg-green-700 transition">
+              <button className="bg-green-600 text-white w-fit p-3 rounded-lg cursor-pointer flex items-center gap-2 hover:bg-green-700 transition">
                 📚 <span className="hover:underline">View All Publications</span>{" "}
-                <PiArrowFatLinesRightFill className="text-blue-950 text-xl hover:text-white" />
+                <PiArrowFatLinesRightFill className="text-green-950 text-xl hover:text-white" />
               </button>
             </div>
           </div>

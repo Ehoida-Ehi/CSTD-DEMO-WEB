@@ -1,18 +1,33 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { FaArrowLeft } from 'react-icons/fa'
 
 const SatX = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900 pt-24 pb-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            NigeriaSAT-X
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div className="mb-12">
+          {/* Back arrow and title row */}
+          <div className="flex items-center justify-between mb-4">
+            <Link
+              to="/satellitemissions"
+              className="text-gray-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              aria-label="Back to satellite missions"
+            >
+              <FaArrowLeft size={24} />
+            </Link>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-slate-300 flex-1 text-center">
+              NigeriaSAT-X
+            </h1>
+            <div className="w-6" /> {/* Spacer for symmetry */}
+          </div>
+
+          <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto text-center">
             Nigeria's indigenous training satellite built by Nigerian engineers and scientists
           </p>
-          <div className="mt-6">
+
+          <div className="mt-6 text-center">
             <a
               href="https://central.nasrda.gov.ng/space-missions/nigeriasat-x/"
               target="_blank"

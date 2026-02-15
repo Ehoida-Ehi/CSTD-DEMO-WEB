@@ -308,7 +308,7 @@ const StatNumber = ({ target }) => {
           <p className="mx-auto lg:px-44 text-sm lg:text-lg">Pioneering Nigeria's space frontier through advanced satellite technology, cutting-edge research, and innovation that propels our nation toward a sustainable space-based future.</p>
           <a
             href="/about"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-sm shadow-md transition duration-300"
           >
             ABOUT US
           </a>
@@ -322,13 +322,13 @@ const StatNumber = ({ target }) => {
       </div>      
       
       <section>
-        <div className={`w-full text-black dark:text-slate-100 bg-blue-50 dark:bg-slate-900 p-6 lg:p-8`} id="about-section">
+        <div className={`w-full text-black dark:text-slate-500 bg-blue-50 dark:bg-slate-900 p-6 lg:p-8`} id="about-section">
           <div className="grid lg:grid-cols-2 gap-5">
-            <div className={`about-content lg:col-span-1  lg:pl-20 lg:pt-10 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
+            <div className={`about-content lg:col-span-1 lg:ml-10 lg:pl-20 lg:pt-10 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
               <h2 className="header">About CSTD</h2>
              <div className="text-sm lg:text-lg">
-              <p>The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
-              <p>We work closely with international partners and local institutions to advance Nigeria's space capabilities through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria's space technology and empowering the next generation of aerospace professionals.</p>
+              <p className="dark:text-slate-300">The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
+              <p className="dark:text-slate-300">We work closely with international partners and local institutions to advance Nigeria's space capabilities through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria's space technology and empowering the next generation of aerospace professionals.</p>
              </div>
               <div className="grid lg:grid-cols-2 grid-cols-1 gap-[2rem] mt-[2rem]">
                   <div className="stat-item">
@@ -371,18 +371,18 @@ const StatNumber = ({ target }) => {
         </div>
       </section>
       <section>
-        <div className="pt-20 space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 p-2" id={"value-section"}>
-          <hr className="w-[80%] mx-auto border border-b-blue-700"/>
+        <div className="pt-20 px-10 lg:px-20 space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900" id={"value-section"}>
+          <hr className="w-[70%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold header text-center">OUR VALUES</h2>
           <p className="text-gray-800 dark:text-slate-300 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
-          <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 px-10 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+          <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
              {values.map((val, index) => (
-              <div key={index} className="value-card text-black dark:text-slate-100 bg-white dark:bg-slate-800 rounded-lg col-span-1 items-center flex flex-col space-y-4">
-                <div className="rounded-lg p-10">
+              <div key={index} className="value-card text-black dark:text-slate-100 bg-white dark:bg-slate-800 rounded-sm col-span-1 items-center flex flex-col space-y-4">
+                <div className="rounded-sm p-10">
                   {open === index ? (
                   <button onClick={()=>toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
-                    <div className="flex flex-col space-y-5">
-                      <img src={val.profile} className="w-28" alt="Image Profile" />
+                    <div className="flex flex-col space-y-5 items-center justify-center">
+                      <img src={val.profile} className="w-28 mx-auto" alt="Image Profile" />
                       <p>
                         {val.title}
                       </p>
@@ -391,7 +391,7 @@ const StatNumber = ({ target }) => {
                   ) : (
                   <button onClick={() => toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
                     <div className="flex flex-col space-y-5">
-                      <img src={val.profile} className="w-28" alt="Image Profile" />
+                      <img src={val.profile} className="w-28 mx-auto" alt="Image Profile" />
                       <p>
                         {val.title}
                       </p>
@@ -410,25 +410,25 @@ const StatNumber = ({ target }) => {
       </section>
       
       <section>
-        <div id="leadership" className="space-y-10 lg:p-8 p-4 bg-blue-50 dark:bg-slate-900">
+        <div id="leadership" className="space-y-10 lg:p-6 lg:px-32 p-4 bg-blue-50 dark:bg-slate-900">
           <div  className="py-10 bg-blue-50 dark:bg-slate-900 px-4">
             <hr className="w-[85%] mx-auto border border-b-blue-700"/>
             <div className="mb-10 pt-10 text-black flex flex-col gap-5">
               <h1 className="text-4xl text-center header font-bold">Our Leadership</h1>
-              <p className="lg:p-12 lg:text-lg text-sm text-center">Visionary leadership driving Nigeria's space technology advancement.</p>
+              <p className="lg:p-12 lg:text-lg text-sm text-center dark:text-slate-300">Visionary leadership driving Nigeria's space technology advancement.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-5 border rounded-lg lg:p-6 p-2 shadow-lg bg-gradient-to-b lg:bg-gradient-to-r from-blue-950 via-transparent to-blue-50">   
+            <div className="grid grid-cols-1 md:grid-cols-5 rounded-lg lg:p-6 p-2 shadow-lg bg-gradient-to-b lg:bg-gradient-to-r from-blue-950 via-slate-300 to-blue-50 dark:from-blue-100 dark:via-white dark:to-yellow-50">   
               <div className="flex items-center justify-center col-span-2">
                 <img
                   src={sadqUmarImg}
                   alt="CSTD CEO"
-                  className="lg:h-[300px] h-[200px] object-cover"
+                  className="lg:h-[350px] h-[250px] object-cover"
                 />
               </div>
 
               <div className="flex flex-col justify-center lg:px-8 md:px-16 col-span-3">                
                 <div className="text-center">
-                  <h1 className="text-lg font-bold text-black mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
+                  <h1 className="text-lg font-bold text-black mt-2 mb-4">ENGR.(DR) SADIQ UMAR ABUBAKAR, FNSE, FNISEng</h1>
                   <p className="lg:text-lg text-sm text-black mb-6">
                     THE DIRECTOR, CENTER FOR SATELLITE TECHNOLOGY DEVELOPMENT, CSTD
                   </p>
@@ -453,10 +453,10 @@ const StatNumber = ({ target }) => {
       </section>
       
       <section  className="bg-blue-50 dark:bg-slate-900 py-4 px-4 text-white dark:text-slate-100" id="departments">
-        <div className="my-10" id="dept-section">
-        <hr className="w-[82%] mx-auto border border-b-blue-700"/>
-          <h2 className="text-4xl font-bold text-center header">Our Departments</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-20 p-6 lg:px-32">
+        <div className="mt-10 mb-20" id="dept-section">
+        <hr className="w-[70%] mx-auto border border-b-blue-700"/>
+          <h2 className="text-4xl mt-10 font-bold text-center header">Our Departments</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-10 p-6 lg:px-10">
             {departments.map((dept, index) => (
               <div key={index} className={`relative bg-white dark:bg-slate-800 text-black dark:text-slate-100 rounded-md shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
                 {/* Image Div */}
@@ -464,10 +464,10 @@ const StatNumber = ({ target }) => {
                   <img
                     src={dept.image}
                     alt={dept.title}
-                    className="w-full lg:h-[65%] rounded-b-md lg:rounded-t-lg object-cover"
+                    className="w-full lg:h-[65%] rounded-b-[2px] lg:rounded-t-[5px] object-cover"
                   />
                 {/* Title */}
-                <h3 className="hidden lg:block text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
+                <h3 className="hidden lg:block text-center text-lg font-semibold mt-6 px-6">{dept.title}</h3>
               </div>
             ))}
           </div>
@@ -477,42 +477,42 @@ const StatNumber = ({ target }) => {
      <section>
       <div id="key-initiatives">
         <div  className="bg-blue-50 dark:bg-slate-900 px-4 text-white dark:text-slate-100">
-        <hr className="w-[82%] mx-auto border border-b-blue-700"/>
+        <hr className="w-[70%] mx-auto border border-b-blue-700"/>
           <h2 className="text-4xl font-bold text-center mt-10 mb-20 header">
             Our Key Initiatives
           </h2>
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:px-20 px-6 md:grid-cols-3 lg:h-[50vh] gap-8 relative">
             {/* Project 1 */}
             <div className="flex flex-col items-center text-center lg:absolute lg:w-[25%] rounded-lg lg:left-10 top-30vh">
-              <div className="rounded overflow-hidden h-full w-full border">
+              <div className="rounded overflow-hidden h-full w-full">
                 <img
                   src={projectImg}
                   alt="Our Projects"
                   className="shadow-md w-full h-full transPic"/>
               </div>
               <h3 className="text-xl font-semibold text-black dark:text-slate-100">Our Projects</h3>
-              <p className="text-sm mt-2 text-black">
+              <p className="text-sm mt-2 text-black dark:text-slate-300">
                 Advancing satellite platforms, remote sensing, and mission operations.
               </p>
             </div>
 
             {/* Project 2 */}
             <div className="flex flex-col items-center text-center lg:absolute lg:w-[25%] rounded-lg lg:right-[29rem] top-30vh">
-              <div className="rounded overflow-hidden h-full w-full border">
+              <div className="rounded overflow-hidden h-full w-full">
                 <img
                   src={environmentImg}
                   alt="Research on Sustainable Energy Systems"
                   className="shadow-md w-full h-full transPic"/>
               </div>
               <h3 className="text-xl font-semibold text-black dark:text-slate-100">Research on Sustainable Energy Systems</h3>
-              <p className="text-sm mt-2 text-black dark:text-slate-300 ">
+              <p className="text-sm mt-2 text-black dark:text-slate-300">
                 Exploring renewable energy through satellite-enabled technologies.
               </p>
             </div>
 
             {/* Project 3 */}
             <div className="flex flex-col items-center text-center lg:absolute lg:w-[25%] rounded-lg lg:right-10">
-              <div className="rounded overflow-hidden h-full w-full border">
+              <div className="rounded overflow-hidden h-full w-full">
                 <img
                   src={partnershipImg}
                   alt="Global Partnerships"
@@ -532,7 +532,7 @@ const StatNumber = ({ target }) => {
       <div id="gallery">
           <div  className="py-16 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 flex justify-center">
             <div className="w-full px-4">
-             <hr className="w-[100%] mx-auto border border-b-blue-700"/>
+             <hr className="w-[70%] mx-auto border border-b-blue-700"/>
               <h2 className="text-4xl header font-bold text-center mt-10 mb-10">Gallery</h2>
 
               <Swiper
@@ -551,7 +551,7 @@ const StatNumber = ({ target }) => {
                   clickable: true,
                 }}
                 modules={[EffectCoverflow, Pagination]}
-                className="rounded-lg max-w-4xl"
+                className="rounded-lg w-[300px] h-[400px] lg:max-w-6xl lg:h-auto lg:w-auto"
               >
                 {images.map((image, index) => (
                   <SwiperSlide
@@ -570,21 +570,21 @@ const StatNumber = ({ target }) => {
               {/* Custom Pagination Bullet Styling */}
               <style>
                 {`
-            .swiper-pagination-bullet {
-              background-color: white;
-              width: 12px;
-              height: 12px;
-              opacity: 0.6;
-              border: 2px solid #1d4ed8; /* blue-700 border for inactive bullets */
-              transition: opacity 0.3s ease, transform 0.3s ease;
-            }
-            .swiper-pagination-bullet-active {
-              background-color: #3b82f6; /* Tailwind's blue-500 */
-              border:transparent;
-              opacity: 1;
-              transform: scale(1.2);
-            }
-          `}
+                  .swiper-pagination-bullet {
+                    background-color: white;
+                    width: 12px;
+                    height: 12px;
+                    opacity: 0.6;
+                    border: 2px solid #1d4ed8; /* blue-700 border for inactive bullets */
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                  }
+                  .swiper-pagination-bullet-active {
+                    background-color: #3b82f6; /* Tailwind's blue-500 */
+                    border:transparent;
+                    opacity: 1;
+                    transform: scale(1.2);
+                  }
+                `}
               </style>
             </div>
           </div>
@@ -593,7 +593,7 @@ const StatNumber = ({ target }) => {
      
       <section>
         <div id="latest-news">
-          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 lg:py-16 px-4">
+          <div className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 lg:py-16 px-6 lg:px-24">
           <hr className="w-[80%] mx-auto border border-b-blue-700"/>
             <h2 className="text-4xl text-center header font-bold mt-10 mb-12">
               Latest News
@@ -698,13 +698,13 @@ const StatNumber = ({ target }) => {
 
       <section>
         <div id="FAQ-section">
-          <div  className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 py-16 px-4 lg:px-20 grid grid-cols-1 text-black dark:text-slate-100 lg:grid-cols-2 gap-10">
+          <div  className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 py-16 px-4 lg:px-40 grid grid-cols-1 text-black dark:text-slate-100 lg:grid-cols-2 gap-10">
             <div className={`col-span-1 ${!isRevealFAQ ? "hidden" : "slide-in-left overflow-hidden"}`}>
               <h2 className="text-2xl font-bold text-center header mb-6">FAQS</h2>
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="border border-gray-300 dark:border-slate-600 mb-4 p-4 rounded-md cursor-pointer bg-white dark:bg-slate-800 shadow"
+                  className="border border-gray-300 dark:border-slate-700 mb-4 p-4 rounded-md cursor-pointer bg-white dark:bg-slate-800 shadow"
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex justify-between items-center">
@@ -712,7 +712,7 @@ const StatNumber = ({ target }) => {
                     <span className="text-xl">{openIndex === index ? (<FaAngleUp />) : (<FaChevronDown />)}</span>
                   </div>
                   {openIndex === index && (
-                    <p className="mt-2 text-gray-700">{faq.answer}</p>
+                    <p className="mt-2 dark:text-slate-300">{faq.answer}</p>
                   )}
                 </div>
               ))}
@@ -757,7 +757,7 @@ const StatNumber = ({ target }) => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-bold"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-sm font-bold"
                   >
                     SUBMIT
                   </button>
