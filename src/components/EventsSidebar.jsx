@@ -86,7 +86,17 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
           </button>
         </div>
 
-        <div className="h-[calc(100%-4rem)] overflow-y-auto px-4 py-4">
+        <div
+          className={
+            "h-[calc(100%-4rem)] overflow-y-auto px-4 py-4 " +
+            "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-slate-200 dark:[&::-webkit-scrollbar-track]:bg-slate-800 " +
+            "[&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-400 [&::-webkit-scrollbar-thumb]:hover:bg-slate-500 " +
+            "dark:[&::-webkit-scrollbar-thumb]:bg-slate-600 dark:[&::-webkit-scrollbar-thumb]:hover:bg-slate-500"
+          }
+          style={{
+            scrollbarWidth: 'thin'
+          }}
+        >
           {loading ? (
             <div className="text-sm text-slate-800 dark:text-slate-300">Loading events…</div>
           ) : error ? (

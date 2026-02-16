@@ -42,7 +42,7 @@ function ThemeToggle() {
   const iconColors = {
     [themes.light]: "text-amber-100",
     [themes.dark]: "text-indigo-300",
-    [themes.system]: "text-green-300",
+    [themes.system]: "text-blue-400",
   };
 
   const Icon = icons[theme];
@@ -222,9 +222,35 @@ export default function Navbar({navPages}) {
             </button>
             {isSmallScreen ? (
               <div>
-                {isOpen && (<div className="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>)}
-                <div className="lg:hidden text-md bg-gradient-to-bl from-blue-50 via-blue-300 to-blue-900 dark:from-slate-900 dark:via-slate-800 dark:to-slate-950 rounded-bl-lg fixed z-30 right-0 w-[55%] h-[65%] text-black dark:text-slate-100 top-[4rem]">
-                  <div className="relative">
+                {isOpen && (
+                  <div
+                    className="fixed inset-0 bg-black/60 z-20 transition-opacity duration-300"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setSmallScreen(false);
+                    }}
+                  />
+                )}
+                <div className="lg:hidden text-md bg-slate-50 dark:bg-slate-950 rounded-bl-lg fixed z-30 right-0 w-[70%] sm:w-[55%] h-[70%] text-slate-900 dark:text-slate-100 top-[4rem] border-l border-slate-200 dark:border-slate-800 shadow-xl transform transition-transform duration-300 ease-out">
+                  <div className="relative h-full flex flex-col" ref={menuRef}>
+                    <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+                      <span className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-200">
+                        Menu
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsOpen(false);
+                          setSmallScreen(false);
+                        }}
+                        className="p-1.5 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                        aria-label="Close menu"
+                        title="Close"
+                      >
+                        ✕
+                      </button>
+                    </div>
+
                     <NavMenuItem
                       to="/"
                       className="block p-3 !text-inherit hover:!text-green-400"
@@ -269,7 +295,7 @@ export default function Navbar({navPages}) {
                     ) : (
                       <p>Unable to load pages</p>
                     )}
-                    
+
                   </div>
                   
                 </div>
@@ -294,7 +320,7 @@ export default function Navbar({navPages}) {
 // Helper to create valid section IDs
 function slugify(text) {
   return text
-    .toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+    .toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
 

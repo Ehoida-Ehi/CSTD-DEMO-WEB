@@ -1,8 +1,8 @@
 // home gallery images
-import newStory2 from "../assets/images/chukaa.jpg";
+import newStory2 from "../assets/images/karri.jpg";
 import newStory3 from "../assets/images/meet.jpg";
 import newStory1 from "../assets/images/cstd group.jpg";
-import newStory4 from "../assets/images/karri.jpg";
+import newStory4 from "../assets/images/chukaa.jpg";
 import newStory5 from "../assets/images/slidepix.jpg";
 import newStory7 from "../assets/images/New-Story-3.jpg";
 
@@ -19,8 +19,8 @@ import groundsegmentImg from '../assets/images/satDev/lab_test.jpg';
 import directorateImg from '../assets/images/satDev/directorate.jpg';
 
 // about hero images
-import pic1 from '../assets/images/satDev/flightTestOnlookers.jpg';
-import pic2 from '../assets/images/satDev/MCHS.jpg';
+import pic1 from '../assets/images/satDev/still-life-space-with-white-astronaut.jpg';
+import pic2 from '../assets/images/satDev/still-life-space-with-white-astronaut.jpg';
 import pic3 from '../assets/images/satDev/LadyScientist.jpg';
 
 // research and innovation images
@@ -73,7 +73,8 @@ import StartUp from '../assets/images/StartUP.jpg'
     { title: "Directorate", image: directorateImg },
   ];
 
-const aboutHeroimages = [pic1, pic2, pic3];
+// const aboutHeroimages = [pic1, pic2, pic3];
+const aboutHeroimages = [pic1];
 
 const rniImages = [
    pic5,

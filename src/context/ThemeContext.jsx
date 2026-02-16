@@ -26,12 +26,25 @@ export function ThemeProvider({ children }) {
     };
 
     if (theme === themes.system) {
-      const mq = window.matchMedia("(prefers-color-scheme: dark)");
-      applyTheme(mq.matches);
+      const resolveSystemTheme = () => {
+        const hour = new Date().getHours();
+        if (hour >= 18) return true; // Past 6pm → dark
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      };
 
-      const handler = (e) => applyTheme(e.matches);
-      mq.addEventListener("change", handler);
-      return () => mq.removeEventListener("change", handler);
+      const update = () => applyTheme(resolveSystemTheme());
+      update();
+
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      mq.addEventListener("change", update);
+
+      // Re-check every minute to catch 6pm / 6am transitions
+      const interval = setInterval(update, 60000);
+
+      return () => {
+        mq.removeEventListener("change", update);
+        clearInterval(interval);
+      };
     }
 
     applyTheme(theme === themes.dark);

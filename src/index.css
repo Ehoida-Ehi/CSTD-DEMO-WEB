@@ -16,6 +16,38 @@
             line-height: 1.6;
         }
 
+        /* Global scrollbar styling */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #94a3b8 #e2e8f0;
+        }
+        html.dark {
+            scrollbar-color: #475569 #1e293b;
+        }
+        html::-webkit-scrollbar {
+            width: 8px;
+        }
+        html::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 9999px;
+        }
+        html::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 9999px;
+        }
+        html::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        html.dark::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        html.dark::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        html.dark::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
         @theme inline {
         --color-background: var(--background);
         --color-foreground: var(--foreground);
@@ -299,7 +331,7 @@
             --border-color: #334155;
         }
         .value-card {
-            background: white;
+            /* background: white; */
             border: 1px solid var(--gradient-primary);
             /* border: 1px solid rgb(214, 214, 214); */
             border-radius: 5px;

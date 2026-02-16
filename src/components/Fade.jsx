@@ -14,13 +14,13 @@ const Fade = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen relative overflow-hidden">
+    <div className="w-full lg:h-[500px] h-screen relative overflow-hidden">
       {images.map((image, index) => (
         <img
           key={index}
           src={image}
           alt={`Image ${index + 1}`}
-          className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ${
+          className={`w-full lg:h-full h-full lg:object-cover object-cover object-right-top absolute top-0 left-0 transition-opacity duration-1000 ${
             activeImage === index ? 'opacity-100' : 'opacity-0'
           }`}
         />
