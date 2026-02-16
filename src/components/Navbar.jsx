@@ -5,6 +5,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaSun, FaMoon, FaDesktop } from "react-icons/fa6";
 import { NavPageContext } from "../context/NavPageContext";
 import { useTheme } from "../context/ThemeContext";
+import axios from "axios";
+import EventsSidebar from "./EventsSidebar";
 
 function NavMenuItem({ to, children, className = "", onClick }) {
   return (
@@ -63,6 +65,15 @@ export default function Navbar({navPages}) {
   const [isSmallScreen, setSmallScreen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null);
+  const { BASEURL } = useContext(NavPageContext);
+
+  const [eventsSidebarOpen, setEventsSidebarOpen] = useState(false);
+  const [eventsLoading, setEventsLoading] = useState(false);
+  const [eventsError, setEventsError] = useState("");
+  const [events, setEvents] = useState([]);
+
+  const closeEventsSidebar = () => setEventsSidebarOpen(false);
+  const openEventsSidebar = () => setEventsSidebarOpen(true);
 
   // const {navPages, setNavPages} = useContext(NavPageContext)
 
@@ -85,6 +96,39 @@ export default function Navbar({navPages}) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  // Lock body scroll while sidebar is open
+  useEffect(() => {
+    if (!eventsSidebarOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [eventsSidebarOpen]);
+
+  // Fetch events when sidebar opens (keeps it "updated")
+  useEffect(() => {
+    if (!eventsSidebarOpen) return;
+
+    const fetchEvents = async () => {
+      setEventsLoading(true);
+      setEventsError("");
+      try {
+        const resp = await axios.get(`${BASEURL}/events/fetchevents`);
+        const data = resp.data?.data || [];
+        setEvents(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Failed to fetch events:", err);
+        setEventsError("Failed to load events. Please try again.");
+        setEvents([]);
+      } finally {
+        setEventsLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, [eventsSidebarOpen, BASEURL]);
+
   // useEffect(()=>{
   //   const getNavPages = async(e)=>{
   //     try {
@@ -103,12 +147,13 @@ export default function Navbar({navPages}) {
       <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="text-left">
+          <div className="text-left flex items-center gap-2">
             <img
               src={cstdImg}
               alt="NASRDA Logo"
               className="w-16 mt-2 mb-2"
             />
+            <p className="text-white text-4xl font-bold">CSTD</p>
           </div>
 
           {/* Navigation Links */}
@@ -129,7 +174,7 @@ export default function Navbar({navPages}) {
                     {isRni ? (
                       <span className="relative inline-block">
                         <span className="block group-hover:hidden transition-all duration-700">
-                          R and I
+                          R & I
                         </span>
                         <span className="hidden group-hover:inline transition-all duration-700 whitespace-nowrap">
                           Research and Innovation
@@ -151,7 +196,15 @@ export default function Navbar({navPages}) {
             <div className="text-white flex space-x-2 items-center">
               <NavMenuItem to="/#latest-news">News</NavMenuItem>
               <span>|</span>
-              <NavMenuItem to="/#events">Events</NavMenuItem>
+              <NavMenuItem
+                to="/#events"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openEventsSidebar();
+                }}
+              >
+                Events
+              </NavMenuItem>
             </div>
             <ThemeToggle />
           </div>
@@ -226,6 +279,14 @@ export default function Navbar({navPages}) {
           
         </div>
       </div>
+
+      <EventsSidebar
+        open={eventsSidebarOpen}
+        onClose={closeEventsSidebar}
+        events={events}
+        loading={eventsLoading}
+        error={eventsError}
+      />
     </nav>
   );
 }
