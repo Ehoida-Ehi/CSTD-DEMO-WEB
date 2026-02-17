@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect, useContext } from "react";
-// import { useLocation } from "react-router-dom";
 import { FaPlay, FaPause } from "react-icons/fa";
-// import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
-// import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
-// import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
+// import { useLocation } from "react-router-dom";
+// import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
+// import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
+// import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 // import useRevealOnScroll from "../components/RevealnScroll";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
