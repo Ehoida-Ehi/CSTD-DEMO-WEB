@@ -40,8 +40,8 @@ const Footer = () => {
            {/* Footer Links */}
            <div>
              <ul className="space-y-2 text-sm">
-               <li><a href="">Home</a></li> 
-               <li><a href="">News & Events</a></li>
+               <li><a href="/">Home</a></li> 
+               <li><a href="/">News & Events</a></li>
                <li><a href="/#gallery">Multimedia</a></li>
                <li>
                  CSTD+
@@ -95,16 +95,16 @@ const Footer = () => {
          {/* Bottom Links */}
          <div className="max-w-7xl mx-auto text-xs text-gray-400 flex flex-wrap justify-between gap-y-2">
            <div className="flex flex-wrap gap-4">
-             <a href="#">Sitemap</a>
-             <a href="#">For Media</a>
-             <a href="#">Privacy Policy</a>
-             <a href="#">FOIA</a>
-             <a href="#">No FEAR Act</a>
-             <a href="#">Office of the IG</a>
-             <a href="#">Budget & Annual Reports</a>
-             <a href="#">Agency Financial Reports</a>
+             <a href="/">Sitemap</a>
+             <a href="/">For Media</a>
+             <a href="/">Privacy Policy</a>
+             <a href="/">FOIA</a>
+             <a href="/">No FEAR Act</a>
+             <a href="/">Office of the IG</a>
+             <a href="/">Budget & Annual Reports</a>
+             <a href="/">Agency Financial Reports</a>
              <a href="/contact">Contact CSTD</a>
-             <a href="#">Accessibility</a>
+             <a href="/">Accessibility</a>
            </div>
            <div className="">
              Page Last Updated: <span className="text-white font-medium">Feb 17, 2026</span><br />

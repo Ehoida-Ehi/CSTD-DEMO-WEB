@@ -355,105 +355,105 @@ export default function Navbar({navPages}) {
 }
 
 // Helper to create valid section IDs
-function slugify(text) {
-  return text
-    .toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-}
+// function slugify(text) {
+//   return text
+//     .toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+// }
 
-function Dropdown({ label, items, page }) {
-  const location = useLocation();
+// function Dropdown({ label, items, page }) {
+//   const location = useLocation();
 
-  const externalLinks = {
-    "NigeriaSAT – 1": "https://central.nasrda.gov.ng/space-missions/nigeriasat-1/",
-    "NigeriaSAT – 2": "https://central.nasrda.gov.ng/space-missions/nigeriasat-2/",
-    "NigeriaSAT -X": "https://central.nasrda.gov.ng/space-missions/nigeriasat-x/",
-    "Mission & Vision": "/about#mission-and-vision",
-    "SIP": "/about#sip",
-    "Projects": "/rni#projects",
-    "Publications": "/rni#publications",
-    "Departments": "/#departments",
-    "Gallery": "/media#gallery",
-    "News": "/media#news",
-    "Partner with us": "/contact#partner",
-    "Map": "/contact#map",
-  };
+//   const externalLinks = {
+//     "NigeriaSAT – 1": "https://central.nasrda.gov.ng/space-missions/nigeriasat-1/",
+//     "NigeriaSAT – 2": "https://central.nasrda.gov.ng/space-missions/nigeriasat-2/",
+//     "NigeriaSAT -X": "https://central.nasrda.gov.ng/space-missions/nigeriasat-x/",
+//     "Mission & Vision": "/about#mission-and-vision",
+//     "SIP": "/about#sip",
+//     "Projects": "/rni#projects",
+//     "Publications": "/rni#publications",
+//     "Departments": "/#departments",
+//     "Gallery": "/media#gallery",
+//     "News": "/media#news",
+//     "Partner with us": "/contact#partner",
+//     "Map": "/contact#map",
+//   };
 
-  const isExternal = (url) => /^https?:\/\//.test(url);
+//   const isExternal = (url) => /^https?:\/\//.test(url);
 
-  return (
-    <div className="relative group">
-      <Link to={page} className="text-white hover:text-green-600 relative group">
-        {label}
-        <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-      </Link>
+//   return (
+//     <div className="relative group">
+//       <Link to={page} className="text-white hover:text-green-600 relative group">
+//         {label}
+//         <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+//       </Link>
 
-      <div className="absolute top-full left-0 bg-white shadow-lg rounded-md text-md hidden group-hover:block z-50 min-w-[180px]">
-        {items.map((item, idx) => {
-          const href = externalLinks[item] || `${page}#${slugify(item)}`;
+//       <div className="absolute top-full left-0 bg-white shadow-lg rounded-md text-md hidden group-hover:block z-50 min-w-[180px]">
+//         {items.map((item, idx) => {
+//           const href = externalLinks[item] || `${page}#${slugify(item)}`;
 
-          if (isExternal(href)) {
-            return (
-              <a
-                key={idx}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
-              >
-                {item}
-              </a>
-            );
-          }
+//           if (isExternal(href)) {
+//             return (
+//               <a
+//                 key={idx}
+//                 href={href}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
+//               >
+//                 {item}
+//               </a>
+//             );
+//           }
 
-          const isSamePageHash = href.startsWith("#") || href.startsWith(`${location.pathname}#`);
+//           const isSamePageHash = href.startsWith("#") || href.startsWith(`${location.pathname}#`);
 
-          return isSamePageHash ? (
-            <a
-              key={idx}
-              href={href}
-              className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
-            >
-              {item}
-            </a>
-          ) : (
-            <Link
-              key={idx}
-              to={href}
-              className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
-            >
-              {item}
-            </Link>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+//           return isSamePageHash ? (
+//             <a
+//               key={idx}
+//               href={href}
+//               className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
+//             >
+//               {item}
+//             </a>
+//           ) : (
+//             <Link
+//               key={idx}
+//               to={href}
+//               className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
+//             >
+//               {item}
+//             </Link>
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
 
-function SatelliteDropdown() {
-  const satelliteItems = [
-    { name: "Nigeria Sat-1", path: "/Sat1" },
-    { name: "Nigeria Sat-2", path: "/Sat2" },
-    { name: "Nigeria Sat-X", path: "/SatX" }
-  ];
+// function SatelliteDropdown() {
+//   const satelliteItems = [
+//     { name: "Nigeria Sat-1", path: "/Sat1" },
+//     { name: "Nigeria Sat-2", path: "/Sat2" },
+//     { name: "Nigeria Sat-X", path: "/SatX" }
+//   ];
 
-  return (
-    <div className="relative group">
-      <button className="text-white hover:text-green-600 relative group">
-        Satellite Missions
-        <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-      </button>
-      <div className="absolute top-full left-0 bg-white shadow-lg rounded-md text-md hidden group-hover:block z-50 min-w-[200px]">
-        {satelliteItems.map((item, idx) => (
-          <Link
-            key={idx}
-            to={item.path}
-            className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
-          >
-            {item.name}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div className="relative group">
+//       <button className="text-white hover:text-green-600 relative group">
+//         Satellite Missions
+//         <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+//       </button>
+//       <div className="absolute top-full left-0 bg-white shadow-lg rounded-md text-md hidden group-hover:block z-50 min-w-[200px]">
+//         {satelliteItems.map((item, idx) => (
+//           <Link
+//             key={idx}
+//             to={item.path}
+//             className="block px-4 py-2 text-slate-800 hover:bg-green-100 hover:text-green-700 text-sm"
+//           >
+//             {item.name}
+//           </Link>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }

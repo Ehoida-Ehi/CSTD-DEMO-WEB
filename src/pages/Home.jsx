@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useContext } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { FaPlay, FaPause } from "react-icons/fa";
 // import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
 // import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
@@ -250,7 +250,10 @@ const StatNumber = ({ target }) => {
   const ref = useRef(null);
 
   useEffect(() => {
-    let observer = new IntersectionObserver(
+    const node = ref.current; // Capture ref value at effect start
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -269,24 +272,23 @@ const StatNumber = ({ target }) => {
           }
         });
       },
-      { threshold: 0.5 } // Trigger when 50% visible
+      { threshold: 0.5 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(node);
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      observer.unobserve(node); // Use captured node in cleanup
     };
   }, [target]);
 
-    return (
-      <div ref={ref} className="stat-number text-4xl font-bold text-blue-600">
-        {count}
-      </div>
-    );
+  return (
+    <div ref={ref} className="stat-number text-4xl font-bold text-blue-600">
+      {count}
+    </div>
+  );
 }
+
   return (
     <div className="mt-16">
       {/* Banner Video Section */}
@@ -365,7 +367,7 @@ const StatNumber = ({ target }) => {
           </div>
           <div className={`about-content bg-blue-50 dark:bg-slate-900 lg:col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-right overflow-hidden"}`}>
             <div className="about-visual my-auto align-middle bg-blue-50 dark:bg-slate-900">
-              <img src={nigImg} className="flex icon lg:w-[24rem] w-[16rem]" alt="Image not Available" />
+              <img src={nigImg} className="flex icon lg:w-[24rem] w-[16rem]" alt="Unavailable" />
             </div>
           </div>
           </div>                
@@ -383,7 +385,7 @@ const StatNumber = ({ target }) => {
                   {open === index ? (
                   <button onClick={()=>toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
                     <div className="flex flex-col space-y-5 items-center justify-center">
-                      <img src={val.profile} className="w-28 mx-auto" alt="Image Profile" />
+                      <img src={val.profile} className="w-28 mx-auto" alt="Profile pic" />
                       <p>
                         {val.title}
                       </p>
@@ -392,7 +394,7 @@ const StatNumber = ({ target }) => {
                   ) : (
                   <button onClick={() => toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">
                     <div className="flex flex-col space-y-5">
-                      <img src={val.profile} className="w-28 mx-auto" alt="Image Profile" />
+                      <img src={val.profile} className="w-28 mx-auto" alt="Profile pic" />
                       <p>
                         {val.title}
                       </p>
@@ -775,7 +777,3 @@ const StatNumber = ({ target }) => {
 };
 
 export default Home;
-
-
-
-
