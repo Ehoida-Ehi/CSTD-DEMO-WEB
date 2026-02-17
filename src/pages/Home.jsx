@@ -377,7 +377,7 @@ const StatNumber = ({ target }) => {
           <p className="text-gray-800 dark:text-slate-300 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
           <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
              {values.map((val, index) => (
-              <div key={index} className="value-card text-black dark:text-slate-100 bg-slate-100 shadow-md dark:bg-slate-900 rounded-sm col-span-1 items-center flex flex-col space-y-4">
+              <div key={index} className="value-card text-black dark:text-blue-100 bg-blue-50 shadow-sm dark:bg-slate-900 rounded-sm col-span-1 items-center flex flex-col space-y-4">
                 <div className="rounded-sm p-10">
                   {open === index ? (
                   <button onClick={()=>toggle(index)} className="w-full flex justify-center items-center px-4 py-3 font-semibold">

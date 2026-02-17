@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import cstdImg from '../assets/images/cstd logoogo.png';
 import { useContext, useEffect, useRef, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -62,8 +62,12 @@ function ThemeToggle() {
 }
 
 export default function Navbar({navPages}) {
-  const [isSmallScreen, setSmallScreen] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const navbarClickRef = useRef(false); // flag to indicate navigation came from a navbar click
+
+  const [isSmallScreen, setSmallScreen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const { BASEURL } = useContext(NavPageContext);
 
@@ -75,15 +79,31 @@ export default function Navbar({navPages}) {
   const closeEventsSidebar = () => setEventsSidebarOpen(false);
   const openEventsSidebar = () => setEventsSidebarOpen(true);
 
-  // const {navPages, setNavPages} = useContext(NavPageContext)
-
-  // const BASEURL = "https://cstd-backend-server.onrender.com/api/CSTDsite"
+  // Handle scroll after navigation triggered by navbar clicks
+  useEffect(() => {
+    if (navbarClickRef.current) {
+      // Special case: News link (home page with #latest-news)
+      if (location.pathname === '/' && location.hash === '#latest-news') {
+        const element = document.getElementById('latest-news');
+        if (element) {
+          // Small delay to ensure DOM is ready after navigation
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      } else {
+        // For all other navbar links, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      navbarClickRef.current = false; // reset flag
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsOpen(false);
-        setSmallScreen(false)
+        setSmallScreen(false);
       }
     };
 
@@ -106,7 +126,7 @@ export default function Navbar({navPages}) {
     };
   }, [eventsSidebarOpen]);
 
-  // Fetch events when sidebar opens (keeps it "updated")
+  // Fetch events when sidebar opens
   useEffect(() => {
     if (!eventsSidebarOpen) return;
 
@@ -129,19 +149,26 @@ export default function Navbar({navPages}) {
     fetchEvents();
   }, [eventsSidebarOpen, BASEURL]);
 
-  // useEffect(()=>{
-  //   const getNavPages = async(e)=>{
-  //     try {
-  //       const resp = await axios.get(`${BASEURL}/pages/links`)
-  //       setNavPages(resp.data)
-  //       console.log(resp.data)
-  //     } catch (error) {
-  //       console.error("Failed to fetch: ", error)
-  //     }
-  //   }
-  //   getNavPages()
-  // },[])
- 
+  // Custom click handler for the News link
+  const handleNewsClick = (e) => {
+    // If already on home page, prevent default and scroll manually
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      const element = document.getElementById('latest-news');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Fallback: navigate with hash and set flag
+        navbarClickRef.current = true;
+        navigate('/#latest-news');
+      }
+    } else {
+      // Not on home page: set flag and let Link navigate
+      navbarClickRef.current = true;
+      // No need to prevent default; Link will handle navigation
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-slate-950 z-50 border-b border-slate-800">
       <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,10 +183,14 @@ export default function Navbar({navPages}) {
             <p className="text-white text-4xl font-bold">CSTD</p>
           </div>
 
-          {/* Navigation Links */}
+          {/* Navigation Links (desktop) */}
           <div className="hidden lg:flex space-x-8 items-center text-md">
-            {/** Navigation Items with Dropdown */}
-            <NavMenuItem to="/">Home</NavMenuItem>
+            <NavMenuItem
+              to="/"
+              onClick={() => { navbarClickRef.current = true; }}
+            >
+              Home
+            </NavMenuItem>
             {navPages ? (
               navPages.map((navPage) => {
                 const isRni =
@@ -170,6 +201,7 @@ export default function Navbar({navPages}) {
                   <NavMenuItem
                     key={navPage._id}
                     to={navPage.path}
+                    onClick={() => { navbarClickRef.current = true; }}
                   >
                     {isRni ? (
                       <span className="relative inline-block">
@@ -191,10 +223,16 @@ export default function Navbar({navPages}) {
             )}
           </div>
 
-          {/* Right Side (lg) - News/Events + Theme Toggle */}
+          {/* Right Side (desktop) - News/Events + Theme Toggle */}
           <div className="hidden lg:flex items-center gap-6">
             <div className="text-white flex space-x-2 items-center">
-              <NavMenuItem to="/#latest-news">News</NavMenuItem>
+              {/* News link with custom handler */}
+              <NavMenuItem
+                to="/#latest-news"
+                onClick={handleNewsClick}
+              >
+                News
+              </NavMenuItem>
               <span>|</span>
               <NavMenuItem
                 to="/#events"
@@ -209,7 +247,7 @@ export default function Navbar({navPages}) {
             <ThemeToggle />
           </div>
 
-          {/* Mobile/Tablet - Theme Toggle (left) + Burger (right) */}
+          {/* Mobile/Tablet - Theme Toggle + Burger */}
           <div className="lg:hidden flex items-center gap-3">
             <ThemeToggle />
             <button
@@ -220,7 +258,7 @@ export default function Navbar({navPages}) {
             >
               <RxHamburgerMenu className="text-xl" />
             </button>
-            {isSmallScreen ? (
+            {isSmallScreen && (
               <div>
                 {isOpen && (
                   <div
@@ -255,6 +293,7 @@ export default function Navbar({navPages}) {
                       to="/"
                       className="block p-3 !text-inherit hover:!text-green-400"
                       onClick={() => {
+                        navbarClickRef.current = true;
                         setIsOpen(false);
                         setSmallScreen(false);
                       }}
@@ -273,6 +312,7 @@ export default function Navbar({navPages}) {
                             to={navPage.path ?? `/${navPage.pageId}`}
                             className="block p-3 !text-inherit hover:!text-green-400"
                             onClick={() => {
+                              navbarClickRef.current = true;
                               setIsOpen(false);
                               setSmallScreen(false);
                             }}
@@ -295,14 +335,11 @@ export default function Navbar({navPages}) {
                     ) : (
                       <p>Unable to load pages</p>
                     )}
-
                   </div>
-                  
                 </div>
               </div>
-            ) : null}
+            )}
           </div>
-          
         </div>
       </div>
 
@@ -322,8 +359,6 @@ function slugify(text) {
   return text
     .toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
-
-
 
 function Dropdown({ label, items, page }) {
   const location = useLocation();
@@ -422,5 +457,3 @@ function SatelliteDropdown() {
     </div>
   );
 }
-
-

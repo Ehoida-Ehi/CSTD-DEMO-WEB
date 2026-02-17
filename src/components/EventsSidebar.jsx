@@ -73,7 +73,7 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
         <div className="h-16 flex items-center justify-between px-4 shadow-md dark:shadow-zinc-800">
           <div className="flex flex-col">
             <div className="text-lg font-bold text-slate-900 dark:text-slate-50">Events</div>
-            <div className="text-xs text-slate-800 dark:text-slate-300">Latest updates from the CMS</div>
+            <div className="text-xs text-slate-800 dark:text-slate-300">Latest updates from our CMS</div>
           </div>
           <button
             type="button"
