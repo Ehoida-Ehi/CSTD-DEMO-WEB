@@ -174,14 +174,14 @@ export default function Navbar({navPages}) {
       <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="text-left flex items-center gap-2">
+          <a href="/" className="text-left flex items-center gap-2">
             <img
               src={cstdImg}
               alt="NASRDA Logo"
               className="w-16 mt-2 mb-2"
             />
             <p className="text-white text-4xl font-bold">CSTD</p>
-          </div>
+          </a>
 
           {/* Navigation Links (desktop) */}
           <div className="hidden lg:flex space-x-8 items-center text-md">

@@ -40,16 +40,16 @@ const Footer = () => {
            {/* Footer Links */}
            <div>
              <ul className="space-y-2 text-sm">
-               <li href="/">Home</li> 
-               <li>News & Events</li>
-               <li href="/#gallery">Multimedia</li>
+               <li><a href="">Home</a></li> 
+               <li><a href="">News & Events</a></li>
+               <li><a href="/#gallery">Multimedia</a></li>
                <li>
                  CSTD+
                  <span className="ml-2 text-xs px-1 py-0.5 border border-white rounded">
                    LIVE
                  </span>
                </li>
-               <li>Projects</li>
+               <li><a href="/researchandinnovation/#projects">Projects</a></li>
              </ul>
            </div>
    
@@ -68,7 +68,7 @@ const Footer = () => {
                <li>Aeronautics</li>
                <li>Technology</li>
                <li>Learning Resources</li>
-               <li>About CSTD</li>
+               <li><a href="/about">About CSTD</a></li>
                <li>Patnership</li>
              </ul>
            </div>
@@ -103,7 +103,7 @@ const Footer = () => {
              <a href="#">Office of the IG</a>
              <a href="#">Budget & Annual Reports</a>
              <a href="#">Agency Financial Reports</a>
-             <a href="#">Contact CSTD</a>
+             <a href="/contact">Contact CSTD</a>
              <a href="#">Accessibility</a>
            </div>
            <div className="">
