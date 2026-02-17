@@ -106,7 +106,7 @@ const Footer = () => {
              <a href="#">Accessibility</a>
            </div>
            <div className="">
-             Page Last Updated: <span className="text-white font-medium">Feb 11, 2026</span><br />
+             Page Last Updated: <span className="text-white font-medium">Feb 17, 2026</span><br />
              {/* Page Editor: <span className="font-semibold text-white">Ehi Jennifer Ehoida</span><br /> */}
              {/* Responsible CSTD Official:{" "} */}
              {/* <span className="font-semibold text-white">Omotayo Maryam</span> */}
