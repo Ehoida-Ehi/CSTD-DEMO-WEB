@@ -61,7 +61,10 @@ function ThemeToggle() {
   );
 }
 
-export default function Navbar({navPages}) {
+export default function Navbar({ navPages: rawNavPages }) {
+  const navPages = [...(rawNavPages ?? [])]
+    .filter((p) => !p.isHidden)
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   const navigate = useNavigate();
   const location = useLocation();
   const navbarClickRef = useRef(false); // flag to indicate navigation came from a navbar click

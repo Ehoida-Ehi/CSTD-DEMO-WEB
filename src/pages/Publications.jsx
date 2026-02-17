@@ -49,8 +49,7 @@ const Publications = () => {
           </h1>
           <p className="max-w-2xl text-sm sm:text-base text-slate-600 dark:text-slate-300">
             Discover the latest peer‑reviewed papers, technical reports, and
-            conference publications produced by CSTD and its collaborators,
-            presented in descending order of publication date.
+            conference publications produced by CSTD and its collaborators.
           </p>
         </div>
       </section>
