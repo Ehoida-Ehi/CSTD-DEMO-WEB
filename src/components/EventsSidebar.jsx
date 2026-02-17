@@ -2,7 +2,6 @@ import { useEffect, useMemo } from "react";
 
 function safeDateValue(dateStr, timeStr) {
   if (!dateStr) return 0;
-  // Prefer ISO-like combination if time is provided.
   if (timeStr) {
     const d = new Date(`${dateStr}T${timeStr}`);
     if (!Number.isNaN(d.getTime())) return d.getTime();
@@ -44,19 +43,18 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, onClose]);
 
-  // Overlay + sidebar
+  const now = Date.now(); // current timestamp for upcoming/past comparison
+
   return (
     <div
       className={`fixed inset-0 z-[60] ${open ? "pointer-events-auto" : "pointer-events-none"}`}
       aria-hidden={!open}
     >
-      {/* Overlay (click anywhere to close) */}
       <div
         className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
         onClick={() => onClose?.()}
       />
 
-      {/* Sidebar */}
       <aside
         role="dialog"
         aria-modal="true"
@@ -93,9 +91,7 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
             "[&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-400 [&::-webkit-scrollbar-thumb]:hover:bg-slate-500 " +
             "dark:[&::-webkit-scrollbar-thumb]:bg-slate-600 dark:[&::-webkit-scrollbar-thumb]:hover:bg-slate-500"
           }
-          style={{
-            scrollbarWidth: 'thin'
-          }}
+          style={{ scrollbarWidth: "thin" }}
         >
           {loading ? (
             <div className="text-sm text-slate-800 dark:text-slate-300">Loading events…</div>
@@ -106,9 +102,13 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
           ) : (
             <div className="space-y-4">
               {sortedEvents.map((ev) => {
+                const eventTimestamp = safeDateValue(ev?.date, ev?.time);
+                const isUpcoming = eventTimestamp >= now; // upcoming if now or in the future
+
                 const dateLabel = formatDate(ev?.date);
                 const timeLabel = formatTime(ev?.time);
                 const when = [dateLabel, timeLabel].filter(Boolean).join(" • ");
+
                 return (
                   <article
                     key={ev?._id ?? `${ev?.title ?? "event"}-${ev?.date ?? ""}-${ev?.time ?? ""}`}
@@ -128,9 +128,21 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
                         {ev?.title || "Untitled event"}
                       </div>
 
-                      {when ? (
-                        <div className="mt-2 text-xs text-slate-600 dark:text-slate-300">{when}</div>
-                      ) : null}
+                      {/* Pill + Date/Time */}
+                      <div className="flex items-center gap-2 mt-1 flex-wrap">
+                        {isUpcoming ? (
+                          <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                            <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                            Upcoming
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300">
+                            <span className="w-2 h-2 rounded-full bg-gray-500"></span>
+                            Past
+                          </span>
+                        )}
+                        {when ? <span className="text-xs text-slate-600 dark:text-slate-300">{when}</span> : null}
+                      </div>
 
                       {ev?.location ? (
                         <div className="mt-1 text-xs text-slate-600 dark:text-slate-300 line-clamp-1">
@@ -154,4 +166,3 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
     </div>
   );
 }
-
