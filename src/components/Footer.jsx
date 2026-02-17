@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   FaFacebookF,
   FaInstagram,
@@ -25,11 +26,11 @@ const Footer = () => {
                CSTD explores the unknown in air and space, innovates for the benefit
                of humanity, and inspires the world through discovery.
              </p>
-             <a href="#" className="block underline text-sm text-white mb-2">
+             <a href="/satellitemissions/#overview" className="block underline text-sm text-white mb-2">
                About CSTD's Mission
              </a>
              <a
-               href="#"
+               href="/contact"
                className="text-red-500 font-bold text-sm flex items-center"
              >
                Join Us <span className="ml-1">→</span>
@@ -39,9 +40,9 @@ const Footer = () => {
            {/* Footer Links */}
            <div>
              <ul className="space-y-2 text-sm">
-               <li>Home</li>
+               <li href="/">Home</li> 
                <li>News & Events</li>
-               <li>Multimedia</li>
+               <li href="/#gallery">Multimedia</li>
                <li>
                  CSTD+
                  <span className="ml-2 text-xs px-1 py-0.5 border border-white rounded">
@@ -76,10 +77,10 @@ const Footer = () => {
            <div>
              <h3 className="text-gray-300 font-semibold mb-4">Follow CSTD</h3>
              <div className="flex gap-4 mb-4">
-               <FaFacebookF className="text-xl" />
-               <FaInstagram className="text-xl" />
-               <FaXTwitter className="text-xl" />
-               <FaYoutube className="text-xl" />
+               <Link to={'https://web.facebook.com/profile.php?id=100078245153247'}><FaFacebookF  className="text-xl" /></Link>
+               <Link to={'https://www.instagram.com/cstd_nasrda'}><FaInstagram className="text-xl" /></Link>
+               <Link to={'https://x.com/CstdNasrda'}><FaXTwitter className="text-xl" /></Link>
+               <Link to={'https://www.youtube.com/watch?v=rM8FWbxzPNY'}><FaYoutube className="text-xl" /></Link>
              </div>
              <ul className="space-y-2 text-sm">
                <li>More CSTD Social Accounts</li>
