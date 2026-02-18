@@ -8,7 +8,7 @@ import SatelliteMission from './pages/SatelliteMission';
 import Sat1 from './pages/Sat1';
 import Sat2 from './pages/Sat2';
 import SatX from './pages/SatX';
-import Media from './pages/Media';
+// import Media from './pages/Media';
 import RnI from './pages/RnI';
 import Publications from './pages/Publications';
 
@@ -43,7 +43,7 @@ const Content = () => {
         <Route path="/sat1" element={<Sat1 />} />
         <Route path="/sat2" element={<Sat2 />} />
         <Route path="/satx" element={<SatX />} />
-        <Route path="/media" element={<Media />} />
+        {/* <Route path="/media" element={<Media />} /> */}
         
 
         {/* CMS-driven dynamic pages */}
