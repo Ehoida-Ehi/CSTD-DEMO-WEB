@@ -7,6 +7,13 @@ import "swiper/css/pagination";
 import {mediaImages} from '../utils/images';
 import { useLocation } from 'react-router-dom';
 
+import Image1 from '../assets/images/satDev/SatImage2.png';
+import Image2 from '../assets/images/satDev/GroundSegment.jpg';
+import Image3 from '../assets/images/satDev/NigeriaSat-X-image-of-Auckland-New-Zealand.png';
+import Image4 from '../assets/images/satDev/RussianSpaceCraftCarrier.jpg';
+import Image5 from '../assets/images/satDev/InFaring.jpg';
+import Image6 from '../assets/images/satDev/InRussianFaring.jpg';
+
 
 const Media = () => {
   const [expandedNews, setExpandedNews] = useState(null);
@@ -156,7 +163,7 @@ useEffect(() => {
 
   setFilteredNews(result);
 
-}, [date, setAsc, asc]); 
+}, [date, setAsc, news, asc]); 
 
 
     const { hash } = useLocation();
@@ -313,7 +320,7 @@ useEffect(() => {
             {/* Large Image */}
           <div className="md:col-span-2 lg:col-span-2 row-span-2 relative">
                   <img
-                    src="https://cdn.pixabay.com/photo/2015/01/14/18/54/satellite-photo-599494_1280.jpg"
+                    src={Image1}
                 alt="Satellite"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
                   />
@@ -324,7 +331,7 @@ useEffect(() => {
             {/* Medium Images */}
             <div className="row-span-1 relative">
               <img
-                src="https://cdn.pixabay.com/photo/2023/05/23/11/51/machine-8012596_1280.jpg"
+                src={Image2}
                 alt="Machine"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
@@ -334,7 +341,7 @@ useEffect(() => {
             </div>
             <div className="row-span-1 relative">
               <img
-                src="https://cdn.pixabay.com/photo/2022/10/27/10/23/astronaaut-7550543_1280.png"
+                src={Image3}
                 alt="Astronaut"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
@@ -345,7 +352,7 @@ useEffect(() => {
             {/* Small Images */}
             <div className="row-span-1 relative">
               <img
-                src="https://cdn.pixabay.com/photo/2021/09/10/22/17/business-6614313_1280.png"
+                src={Image4}
                 alt="Business"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
@@ -355,7 +362,7 @@ useEffect(() => {
             </div>
             <div className="row-span-1 relative">
               <img
-                src="https://cdn.pixabay.com/photo/2023/11/18/15/45/work-8396635_1280.jpg"
+                src={Image5}
                 alt="Work"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />
@@ -365,7 +372,7 @@ useEffect(() => {
             </div>
             <div className="row-span-1 relative">
               <img
-                src="https://cdn.pixabay.com/photo/2021/11/25/20/01/tv-6824507_1280.png"
+                src={Image6}
                 alt="Technology"
                 className="w-full h-full object-cover rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               />

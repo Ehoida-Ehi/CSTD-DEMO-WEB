@@ -31,7 +31,7 @@ const Content = () => {
     <>
       <Navbar navPages={navPages} />
       <Routes>
-        {/* Static pages */}
+        {/* Routes to backend paths */}
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/rni" element={<RnI />} />
@@ -43,6 +43,7 @@ const Content = () => {
         <Route path="/sat1" element={<Sat1 />} />
         <Route path="/sat2" element={<Sat2 />} />
         <Route path="/satx" element={<SatX />} />
+        <Route path="/media" element={<Media />} />
         
 
         {/* CMS-driven dynamic pages */}
