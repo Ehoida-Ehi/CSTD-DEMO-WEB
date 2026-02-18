@@ -31,6 +31,21 @@ const Content = () => {
     <>
       <Navbar navPages={navPages} />
       <Routes>
+
+        {/* CMS-driven dynamic pages */}
+        {/* Created to know it can be done, but not utilized rn */}
+        {/* Used for test DynamicPage in the navbar as Home Page */}
+        {dynamicPages.length > 0 ? (
+          dynamicPages.map((navPage) => (
+            <Route
+              key={navPage._id}
+              path={navPage.path}
+              element={<DynamicPage page={navPage} />}
+            />
+          ))
+
+        ) : null}
+
         {/* Routes to backend paths */}
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
@@ -45,19 +60,7 @@ const Content = () => {
         <Route path="/satx" element={<SatX />} />
         {/* <Route path="/media" element={<Media />} /> */}
         
-
-        {/* CMS-driven dynamic pages */}
-        {/* Created to know it can be done, but not utilized rn */}
-        {/* Used for test DynamicPage in the navbar as Home Page */}
-        {dynamicPages.length > 0 ? (
-          dynamicPages.map((navPage) => (
-            <Route
-              key={navPage._id}
-              path={navPage.path}
-              element={<DynamicPage page={navPage} />}
-            />
-          ))
-        ) : null}
+        
       </Routes>
       <Footer />
     </>
