@@ -177,12 +177,33 @@ const Home = () => {
     setErrors({ ...errors, [e.target.name]: '' });
   };
 
-  const handleSubmit = (e) => {
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      toast.success('Form submitted successfully!');
-      setFormData({ name: '', email: '', message: '' });
-      setErrors({});
+    if (!validate()) return;
+    setSubmitLoading(true);
+    try {
+      const payload = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+        phone: '',
+        source: 'have_questions',
+      };
+      const res = await axios.post(`${BASEURL}/contact/feedback`, payload);
+      if (res.data?.success) {
+        toast.success(res.data.message || 'Question submitted successfully!');
+        setFormData({ name: '', email: '', message: '' });
+        setErrors({});
+      } else {
+        toast.error(res.data?.message || 'Submission failed. Please try again.');
+      }
+    } catch (err) {
+      const msg = err.response?.data?.message || err.message || 'Failed to submit. Please try again.';
+      toast.error(msg);
+    } finally {
+      setSubmitLoading(false);
     }
   };
 
@@ -770,9 +791,10 @@ const StatNumber = ({ target }) => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-sm font-bold"
+                    disabled={submitLoading}
+                    className="bg-blue-600 hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed text-white px-6 py-2 rounded-sm font-bold"
                   >
-                    SUBMIT
+                    {submitLoading ? 'Submitting…' : 'SUBMIT'}
                   </button>
                 </div>
               </form>
