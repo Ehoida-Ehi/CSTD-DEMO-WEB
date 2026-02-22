@@ -41,8 +41,8 @@ const Footer = () => {
            <div>
              <ul className="space-y-2 text-sm">
                <li><a href="/">Home</a></li> 
-               <li><a href="/">News & Events</a></li>
-               <li><a href="/#gallery">Multimedia</a></li>
+               <li><a href="/#latest-news">News</a></li>
+               <li><a href="/media">Multimedia</a></li>
                <li>
                  CSTD+
                  <span className="ml-2 text-xs px-1 py-0.5 border border-white rounded">
@@ -107,7 +107,7 @@ const Footer = () => {
              <a href="/">Accessibility</a>
            </div>
            <div className="">
-             Page Last Updated: <span className="text-white font-medium">Feb 17, 2026</span><br />
+             Page Last Updated: <span className="text-white font-medium">Feb 22, 2026</span><br />
              {/* Page Editor: <span className="font-semibold text-white">Ehi Jennifer Ehoida</span><br /> */}
              {/* Responsible CSTD Official:{" "} */}
              {/* <span className="font-semibold text-white">Omotayo Maryam</span> */}

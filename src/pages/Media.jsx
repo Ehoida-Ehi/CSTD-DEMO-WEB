@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -33,7 +33,7 @@ const Media = () => {
     setModalOpen(false);
     setModalContent({ type: '', url: '' });
   };
- const news = [
+ const news = useMemo(() => [
     {
       title: "NASRDA Launches New Satellite Mission",
       date: "March 15, 2025",
@@ -133,7 +133,7 @@ const Media = () => {
        media:[]
     },
    
-  ];
+  ], []);
 
   const [date, setDate] = useState('');
   const [asc, setAsc] = useState('');
@@ -253,7 +253,7 @@ useEffect(() => {
       {/* Gallery Section */}
       <div id="gallery" className="py-16 bg-white dark:bg-slate-900 flex justify-center">
         <div className="w-full max-w-6xl px-4">
-          <h2 className="text-4xl text-green-700 dark:text-green-400 font-bold text-center mb-10">Gallery</h2>
+          {/* <h2 className="text-4xl text-green-700 dark:text-green-400 font-bold text-center mb-10">Gallery</h2> */}
 
       <Swiper
         effect="coverflow"
@@ -390,7 +390,7 @@ useEffect(() => {
       <div id='news'>
       <div className="bg-slate-950 dark:bg-slate-950 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-center mb-4">Latest News</h1>
+          <h1 className="text-4xl font-bold text-center mb-4">Gallery Spotlight</h1>
           <p className="text-center text-gray-300">Stay updated with the latest developments in space technology and research</p>
         </div>
       </div>

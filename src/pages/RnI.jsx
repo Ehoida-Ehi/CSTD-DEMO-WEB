@@ -396,10 +396,10 @@ const RnI = () => {
                 <p>“Utilizing CubeSats for Flood Prediction in Sub-Saharan Africa” – 2023</p>
                 <p>“Challenges in Indigenous Satellite Assembly” – 2022</p>
               </div>
-              <button className="bg-blue-600 text-white w-fit p-3 rounded-lg cursor-pointer flex items-center gap-2 hover:bg-green-700 transition">
+              <a href="/publications" className="bg-blue-600 text-white w-fit p-3 rounded-md cursor-pointer flex items-center gap-2 hover:bg-green-700 transition">
                 📚 <span className="hover:underline">View All Publications</span>{" "}
                 <PiArrowFatLinesRightFill className="text-blue-950 text-xl hover:text-white" />
-              </button>
+              </a>
             </div>
           </div>
         </div>

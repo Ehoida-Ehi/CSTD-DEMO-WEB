@@ -8,7 +8,7 @@ import SatelliteMission from './pages/SatelliteMission';
 import Sat1 from './pages/Sat1';
 import Sat2 from './pages/Sat2';
 import SatX from './pages/SatX';
-// import Media from './pages/Media';
+import Media from './pages/Media';
 import RnI from './pages/RnI';
 import Publications from './pages/Publications';
 
@@ -31,7 +31,20 @@ const Content = () => {
     <>
       <Navbar navPages={navPages} />
       <Routes>
-
+        {/* Routes to backend paths */}
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/rni" element={<RnI />} />
+        <Route path="/RnI" element={<RnI />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/researchandinnovation" element={<RnI />} />
+        <Route path="/satellitemissions" element={<SatelliteMission />} />
+        <Route path="/publications" element={<Publications />} />
+        <Route path="/sat1" element={<Sat1 />} />
+        <Route path="/sat2" element={<Sat2 />} />
+        <Route path="/satx" element={<SatX />} />
+        <Route path="/media" element={<Media />} />
+        
         {/* CMS-driven dynamic pages */}
         {/* Created to know it can be done, but not utilized rn */}
         {/* Used for test DynamicPage in the navbar as Home Page */}
@@ -45,22 +58,6 @@ const Content = () => {
           ))
 
         ) : null}
-
-        {/* Routes to backend paths */}
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/rni" element={<RnI />} />
-        <Route path="/RnI" element={<RnI />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/researchandinnovation" element={<RnI />} />
-        <Route path="/satellitemissions" element={<SatelliteMission />} />
-        <Route path="/publications" element={<Publications />} />
-        <Route path="/sat1" element={<Sat1 />} />
-        <Route path="/sat2" element={<Sat2 />} />
-        <Route path="/satx" element={<SatX />} />
-        {/* <Route path="/media" element={<Media />} /> */}
-        
-        
       </Routes>
       <Footer />
     </>
