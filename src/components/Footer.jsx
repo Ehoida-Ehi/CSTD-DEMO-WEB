@@ -26,30 +26,30 @@ const Footer = () => {
                CSTD explores the unknown in air and space, innovates for the benefit
                of humanity, and inspires the world through discovery.
              </p>
-             <a href="/satellitemissions/#overview" className="block underline text-sm text-white mb-2">
+             <Link to="/satellitemissions" className="block underline text-sm text-white mb-2">
                About CSTD's Mission
-             </a>
-             <a
-               href="/contact"
+             </Link>
+             <Link
+               to="/contact"
                className="text-red-500 font-bold text-sm flex items-center"
              >
                Join Us <span className="ml-1">→</span>
-             </a>
+             </Link>
            </div>
    
            {/* Footer Links */}
            <div>
              <ul className="space-y-2 text-sm">
-               <li><a href="/">Home</a></li> 
-               <li><a href="/#latest-news">News</a></li>
-               <li><a href="/media">Multimedia</a></li>
+               <li><Link to="/">Home</Link></li>
+               <li><a href="#/?scrollTo=latest-news">News</a></li>
+               <li><Link to="/media">Multimedia</Link></li>
                <li>
                  CSTD+
                  <span className="ml-2 text-xs px-1 py-0.5 border border-white rounded">
                    LIVE
                  </span>
                </li>
-               <li><a href="/researchandinnovation/#projects">Projects</a></li>
+               <li><Link to="/researchandinnovation">Projects</Link></li>
              </ul>
            </div>
    

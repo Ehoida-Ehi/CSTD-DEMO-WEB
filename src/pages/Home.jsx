@@ -52,13 +52,14 @@ const Home = () => {
     }
   }, []);
 
-  // Scroll to #latest-news when navigating to /#latest-news (e.g. from FAB or nav link)
+  // Scroll to #latest-news when navigating with ?scrollTo=latest-news (works with HashRouter)
   useEffect(() => {
-    if (location.hash === "#latest-news") {
+    const params = new URLSearchParams(location.search);
+    if (location.pathname === "/" && params.get("scrollTo") === "latest-news") {
       const el = document.getElementById("latest-news");
       if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
     }
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.search]);
 
   const togglePlayPause = () => {
     if (isPlaying) {

@@ -88,20 +88,16 @@ export default function Navbar({ navPages: rawNavPages }) {
   // Handle scroll after navigation triggered by navbar clicks
   useEffect(() => {
     if (navbarClickRef.current) {
-      // Special case: News link (home page with #latest-news)
-      if (location.pathname === '/' && location.hash === '#latest-news') {
+      const params = new URLSearchParams(location.search);
+      if (location.pathname === '/' && params.get('scrollTo') === 'latest-news') {
         const element = document.getElementById('latest-news');
         if (element) {
-          // Small delay to ensure DOM is ready after navigation
-          setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
+          setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
         }
       } else {
-        // For all other navbar links, scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-      navbarClickRef.current = false; // reset flag
+      navbarClickRef.current = false;
     }
   }, [location]);
 
@@ -155,23 +151,19 @@ export default function Navbar({ navPages: rawNavPages }) {
     fetchEvents();
   }, [eventsSidebarOpen, BASEURL]);
 
-  // Custom click handler for the News link
+  // Custom click handler for the News link (?scrollTo=latest-news works with HashRouter)
   const handleNewsClick = (e) => {
-    // If already on home page, prevent default and scroll manually
-    if (window.location.pathname === '/') {
+    if (location.pathname === '/') {
       e.preventDefault();
       const element = document.getElementById('latest-news');
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       } else {
-        // Fallback: navigate with hash and set flag
         navbarClickRef.current = true;
-        navigate('/#latest-news');
+        navigate('/?scrollTo=latest-news');
       }
     } else {
-      // Not on home page: set flag and let Link navigate
       navbarClickRef.current = true;
-      // No need to prevent default; Link will handle navigation
     }
   };
 
@@ -234,14 +226,14 @@ export default function Navbar({ navPages: rawNavPages }) {
             <div className="text-white flex space-x-2 items-center">
               {/* News link with custom handler */}
               <NavMenuItem
-                to="/#latest-news"
+                to="/?scrollTo=latest-news"
                 onClick={handleNewsClick}
               >
                 News
               </NavMenuItem>
               <span>|</span>
               <NavMenuItem
-                to="/#events"
+                to="/"
                 onClick={(e) => {
                   e.preventDefault();
                   openEventsSidebar();

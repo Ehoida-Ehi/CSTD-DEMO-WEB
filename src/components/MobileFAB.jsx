@@ -42,7 +42,7 @@ export default function MobileFAB() {
       const el = document.getElementById("latest-news");
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      navigate("/#latest-news");
+      navigate("/?scrollTo=latest-news");
     }
   };
 
