@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react'
-import CareImage from '../assets/images/NasrdaGate.webp'
-import {contactImages} from '../utils/images'
+import { useState, useEffect, useContext } from 'react';
+import { Flip, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { NavPageContext } from '../context/NavPageContext';
+import CareImage from '../assets/images/NasrdaGate.webp';
+import { contactImages } from '../utils/images';
 import { useLocation } from 'react-router-dom';
 
-const images = contactImages
+const images = contactImages;
 
 const Services = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -17,7 +21,8 @@ const Services = () => {
 
     return () => clearInterval(interval);
   }, []);
-    const { hash } = useLocation(); 
+
+  const { hash } = useLocation();
 
   useEffect(() => {
     if (hash) {
@@ -27,6 +32,7 @@ const Services = () => {
       }
     }
   }, [hash]);
+
   return (
     <div>
       <div className="relative w-full h-[500px]">
@@ -44,6 +50,68 @@ const Services = () => {
 };
 
 const Contact = () => {
+  const { BASEURL } = useContext(NavPageContext);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({});
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Enter a valid email';
+    }
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: '' });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setSubmitLoading(true);
+    try {
+      const payload = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+        phone: formData.phone?.trim() || '',
+        source: 'contact', // or 'have_questions' if you prefer to track contact page separately
+      };
+
+      const res = await axios.post(`${BASEURL}/contact/feedback`, payload);
+
+      if (res.data?.success) {
+        toast.success(res.data.message || 'Message sent successfully!');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setErrors({});
+      } else {
+        toast.error(res.data?.message || 'Submission failed. Please try again.');
+      }
+    } catch (err) {
+      const msg = err.response?.data?.message || err.message || 'Failed to submit. Please try again.';
+      toast.error(msg);
+    } finally {
+      setSubmitLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <Services />
@@ -59,7 +127,7 @@ const Contact = () => {
                 alt="Care Professional"
                 className="w-full h-full object-cover"
                 style={{ 
-                  imageRendering: '-webkit-optimize-contrast',
+                  WebkitImageRendering: '-webkit-optimize-contrast',
                   imageRendering: 'crisp-edges',
                   backfaceVisibility: 'hidden',
                   transform: 'translateZ(0)'
@@ -126,87 +194,113 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div id='partner'>
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-slate-600 dark:text-blue-500 mb-8">Ask a Question</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-8">
-              If you have any questions, you can contact us. Please, fill out the form below.
-            </p>
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8">
+              <h2 className="text-3xl font-bold text-slate-600 dark:text-blue-500 mb-8">Ask a Question</h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
+                If you have any questions, you can contact us. Please, fill out the form below.
+              </p>
 
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Your name"
-                />
-              </div>
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your name"
+                  />
+                  {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
+                </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Your email"
-                />
-              </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your email"
+                  />
+                  {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+                </div>
 
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Your phone number"
-                />
-              </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your phone number"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Message</label>
-                <textarea
-                  id="message"
-                  rows="4"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Your message"
-                ></textarea>
-              </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your message"
+                  ></textarea>
+                  {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+                </div>
 
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
-              >
-                Send Message
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={submitLoading}
+                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {submitLoading ? 'Submitting...' : 'Send Message'}
+                </button>
+              </form>
+            </div>
           </div>
-          </div>
-        
         </div>
 
         {/* Map Section */}
         <div id='map'>
-            <div className="mt-16">
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="aspect-w-16 aspect-h-9">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7777!2d7.384561637872805!3d8.99119009804407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b29b0b5f5f5%3A0x1c3c3c3c3c3c3c3c!2sObasanjo%20Space%20Centre%2C%20Umaru%20Musa%20Yar&#39;adua%20Expressway%2C%20Lugbe%2C%20Abuja%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1645564759438!5m2!1sen!2sng"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+          <div className="mt-16">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="aspect-w-16 aspect-h-9">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7777!2d7.384561637872805!3d8.99119009804407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b29b0b5f5f5%3A0x1c3c3c3c3c3c3c3c!2sObasanjo%20Space%20Centre%2C%20Umaru%20Musa%20Yar&#39;adua%20Expressway%2C%20Lugbe%2C%20Abuja%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1645564759438!5m2!1sen!2sng"
+                  width="100%"
+                  title="map"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        
       </div>
-    </div>
-  )
-}
 
-export default Contact
+      {/* Toast Container for notifications */}
+      <ToastContainer 
+        position="top-center" 
+        transition={Flip} 
+        autoClose={3000} 
+        hideProgressBar={true} 
+        closeOnClick 
+        pauseOnHover 
+        draggable 
+      />
+    </div>
+  );
+};
+
+export default Contact;
