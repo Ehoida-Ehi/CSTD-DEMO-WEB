@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect, useContext } from "react";
+import { useLocation } from "react-router-dom";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
-// import { useLocation } from "react-router-dom";
 // import { FaPlay, FaPause, FaTrophy, FaThumbsUp, } from "react-icons/fa";
 // import { FaHandshake, FaPeopleGroup } from "react-icons/fa6";
 // import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
@@ -42,6 +42,7 @@ import { NavPageContext } from "../context/NavPageContext";
 
 const Home = () => {
   const videoRef = useRef(null);
+  const location = useLocation();
   const { BASEURL } = useContext(NavPageContext);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -50,6 +51,14 @@ const Home = () => {
       videoRef.current.play();
     }
   }, []);
+
+  // Scroll to #latest-news when navigating to /#latest-news (e.g. from FAB or nav link)
+  useEffect(() => {
+    if (location.hash === "#latest-news") {
+      const el = document.getElementById("latest-news");
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+    }
+  }, [location.pathname, location.hash]);
 
   const togglePlayPause = () => {
     if (isPlaying) {

@@ -60,11 +60,11 @@ export default function EventsSidebar({ open, onClose, events = [], loading = fa
         aria-modal="true"
         aria-label="Events"
         className={[
-          "absolute left-0 top-0 h-full",
-          "w-[85%] sm:w-[60%] lg:w-[25%]",
-          "bg-slate-50 dark:bg-slate-950 text-white border-r border-slate-800",
-          "transform transition-transform duration-300 ease-out",
-          open ? "translate-x-0" : "-translate-x-full",
+          "absolute transform transition-transform duration-300 ease-out",
+          "bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border-slate-800",
+          "inset-x-0 bottom-0 top-auto h-[80vh] max-h-[90vh] w-full rounded-t-2xl border-t border-r-0",
+          "lg:inset-x-auto lg:left-0 lg:right-auto lg:top-0 lg:bottom-auto lg:h-full lg:max-h-none lg:w-[25%] lg:rounded-none lg:border-r lg:border-t-0",
+          open ? "translate-y-0 lg:translate-x-0" : "translate-y-full lg:translate-y-0 lg:-translate-x-full",
         ].join(" ")}
         onClick={(e) => e.stopPropagation()}
       >

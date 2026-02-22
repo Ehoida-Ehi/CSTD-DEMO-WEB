@@ -14,9 +14,11 @@ import Publications from './pages/Publications';
 
 import { NavPageContext, NavPageProvider } from './context/NavPageContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { EventsSidebarProvider } from './context/EventsSidebarContext';
 import { useContext } from 'react';
 import DynamicPage from './pages/DynamicPage';
 import { AboutProvider } from './context/AboutContext';
+import MobileFAB from './components/MobileFAB';
 const Content = () => {
   const { navPages } = useContext(NavPageContext);
 
@@ -30,6 +32,7 @@ const Content = () => {
   return (
     <>
       <Navbar navPages={navPages} />
+      <MobileFAB />
       <Routes>
         {/* Routes to backend paths */}
         <Route path="/" element={<Home />} />
@@ -68,11 +71,13 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider>
-        <NavPageProvider>
-          <AboutProvider>
-            <Content />
-          </AboutProvider>
-        </NavPageProvider>
+        <EventsSidebarProvider>
+          <NavPageProvider>
+            <AboutProvider>
+              <Content />
+            </AboutProvider>
+          </NavPageProvider>
+        </EventsSidebarProvider>
       </ThemeProvider>
     </Router>
   );

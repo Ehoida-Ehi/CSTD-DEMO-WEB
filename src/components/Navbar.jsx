@@ -5,6 +5,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaSun, FaMoon, FaDesktop } from "react-icons/fa6";
 import { NavPageContext } from "../context/NavPageContext";
 import { useTheme } from "../context/ThemeContext";
+import { useEventsSidebar } from "../context/EventsSidebarContext";
 import axios from "axios";
 import EventsSidebar from "./EventsSidebar";
 
@@ -73,8 +74,8 @@ export default function Navbar({ navPages: rawNavPages }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const { BASEURL } = useContext(NavPageContext);
+  const { eventsSidebarOpen, setEventsSidebarOpen } = useEventsSidebar();
 
-  const [eventsSidebarOpen, setEventsSidebarOpen] = useState(false);
   const [eventsLoading, setEventsLoading] = useState(false);
   const [eventsError, setEventsError] = useState("");
   const [events, setEvents] = useState([]);
