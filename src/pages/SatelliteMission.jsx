@@ -360,6 +360,9 @@ const SatelliteMission = () => {
                   </div>
                   <Link
                     to={sat.ctaHref}
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
                     className="inline-flex items-center text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
                   >
                     View details
