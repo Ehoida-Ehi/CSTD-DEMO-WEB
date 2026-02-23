@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SatelliteMission = () => {
   const satellites = [
@@ -106,18 +107,18 @@ const SatelliteMission = () => {
               </p>
 
               <div className="flex flex-wrap gap-3 mb-8">
-                <a
-                  href="#missions"
+                <Link
+                  to="#missions"
                   className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-sm sm:text-base font-semibold text-white shadow-lg shadow-blue-600/30 transition-colors"
                 >
                   View Satellite Missions
-                </a>
-                <a
-                  href="#overview"
+                </Link>
+                <Link
+                  to="#overview"
                   className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-slate-300 dark:border-slate-600/70 hover:border-blue-500 dark:hover:border-blue-400/70 text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-200 bg-white/80 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors"
                 >
                   Mission Overview
-                </a>
+                </Link>
               </div>
 
               <dl className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-slate-600 dark:text-slate-300">
@@ -357,8 +358,8 @@ const SatelliteMission = () => {
                       Part of Nigeria&apos;s national space programme
                     </span>
                   </div>
-                  <a
-                    href={sat.ctaHref}
+                  <Link
+                    to={sat.ctaHref}
                     className="inline-flex items-center text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
                   >
                     View details
@@ -373,7 +374,7 @@ const SatelliteMission = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}

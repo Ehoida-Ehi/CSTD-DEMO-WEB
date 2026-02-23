@@ -22,16 +22,21 @@ const Footer = () => {
              <h2 className="text-2xl font-bold mb-2">
                Center For Satellite Technology Development
              </h2>
-             <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+             <p className="text-sm text-gray-300 leading-relaxed">
                CSTD explores the unknown in air and space, innovates for the benefit
                of humanity, and inspires the world through discovery.
              </p>
-             <Link to="/satellitemissions" className="block underline text-sm text-white mb-2">
+             <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+                We are in space to keep the pace.
+             </p>
+             <Link to="/satellitemissions" className="block underline text-sm text-white mb-2" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+             
                About CSTD's Mission
              </Link>
              <Link
                to="/contact"
                className="text-red-500 font-bold text-sm flex items-center"
+               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
              >
                Join Us <span className="ml-1">→</span>
              </Link>
@@ -40,16 +45,23 @@ const Footer = () => {
            {/* Footer Links */}
            <div>
              <ul className="space-y-2 text-sm">
-               <li><Link to="/">Home</Link></li>
-               <li><a href="#/?scrollTo=latest-news">News</a></li>
-               <li><Link to="/media">Multimedia</Link></li>
-               <li>
-                 CSTD+
-                 <span className="ml-2 text-xs px-1 py-0.5 border border-white rounded">
-                   LIVE
-                 </span>
-               </li>
-               <li><Link to="/researchandinnovation">Projects</Link></li>
+               <li><Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link></li>
+               <li><Link to="/#latest-news" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>News</Link></li>
+               <li><Link to="/#gallery" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Multimedia</Link></li>
+              <li>
+                CSTD+
+                <span className="ml-2 text-xs px-1 py-0.5 border border-white rounded">
+                  LIVE
+                </span>
+              </li>
+              <li>
+                <Link
+                  to="/rni"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                  Projects
+                </Link>
+              </li>
              </ul>
            </div>
    
@@ -68,7 +80,6 @@ const Footer = () => {
                <li>Aeronautics</li>
                <li>Technology</li>
                <li>Learning Resources</li>
-               <li><a href="/about">About CSTD</a></li>
                <li>Patnership</li>
              </ul>
            </div>
@@ -82,10 +93,10 @@ const Footer = () => {
                <Link to={'https://x.com/CstdNasrda'}><FaXTwitter className="text-xl" /></Link>
                <Link to={'https://www.youtube.com/watch?v=rM8FWbxzPNY'}><FaYoutube className="text-xl" /></Link>
              </div>
-             <ul className="space-y-2 text-sm">
+             {/* <ul className="space-y-2 text-sm">
                <li>More CSTD Social Accounts</li>
                <li>CSTD Newsletters</li>
-             </ul>
+             </ul> */}
            </div>
          </div>
    
@@ -107,7 +118,7 @@ const Footer = () => {
              <a href="/">Accessibility</a>
            </div>
            <div className="">
-             Page Last Updated: <span className="text-white font-medium">Feb 22, 2026</span><br />
+             Page Last Updated: <span className="text-white font-medium">Feb 23, 2026</span><br />
              {/* Page Editor: <span className="font-semibold text-white">Ehi Jennifer Ehoida</span><br /> */}
              {/* Responsible CSTD Official:{" "} */}
              {/* <span className="font-semibold text-white">Omotayo Maryam</span> */}

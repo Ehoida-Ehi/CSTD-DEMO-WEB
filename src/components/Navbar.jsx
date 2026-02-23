@@ -83,7 +83,7 @@ export default function Navbar({ navPages: rawNavPages }) {
   const closeEventsSidebar = () => setEventsSidebarOpen(false);
   const openEventsSidebar = () => setEventsSidebarOpen(true);
 
-  console.log(navPages);
+  // console.log(navPages);
   
   // Handle scroll after navigation triggered by navbar clicks
   useEffect(() => {

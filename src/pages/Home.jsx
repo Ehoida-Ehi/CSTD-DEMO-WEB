@@ -358,7 +358,11 @@ const StatNumber = ({ target }) => {
       <section id="about">
         <div className={`w-full text-black dark:text-slate-500 bg-blue-50 dark:bg-slate-900 p-6 lg:p-8`} id="about-section">
           <div className="grid lg:grid-cols-2 gap-5">
-            <div className={`about-content lg:col-span-1 lg:ml-10 lg:pl-20 lg:pt-10 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
+            <div
+              className={`about-content lg:col-span-1 lg:ml-10 lg:pl-20 lg:pt-10 overflow-hidden transition-all duration-700 ${
+                isRevealAbout ? "slide-in-left opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
               <h2 className="header">Nigeria's Space Pioneers</h2>
              <div className="text-sm lg:text-lg">
               <p className="dark:text-slate-300">The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
@@ -396,7 +400,11 @@ const StatNumber = ({ target }) => {
                   </div>
               </div>
           </div>
-          <div className={`about-content bg-blue-50 dark:bg-slate-900 lg:col-span-1 ${!isRevealAbout ? "hidden" : "slide-in-right overflow-hidden"}`}>
+          <div
+            className={`about-content bg-blue-50 dark:bg-slate-900 lg:col-span-1 overflow-hidden transition-all duration-700 ${
+              isRevealAbout ? "slide-in-right opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
             <div className="about-visual my-auto align-middle bg-blue-50 dark:bg-slate-900">
               <img src={nigImg} className="flex icon lg:w-[24rem] w-[16rem]" alt="Unavailable" />
             </div>
@@ -407,9 +415,13 @@ const StatNumber = ({ target }) => {
       <section>
         <div className="pt-20 px-10 lg:px-20 space-y-10 bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900" id={"value-section"}>
           <hr className="w-[70%] mx-auto border border-b-blue-700"/>
-          <h2 className="text-4xl font-bold header text-center">OUR VALUES</h2>
+          <h2 className="text-4xl font-bold header text-center">Our Values</h2>
           <p className="text-gray-800 dark:text-slate-300 text-center text-sm lg:text-lg">We operate under this set of core values to guide us on our mission and activities.</p>
-          <div className={`grid lg:grid-cols-3 gap-6 lg:px-20 lg:py-10 py-5 ${!isRevealValue ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+          <div
+            className={`grid lg:grid-cols-3 gap-6 lg:px-20 lg:py-10 py-5 overflow-hidden transition-all duration-700 ${
+              isRevealValue ? "slide-in-top opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
              {values.map((val, index) => (
               <div key={index} className="value-card text-black dark:text-blue-100 bg-blue-50 shadow-sm dark:bg-slate-900 rounded-sm col-span-1 items-center flex flex-col space-y-4">
                 <div className="rounded-sm p-10">
@@ -492,7 +504,12 @@ const StatNumber = ({ target }) => {
           <h2 className="text-4xl mt-10 font-bold text-center header">Our Departments</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto my-10 p-6 lg:px-10">
             {departments.map((dept, index) => (
-              <div key={index} className={`relative bg-white dark:bg-slate-800 text-black dark:text-slate-100 rounded-md shadow-2xl value-card ${!isRevealDept ? "hidden" : "slide-in-top block overflow-hidden"}`}>
+              <div
+                key={index}
+                className={`relative bg-white dark:bg-slate-800 text-black dark:text-slate-100 rounded-md shadow-2xl value-card overflow-hidden transition-all duration-700 ${
+                  isRevealDept ? "slide-in-top opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+              >
                 {/* Image Div */}
                   <h3 className="lg:hidden text-center text-lg font-semibold mb-2 p-6">{dept.title}</h3>
                   <img
@@ -731,9 +748,13 @@ const StatNumber = ({ target }) => {
       </section>
 
       <section>
-        <div id="FAQ-section">
+      <div id="FAQ-section">
           <div  className="bg-gradient-to-b from-blue-50 via-transparent to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 py-16 px-4 lg:px-40 grid grid-cols-1 text-black dark:text-slate-100 lg:grid-cols-2 gap-10">
-            <div className={`col-span-1 ${!isRevealFAQ ? "hidden" : "slide-in-left overflow-hidden"}`}>
+            <div
+              className={`col-span-1 overflow-hidden transition-all duration-700 ${
+                isRevealFAQ ? "slide-in-left opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
               <h2 className="text-2xl font-bold text-center header mb-6">FAQS</h2>
               {faqs.map((faq, index) => (
                 <div
@@ -751,7 +772,11 @@ const StatNumber = ({ target }) => {
                 </div>
               ))}
             </div>
-            <div className={`col-span-1 ${!isRevealFAQ ? "hidden" : "slide-in-right overflow-hidden"}`}>
+            <div
+              className={`col-span-1 overflow-hidden transition-all duration-700 ${
+                isRevealFAQ ? "slide-in-right opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
               <h2 className="text-2xl font-bold header mb-6 text-center">HAVE QUESTIONS?</h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
