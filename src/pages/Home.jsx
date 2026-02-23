@@ -341,7 +341,7 @@ const StatNumber = ({ target }) => {
           </h1>
           <p className="mx-auto lg:px-44 text-sm lg:text-lg">Pioneering Nigeria's space frontier through advanced satellite technology, cutting-edge research, and innovation that propels our nation toward a sustainable space-based future.</p>
           <a
-            href="/about"
+            href="/#/about"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-sm shadow-md transition duration-300"
           >
             ABOUT US

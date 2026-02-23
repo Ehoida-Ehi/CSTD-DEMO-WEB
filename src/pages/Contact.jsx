@@ -120,8 +120,8 @@ const Contact = () => {
                 src={CareImage}
                 alt="Care Professional"
                 className="w-full h-full object-cover"
-                style={{ 
-                  imageRendering: '-webkit-optimize-contrast',
+                style={{
+                  WebkitImageRendering: '-webkit-optimize-contrast',
                   imageRendering: 'crisp-edges',
                   backfaceVisibility: 'hidden',
                   transform: 'translateZ(0)'
@@ -270,6 +270,7 @@ const Contact = () => {
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="aspect-w-16 aspect-h-9">
               <iframe
+                title="CSTD Obasanjo Space Centre location map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7777!2d7.384561637872805!3d8.99119009804407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b29b0b5f5f5%3A0x1c3c3c3c3c3c3c3c!2sObasanjo%20Space%20Centre%2C%20Umaru%20Musa%20Yar&#39;adua%20Expressway%2C%20Lugbe%2C%20Abuja%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1645564759438!5m2!1sen!2sng"
                 width="100%"
                 height="450"
@@ -277,7 +278,7 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              />
             </div>
           </div>
         </div>
