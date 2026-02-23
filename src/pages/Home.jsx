@@ -355,11 +355,11 @@ const StatNumber = ({ target }) => {
         </button>
       </div>      
       
-      <section>
+      <section id="about">
         <div className={`w-full text-black dark:text-slate-500 bg-blue-50 dark:bg-slate-900 p-6 lg:p-8`} id="about-section">
           <div className="grid lg:grid-cols-2 gap-5">
             <div className={`about-content lg:col-span-1 lg:ml-10 lg:pl-20 lg:pt-10 ${!isRevealAbout ? "hidden" : "slide-in-left block overflow-hidden"}`}>
-              <h2 className="header">About CSTD</h2>
+              <h2 className="header">Nigeria's Space Pioneers</h2>
              <div className="text-sm lg:text-lg">
               <p className="dark:text-slate-300">The Center for Satellite Technology Development (CSTD) is a leading arm of NASRDA, dedicated to building Nigeria's capacity in satellite design, development, and innovation. As a key contributor to national space programs like NigeriaSat-1, NigeriaSat-2, and the NigeriaEduSat project, CSTD plays a vital role in applying satellite technology for environmental monitoring, agriculture, security, and communication.</p>
               <p className="dark:text-slate-300">We work closely with international partners and local institutions to advance Nigeria's space capabilities through space science. With a strong focus on innovation and knowledge transfer, CSTD is shaping the future of Nigeria's space technology and empowering the next generation of aerospace professionals.</p>
